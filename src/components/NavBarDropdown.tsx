@@ -9,13 +9,16 @@ import {
     NavBarDropdownItem,
     NavBarDropdownItemGroup,
 } from "../component-queries/types";
+import classNames from "classnames";
 
 const {
+    dropdown,
     dropdownTrigger,
     dropdownPopupWrapper,
     hasBottomBorder,
     tubeIcon,
     plasmidIcon,
+    groupTitle
 } = require("../style/navbarDropdown.module.css");
 
 export interface NavBarDropdownProps {
@@ -101,7 +104,7 @@ const getGroupedMenuItems = (
 ): MenuProps["items"] => {
     return groups.map((group, groupIndex) => ({
         type: "group" as const,
-        label: <div className={hasBottomBorder}>{group.label}</div>,
+        label: <div className={classNames(hasBottomBorder, groupTitle)}>{group.label}</div>,
         key: `group-${groupIndex}`,
         children: group.options.map((item) => {
             const labelTag = getItemComponent(item);
@@ -144,6 +147,7 @@ const NavBarDropdown: React.FC<NavBarDropdownProps> = ({
             popupRender={(menus) => (
                 <div className={dropdownPopupWrapper}>{menus}</div>
             )}
+            open
         >
             {buttonComponent || defaultButton}
         </Dropdown>
