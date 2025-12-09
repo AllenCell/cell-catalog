@@ -8,7 +8,7 @@ interface LinkOutProps {
 
 export const LinkOut = ({label, href, newTab}: LinkOutProps) => {
     return (
-        <a href={href} target="_blank" rel={newTab ? "noopener noreferrer" : ""}>
+        <a href={href} target={newTab ? "_blank": ""} rel={newTab ? "noopener noreferrer" : ""}>
             {label}
         </a>
     );
