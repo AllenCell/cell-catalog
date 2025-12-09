@@ -4,113 +4,126 @@ import type { MenuProps } from "antd";
 import { DownOutlined, LoginOutlined } from "@ant-design/icons";
 import PlasmidIcon from "./Icons/PlasmidIcon";
 import TubeIcon from "./Icons/TubeIcon";
+import { normalizeUrl } from "../utils";
+import {
+    NavBarDropdownItem,
+    NavBarDropdownItemGroup,
+} from "../component-queries/types";
 
 const {
     dropdownTrigger,
     dropdownPopupWrapper,
     hasBottomBorder,
     tubeIcon,
-    plasmidIcon
+    plasmidIcon,
 } = require("../style/navbarDropdown.module.css");
-
-export interface NavBarDropdownItem {
-    label: string;
-    href?: string;
-}
-
-export interface NavBarDropdownItemGroup {
-    label: string;
-    options: NavBarDropdownItem[];
-}
 
 export interface NavBarDropdownProps {
     label: string;
     items: NavBarDropdownItem[] | NavBarDropdownItemGroup[];
     buttonComponent?: React.ReactNode;
-    onItemClick?: (item: NavBarDropdownItem) => void;
-    open?: boolean;
 }
+
 const cellLineCollectionComponent = (
-    <div className={tubeIcon} style={{fontSize: "14px"}}> <TubeIcon size={24} /> {` Cell Line Collection (Coriell `} <LoginOutlined /> {` )   `}</div>
-)
+    <div className={tubeIcon} style={{ fontSize: "14px" }}>
+        <TubeIcon size={24} /> {` Cell Line Collection (Coriell `}{" "}
+        <LoginOutlined /> {` )   `}
+    </div>
+);
 
 const plasmidCollectionComponent = (
-    <div className={plasmidIcon} style={{fontSize: "14px"}}> <PlasmidIcon size={20} /> {` Plasmid Collection (addgene `} <LoginOutlined /> {` )   `}</div>
-)
+    <div className={plasmidIcon} style={{ fontSize: "14px" }}>
+        <PlasmidIcon size={20} /> {` Plasmid Collection (addgene `}{" "}
+        <LoginOutlined /> {` )   `}
+    </div>
+);
 
-// Type guard to check if items are grouped
+const getLinkOut = (label: string, href: string) => {
+    return (
+        <a href={href} target="_blank" rel="noopener noreferrer">
+            {label}
+        </a>
+    );
+};
+
+const getPdfDownloadAnchor = (label: string, href: string) => {
+    return (
+        <a href={href} download={true}>
+            {label}
+        </a>
+    );
+};
+
 const isGroupedItems = (
     items: NavBarDropdownItem[] | NavBarDropdownItemGroup[]
 ): items is NavBarDropdownItemGroup[] => {
     return items.length > 0 && "options" in items[0];
 };
 
-const getFlatItems = (
-    items: NavBarDropdownItem[],
-    onItemClick?: (item: NavBarDropdownItem) => void
-): MenuProps["items"] => {
+const getItemComponent = (item: NavBarDropdownItem) => {
+    const normalizedHref = item.href ? normalizeUrl(item.href) : undefined;
+
+    if (item.label === "Cell Line Collection") {
+        return cellLineCollectionComponent;
+    } else if (item.label === "Plasmid Collection") {
+        return plasmidCollectionComponent;
+    }
+
+    const isPdf = normalizedHref?.endsWith(".pdf");
+    if (normalizedHref) {
+        if (isPdf) {
+            return getPdfDownloadAnchor(item.label, normalizedHref);
+        } else {
+            return getLinkOut(item.label, normalizedHref);
+        }
+    } else {
+        return item.label;
+    }
+};
+
+const getFlatItems = (items: NavBarDropdownItem[]): MenuProps["items"] => {
     return items.map((item, idx) => {
-        const itemLabel = item.label === "Cell Line Collection" ? cellLineCollectionComponent : item.label === "Plasmid Collection" ? 
-        plasmidCollectionComponent : item.href ? (
-            <a href={
-                item.href}>{item.label}</a>
-                ) : (
-                    item.label
-                    );
-        return ({
-        key: item.label,
-        className: idx < items.length -1 ? hasBottomBorder : undefined,
-        label: itemLabel,
-        onClick: () => {
-            if (onItemClick) {
-                onItemClick(item);
-            }
-        },
-    })});
+        const itemLabel = getItemComponent(item);
+        return {
+            key: item.label,
+            className: idx < items.length - 1 ? hasBottomBorder : undefined,
+            label: itemLabel,
+        };
+    });
 };
 
 const getGroupedMenuItems = (
-    groups: NavBarDropdownItemGroup[],
-    onItemClick?: (item: NavBarDropdownItem) => void
+    groups: NavBarDropdownItemGroup[]
 ): MenuProps["items"] => {
     return groups.map((group, groupIndex) => ({
         type: "group" as const,
         label: <div className={hasBottomBorder}>{group.label}</div>,
         key: `group-${groupIndex}`,
-        children: group.options.map((item) => ({
-            key: item.label,
-            label: item.href ? (
-                <a href={item.href}>{item.label}</a>
-            ) : item.label,
-            onClick: () => {
-                if (onItemClick) {
-                    onItemClick(item);
-                }
-            },
-        })),
+        children: group.options.map((item) => {
+            const labelTag = getItemComponent(item);
+            return {
+                key: item.label,
+                label: labelTag,
+            };
+        }),
     }));
 };
 
 const getMenuItems = (
-    items: NavBarDropdownItem[] | NavBarDropdownItemGroup[],
-    onItemClick?: (item: NavBarDropdownItem) => void
+    items: NavBarDropdownItem[] | NavBarDropdownItemGroup[]
 ): MenuProps["items"] => {
     if (isGroupedItems(items)) {
-        return getGroupedMenuItems(items, onItemClick);
+        return getGroupedMenuItems(items);
     }
-    return getFlatItems(items, onItemClick);
+    return getFlatItems(items);
 };
 
 const NavBarDropdown: React.FC<NavBarDropdownProps> = ({
     label,
     items,
     buttonComponent,
-    onItemClick,
-    open,
 }) => {
-
-    const menuItems = getMenuItems(items, onItemClick);
-    console.log(`NavBarDropdown "${label}" - menuItems:`, menuItems);
+    const menuItems = getMenuItems(items);
 
     const defaultButton = (
         <Button className={dropdownTrigger} type="text">
@@ -120,19 +133,16 @@ const NavBarDropdown: React.FC<NavBarDropdownProps> = ({
     );
 
     return (
-            <Dropdown
-                menu={{ items: menuItems }}
-                placement="bottomRight"
-                align={{ offset: [0, 20] }}
-                popupRender={(menus) => (
-                    <div className={dropdownPopupWrapper}>
-                            {menus}
-                    </div>
-                )}
-                {...(open !== undefined && { open })}
-            >
-                {buttonComponent || defaultButton}
-            </Dropdown>
+        <Dropdown
+            menu={{ items: menuItems }}
+            placement="bottomRight"
+            align={{ offset: [0, 20] }}
+            popupRender={(menus) => (
+                <div className={dropdownPopupWrapper}>{menus}</div>
+            )}
+        >
+            {buttonComponent || defaultButton}
+        </Dropdown>
     );
 };
 

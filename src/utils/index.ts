@@ -32,3 +32,19 @@ export const openLinkInNewTab = (link: string) => {
         window.open(link, "_blank", "noopener,noreferrer");
     }
 }
+
+// Helper function to normalize URLs for download (handles relative paths from markdown)
+export const normalizeUrl = (href: string): string | undefined => {
+    // If it's already an absolute URL or starts with /, return as-is
+    if (href.startsWith('http') || href.startsWith('/')) {
+        return href;
+    }
+
+    // If it's a relative path, extract filename and convert to /pdf/ path
+    if (href.includes('../') || href.includes('./')) {
+        const filename = href.split('/').pop();
+        return `/pdf/${filename}`;
+    }
+
+    return href;
+};

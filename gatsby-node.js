@@ -38,6 +38,16 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
             rnaseq_analysis: [RnaSeqRow]
             }
 
+            type NavBarDropdownItem {
+            label: String
+            href: String
+            }
+
+            type NavBarDropdownItemGroup {
+            label: String
+            options: [NavBarDropdownItem]
+            }
+
             `,
         `type GeneticModification {
                 gene: MarkdownRemark @link(by: "frontmatter.symbol", from: "gene")
@@ -89,6 +99,10 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
                 footer_text: String @md
                 genomic_characterization: MarkdownRemarkFrontmatterGenomic_characterization
                 stem_cell_characteristics: StemCellCharacteristics
+                catalogs: [NavBarDropdownItem]
+                protocols: [NavBarDropdownItemGroup]
+                normalCollections: [NavBarDropdownItem]
+                diseaseCollections: [NavBarDropdownItem]
             }`,
     ];
     createTypes(typeDefs);

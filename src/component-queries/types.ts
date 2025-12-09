@@ -363,3 +363,13 @@ export enum CategoryLabel {
     Tools = "Tools",
     Endothelial = "Endothelial",
 }
+
+export interface NavBarDropdownItem {
+    label: string;
+    href?: string;
+}
+
+export interface NavBarDropdownItemGroup {
+    label: string;
+    options: NavBarDropdownItem[];
+}
