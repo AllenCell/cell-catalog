@@ -64,5 +64,9 @@ export default {
             colorBorder: RAIN_SHADOW,
             lineWidth: 1.5,
         },
+        Dropdown: {
+            colorBgElevated: SERIOUS_GRAY,
+            colorText: WHITE,
+        }
     },
 };
