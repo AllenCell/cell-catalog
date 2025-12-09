@@ -15,6 +15,10 @@
     gap: 12px;
 }
 
+.dropdown-trigger:global(.ant-dropdown-open) {
+    text-shadow: 0.5px 0 0 currentColor, -0.5px 0 0 currentColor;
+}
+
 .dropdown-popup-wrapper :global(.ant-dropdown-menu) {
     box-shadow: none !important;
     padding: 0px !important;
@@ -59,7 +63,6 @@
     text-decoration: underline;
     text-shadow: 0.5px 0 0 currentColor, -0.5px 0 0 currentColor;
 }
-
 
 .has-bottom-border {
     border-bottom: 1px solid var(--RAIN_SHADOW);

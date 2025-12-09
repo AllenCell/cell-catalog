@@ -44,3 +44,7 @@
     font-size: 20px;
     font-weight: 100;
 }
+
+.title-link:global(.ant-dropdown-open) {
+        text-shadow: 0.5px 0 0 currentColor, -0.5px 0 0 currentColor;
+}
