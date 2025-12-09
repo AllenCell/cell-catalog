@@ -31,14 +31,14 @@
 }
 
 .divider {
-    color: #d9d9d9;
+    color: var(--RAIN_SHADOW);
     font-size: 24px;
     font-weight: 300;
     margin: 0 16px;
 }
 
 .title-link {
-    color: white;
+    color: var(--WHITE);
     cursor: pointer;
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
