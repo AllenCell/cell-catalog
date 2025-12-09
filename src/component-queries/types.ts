@@ -364,9 +364,16 @@ export enum CategoryLabel {
     Endothelial = "Endothelial",
 }
 
+export enum NavBarAnchorType {
+    Internal = "internal",
+    Download = "download",
+    External = "external"
+}
+
 export interface NavBarDropdownItem {
     label: string;
-    href?: string;
+    anchorType: NavBarAnchorType;
+    href: string;
 }
 
 export interface NavBarDropdownItemGroup {

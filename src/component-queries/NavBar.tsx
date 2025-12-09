@@ -1,7 +1,8 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { Flex } from "antd";
-import NavBarDropdown from "../components/NavBarDropdown";
+import NavBarDropdown from "../components/NavBarDropdown/NavBarDropdown";
+import { formatDropdownMenuItems } from "../components/NavBarDropdown/formatDropDownMenuItems";
 import { NavBarDropdownItem, NavBarDropdownItemGroup } from "./types";
 
 const AllenLogo = require("../img/aics-logo-white.png");
@@ -37,21 +38,25 @@ const NavBar: React.FC = () => {
                     catalogs {
                         label
                         href
+                        anchorType
                     }
                     protocols {
                         label
                         options {
                             label
                             href
+                            anchorType
                         }
                     }
                     normalCollections {
                         label
                         href
+                        anchorType
                     }
                     diseaseCollections {
                         label
                         href
+                        anchorType
                     }
                 }
             }
@@ -60,6 +65,12 @@ const NavBar: React.FC = () => {
 
     const { catalogs, protocols, diseaseCollections } =
         data.markdownRemark.frontmatter;
+
+    const formattedCatalogs = formatDropdownMenuItems(catalogs);
+    const formattedProtocols = formatDropdownMenuItems(protocols);
+    const formattedDiseaseCollections = formatDropdownMenuItems(
+        diseaseCollections
+    );
 
     return (
         <div className={pageHeader}>
@@ -84,18 +95,18 @@ const NavBar: React.FC = () => {
                             </div>
                         }
                         label="Catalogs"
-                        items={catalogs}
+                        items={formattedCatalogs}
                     />
                 </div>
                 <div className={rightContent}>
                     <Flex gap="large">
                         <NavBarDropdown
                             label="Protocols"
-                            items={protocols}
+                            items={formattedProtocols}
                         />
                         <NavBarDropdown
                             label="Collections"
-                            items={diseaseCollections}
+                            items={formattedDiseaseCollections}
                         />
                     </Flex>
                 </div>
