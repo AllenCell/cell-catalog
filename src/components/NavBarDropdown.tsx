@@ -24,21 +24,26 @@ export interface NavBarDropdownProps {
     buttonComponent?: React.ReactNode;
 }
 
-const cellLineCollectionComponent = (
-    <div className={tubeIcon} style={{ fontSize: "14px" }}>
-        <TubeIcon size={24} /> {` Cell Line Collection (Coriell `}{" "}
-        <LoginOutlined /> {` )   `}
-    </div>
+const getCellLineCollectionComponent = (href: string) => (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+        <div className={tubeIcon} style={{ fontSize: "14px" }}>
+            <TubeIcon size={24} /> {` Cell Line Collection (Coriell `}{" "}
+            <LoginOutlined /> {` )   `}
+        </div>
+    </a>
 );
 
-const plasmidCollectionComponent = (
-    <div className={plasmidIcon} style={{ fontSize: "14px" }}>
-        <PlasmidIcon size={20} /> {` Plasmid Collection (addgene `}{" "}
-        <LoginOutlined /> {` )   `}
-    </div>
+const getPlasmidCollectionComponent = (href: string) => (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+        <div className={plasmidIcon} style={{ fontSize: "14px" }}>
+            <PlasmidIcon size={20} /> {` Plasmid Collection (addgene `}{" "}
+            <LoginOutlined /> {` )   `}
+        </div>
+    </a>
 );
 
 const getLinkOut = (label: string, href: string) => {
+    console.log("Generating link out for:", label, href);
     return (
         <a href={href} target="_blank" rel="noopener noreferrer">
             {label}
@@ -63,10 +68,10 @@ const isGroupedItems = (
 const getItemComponent = (item: NavBarDropdownItem) => {
     const normalizedHref = item.href ? normalizeUrl(item.href) : undefined;
 
-    if (item.label === "Cell Line Collection") {
-        return cellLineCollectionComponent;
-    } else if (item.label === "Plasmid Collection") {
-        return plasmidCollectionComponent;
+    if (item.label === "Cell Line Collection" && normalizedHref) {
+        return getCellLineCollectionComponent(normalizedHref);
+    } else if (item.label === "Plasmid Collection" && normalizedHref) {
+        return getPlasmidCollectionComponent(normalizedHref);
     }
 
     const isPdf = normalizedHref?.endsWith(".pdf");
