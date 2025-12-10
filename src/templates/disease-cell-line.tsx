@@ -1,4 +1,4 @@
-import { graphql } from "gatsby";
+import { Link, graphql } from "gatsby";
 import React from "react";
 
 import { DiseaseCellLineFrontmatter } from "../component-queries/types";
@@ -10,7 +10,6 @@ import { unpackDiseaseFrontmatterForSubpage } from "../components/SubPage/conver
 import { UnpackedDiseaseCellLineFull } from "../components/SubPage/types";
 import { DefaultButton } from "../components/shared/Buttons";
 import { DEFAULT_TABS, TABS_WITH_STEM_CELL } from "../constants";
-import { useReturnToCatalog } from "../hooks/useReturnToCatalog";
 import { Disease } from "../types";
 import { getImages, getVideos, hasMedia } from "../utils/mediaUtils";
 
@@ -45,15 +44,16 @@ export const DiseaseCellLineTemplate = ({
     stemCellCharacteristics,
 }: DiseaseCellLineTemplateProps) => {
     const hasImagesOrVideos = hasMedia(imagesAndVideos);
-    const handleReturnClick = useReturnToCatalog("/disease-catalog");
     return (
         <>
             <div className={container}>
                 <div className={leftCard}>
-                    <DefaultButton onClick={handleReturnClick}>
-                        <Arrow className={returnArrow} />
-                        Return to Cell Catalog
-                    </DefaultButton>
+                    <Link to="/disease-catalog">
+                        <DefaultButton>
+                            <Arrow className={returnArrow} />
+                            Return to Cell Catalog
+                        </DefaultButton>
+                    </Link>
                     <DiseaseCellLineInfoCard
                         href={href}
                         cellLineId={cellLineId}
