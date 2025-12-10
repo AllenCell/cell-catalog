@@ -247,11 +247,11 @@ export const unpackNormalStemCellCharacteristics = (
 
     const trilineageDifferentiation: TrilineageDifferentiationData = {
         caption: scc.trilineage_caption,
-        data: (scc.trilineage_differentiation ?? []).map((row, index) => ({
+        data: (scc.trilineage_differentiation ?? []).map((row) => ({
             germLayer: row.germ_layer,
             marker: row.marker,
             percentPositiveCells: row.percent_positive_cells,
-            key: index.toString(),
+            key: `${row.germ_layer}-${row.marker}`,
         })),
     };
 
