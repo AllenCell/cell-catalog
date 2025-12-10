@@ -269,7 +269,7 @@ export const unpackNormalStemCellCharacteristics = (
                       dayOfBeatingRange:
                           scc.cardiomyocyte_differentiation
                               .day_of_beating_range,
-                      key: 0,
+                      key: "0",
                   },
               ]
             : [],
