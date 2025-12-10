@@ -3,12 +3,12 @@ import React from "react";
 interface LinkOutProps {
     label: string | React.ReactNode;
     href: string;
-    newTab?: boolean;
+    samePage?: boolean;
 }
 
-export const LinkOut = ({label, href, newTab}: LinkOutProps) => {
+export const LinkOut = ({label, href, samePage}: LinkOutProps) => {
     return (
-        <a href={href} target={newTab ? "_blank": ""} rel={newTab ? "noopener noreferrer" : ""}>
+        <a href={href} target={samePage ? "": "_blank"} rel={samePage ? "" : "noopener noreferrer"}>
             {label}
         </a>
     );

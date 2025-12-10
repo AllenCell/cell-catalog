@@ -25,14 +25,14 @@ const getItemComponent = (item: NavBarDropdownItem) => {
     }
 
     if (item.anchorType === NavBarAnchorType.Internal) {
-        return <LinkOut label={item.label} href={item.href}/>;
+        return <LinkOut label={item.label} href={item.href} samePage={true}/>;
     }
 
     if (COLLECTION_COMPONENTS_MAP[item.label]) {
         return <LinkOut label={COLLECTION_COMPONENTS_MAP[item.label]} href={item.href} />;
     }
 
-    return <LinkOut label={item.label} href={item.href} newTab={true} />;
+    return <LinkOut label={item.label} href={item.href} />;
 };
 
 const getFlatItems = (items: NavBarDropdownItem[]): MenuProps["items"] => {
