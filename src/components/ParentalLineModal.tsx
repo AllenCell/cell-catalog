@@ -137,10 +137,10 @@ const ParentalLineModal = (props: ParentalLineModalProps) => {
                             width: "142px",
                             fontSize: "16px",
                         }}
-                        contentStyle={{
+                        styles={{content: {
                             alignItems: "center",
                             fontSize: "18px",
-                            fontWeight: "semi-bold",
+                            fontWeight: "semi-bold",}
                         }}
                     />
                 </Flex>

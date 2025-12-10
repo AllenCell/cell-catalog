@@ -33,11 +33,11 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
                 labelStyle={{
                     alignItems: baseline ? "baseline" : "center",
                 }}
-                contentStyle={{
+                styles={{ content: {
                     alignItems: "center",
                     fontWeight: "semi-bold",
                     lineHeight: "1.5",
-                }}
+                }}}
             />
         </div>
     );

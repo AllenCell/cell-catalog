@@ -66,7 +66,7 @@ const CellLineInfoCardBase = ({
         icon,
         label,
         subtitle,
-    }: OrderButtonProps) => {
+    }: OrderButtonProps, key: string) => {
         const isDisabled = !href;
         const buttonClass = classNames(extraLargeButton, {
             [disabled]: isDisabled,
@@ -80,6 +80,7 @@ const CellLineInfoCardBase = ({
                 target="_blank"
                 rel="noreferrer"
                 disabled={isDisabled}
+                key={key}
             >
                 <div
                     className={classNames(
@@ -151,7 +152,7 @@ const CellLineInfoCardBase = ({
                 )}
                 {getDefaultButton("hPSCreg Certificate", healthCertificate)}
             </Flex>
-            {buttonList.map((button) => getOrderButton(button))}
+            {buttonList.map((button, index) => getOrderButton(button, index.toString()))}
         </Card>
     );
 };
