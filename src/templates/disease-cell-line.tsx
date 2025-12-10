@@ -1,5 +1,5 @@
-import React from "react";
 import { graphql } from "gatsby";
+import React from "react";
 
 import { DiseaseCellLineFrontmatter } from "../component-queries/types";
 import { DiseaseCellLineInfoCard } from "../components/CellLineInfoCard/DiseaseCellLineInfoCard";
@@ -10,9 +10,9 @@ import { unpackDiseaseFrontmatterForSubpage } from "../components/SubPage/conver
 import { UnpackedDiseaseCellLineFull } from "../components/SubPage/types";
 import { DefaultButton } from "../components/shared/Buttons";
 import { DEFAULT_TABS, TABS_WITH_STEM_CELL } from "../constants";
+import { useReturnToCatalog } from "../hooks/useReturnToCatalog";
 import { Disease } from "../types";
 import { getImages, getVideos, hasMedia } from "../utils/mediaUtils";
-import { useReturnToCatalog } from "../hooks/useReturnToCatalog";
 
 const {
     container,

@@ -132,15 +132,17 @@ const ParentalLineModal = (props: ParentalLineModalProps) => {
                         items={parentalLineItems}
                         layout="horizontal"
                         colon={false}
-                        labelStyle={{
-                            alignItems: "center",
-                            width: "142px",
-                            fontSize: "16px",
-                        }}
-                        styles={{content: {
-                            alignItems: "center",
-                            fontSize: "18px",
-                            fontWeight: "semi-bold",}
+                        styles={{
+                            content: {
+                                alignItems: "center",
+                                fontSize: "18px",
+                                fontWeight: "semi-bold",
+                            },
+                            label: {
+                                alignItems: "center",
+                                width: "142px",
+                                fontSize: "16px",
+                            },
                         }}
                     />
                 </Flex>

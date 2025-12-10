@@ -60,13 +60,10 @@ const CellLineInfoCardBase = ({
         </DefaultButton>
     );
 
-    const getOrderButton = ({
-        disabledLabel,
-        href,
-        icon,
-        label,
-        subtitle,
-    }: OrderButtonProps, key: string) => {
+    const getOrderButton = (
+        { disabledLabel, href, icon, label, subtitle }: OrderButtonProps,
+        key: string,
+    ) => {
         const isDisabled = !href;
         const buttonClass = classNames(extraLargeButton, {
             [disabled]: isDisabled,
@@ -152,7 +149,9 @@ const CellLineInfoCardBase = ({
                 )}
                 {getDefaultButton("hPSCreg Certificate", healthCertificate)}
             </Flex>
-            {buttonList.map((button, index) => getOrderButton(button, index.toString()))}
+            {buttonList.map((button, index) =>
+                getOrderButton(button, index.toString()),
+            )}
         </Card>
     );
 };
