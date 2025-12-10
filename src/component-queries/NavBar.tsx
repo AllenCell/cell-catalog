@@ -12,7 +12,7 @@ const {
     divider,
     leftContent,
     logoLink,
-    pageHeader,
+    container,
     rightContent,
     titleLink,
 } = require("../style/navbar.module.css");
@@ -73,7 +73,7 @@ const NavBar: React.FC = () => {
     );
 
     return (
-        <div className={pageHeader}>
+        <div className={container}>
             <div className={content}>
                 <div className={leftContent}>
                     <a
