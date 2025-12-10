@@ -149,8 +149,8 @@ const CellLineInfoCardBase = ({
                 )}
                 {getDefaultButton("hPSCreg Certificate", healthCertificate)}
             </Flex>
-            {buttonList.map((button, index) =>
-                getOrderButton(button, index.toString()),
+            {buttonList.map((button) =>
+                getOrderButton(button, button.href),
             )}
         </Card>
     );
