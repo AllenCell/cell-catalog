@@ -4,6 +4,7 @@ import { GatsbyImage, IGatsbyImageData, getImage } from "gatsby-plugin-image";
 import React, { useState } from "react";
 
 import { UnpackedGene } from "../component-queries/types";
+import LinkOutIcon from "../img/external-link.svg";
 import { formatCellLineSlug } from "../utils";
 import { DarkBlueHoverButton } from "./shared/Buttons";
 
@@ -17,7 +18,6 @@ const {
     subTitle,
     title,
 } = require("../style/modal.module.css");
-const LinkOut = require("../img/external-link.svg");
 
 interface ParentalLineModalProps {
     image?: IGatsbyImageData | null;
@@ -110,7 +110,7 @@ const ParentalLineModal = (props: ParentalLineModalProps) => {
                             <div className={buttonContent}>
                                 Go to Parental Line
                                 <Icon
-                                    component={LinkOut}
+                                    component={LinkOutIcon}
                                     className={buttonIcon}
                                 />
                             </div>

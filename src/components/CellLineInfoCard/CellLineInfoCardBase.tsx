@@ -3,13 +3,12 @@ import { Button, Card, Flex, Tooltip } from "antd";
 import classNames from "classnames";
 import React, { ReactNode, useState } from "react";
 
+import LinkOutIcon from "../../img/external-link.svg";
+import ShareIcon from "../../img/share-icon.svg";
 import { formatCellLineId } from "../../utils";
 import { DarkThemeGhostButton, DefaultButton } from "../shared/Buttons";
 import InfoPanel from "../shared/InfoPanel";
 import { InfoTableRow } from "./types";
-
-const Share = require("../../img/share-icon.svg");
-const LinkOut = require("../../img/external-link.svg");
 
 const {
     container,
@@ -89,7 +88,7 @@ const CellLineInfoCardBase = ({
                         {icon}
                         {label}
                     </h2>
-                    <LinkOut />
+                    <LinkOutIcon />
                 </div>
                 {subtitle}
             </Button>
@@ -125,7 +124,7 @@ const CellLineInfoCardBase = ({
                 >
                     Share
                     <Icon
-                        component={Share}
+                        component={ShareIcon}
                         style={{
                             fontSize: "18px",
                         }}
@@ -149,9 +148,7 @@ const CellLineInfoCardBase = ({
                 )}
                 {getDefaultButton("hPSCreg Certificate", healthCertificate)}
             </Flex>
-            {buttonList.map((button) =>
-                getOrderButton(button, button.href),
-            )}
+            {buttonList.map((button) => getOrderButton(button, button.href))}
         </Card>
     );
 };

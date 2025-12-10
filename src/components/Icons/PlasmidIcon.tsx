@@ -3,7 +3,7 @@ import { IconComponentProps } from "@ant-design/icons/lib/components/Icon";
 import classNames from "classnames";
 import React from "react";
 
-const Plasmid = require("../../img/plasmid.svg");
+import PlasmidSVG from "../../img/plasmid.svg";
 
 type IconBaseProps = Omit<IconComponentProps, "ref" | "component">;
 
@@ -26,7 +26,7 @@ const PlasmidIcon: React.FC<PlasmidIconProps> = ({
     return (
         <Icon
             className={classNames("plasmid-icon", className)}
-            component={Plasmid}
+            component={PlasmidSVG}
             style={mergedStyle}
             {...props}
         />
