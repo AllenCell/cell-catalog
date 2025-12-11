@@ -7,7 +7,7 @@ import {
 } from "../../component-queries/types";
 import { DiagramCardProps } from "../shared/DiagramCard";
 
-// crRNA field for normal cell lines differs from 
+// crRNA field for normal cell lines differs from
 // crRnaTargetSite field for disease cell lines
 export interface UnpackedEditingDesign {
     crRnaTargetSite?: string;
@@ -44,14 +44,18 @@ export interface CrRnaOffTargets {
 
 export type GenoCharDataTypes = AmplifiedJunction | DDCPR | CrRnaOffTargets;
 
-export interface GenomicCharacterizationTableData<T extends GenoCharDataTypes = GenoCharDataTypes> {
+export interface GenomicCharacterizationTableData<
+    T extends GenoCharDataTypes = GenoCharDataTypes,
+> {
     caption: string;
     data: T[];
 }
 
-export type AmplifiedJunctionData = GenomicCharacterizationTableData<AmplifiedJunction>
-export type DdcprData = GenomicCharacterizationTableData<DDCPR>
-export type CrRnaOffTargetsData = GenomicCharacterizationTableData<CrRnaOffTargets>
+export type AmplifiedJunctionData =
+    GenomicCharacterizationTableData<AmplifiedJunction>;
+export type DdcprData = GenomicCharacterizationTableData<DDCPR>;
+export type CrRnaOffTargetsData =
+    GenomicCharacterizationTableData<CrRnaOffTargets>;
 
 export interface UnpackedGenomicCharacterization {
     diagrams?: DiagramCardProps[];
@@ -63,37 +67,51 @@ export interface UnpackedGenomicCharacterization {
 export interface PluripotencyAnalysis {
     marker: string;
     positiveCells: number;
+    key?: string;
 }
 
 export interface TrilineageDifferentiation {
     germLayer: string; // Ectoderm, Endoderm, Mesoderm
     marker: string;
     percentPositiveCells: string;
+    key?: string;
 }
 
 export interface CardiomyocyteDifferentiation {
     troponinPercentPositive: string;
     dayOfBeatingPercent: string;
     dayOfBeatingRange: string;
+    key?: string;
 }
 
 export interface DiseaseCardioMyocyteDifferentiation {
     percentPositive: ClonePercentPositive[];
-    passingAntibodies?: string[]; 
+    passingAntibodies?: string[];
     differentiation?: TrilineageDifferentiationData[];
+    key?: string;
 }
 
-export type StemCellCharDataTypes = PluripotencyAnalysis | TrilineageDifferentiation | CardiomyocyteDifferentiation | DiseaseCardioMyocyteDifferentiation;
+export type StemCellCharDataTypes =
+    | PluripotencyAnalysis
+    | TrilineageDifferentiation
+    | CardiomyocyteDifferentiation
+    | DiseaseCardioMyocyteDifferentiation;
 
-export interface StemCellCharTableData<T extends StemCellCharDataTypes = StemCellCharDataTypes> {
+export interface StemCellCharTableData<
+    T extends StemCellCharDataTypes = StemCellCharDataTypes,
+> {
     caption: string;
     data: T[];
 }
 
-export type PluripotencyAnalysisData = StemCellCharTableData<PluripotencyAnalysis>
-export type TrilineageDifferentiationData = StemCellCharTableData<TrilineageDifferentiation>
-export type CardiomyocyteDifferentiationData = StemCellCharTableData<CardiomyocyteDifferentiation>
-export type DiseaseCardioMyocyteDifferentiationData = StemCellCharTableData<DiseaseCardioMyocyteDifferentiation>
+export type PluripotencyAnalysisData =
+    StemCellCharTableData<PluripotencyAnalysis>;
+export type TrilineageDifferentiationData =
+    StemCellCharTableData<TrilineageDifferentiation>;
+export type CardiomyocyteDifferentiationData =
+    StemCellCharTableData<CardiomyocyteDifferentiation>;
+export type DiseaseCardioMyocyteDifferentiationData =
+    StemCellCharTableData<DiseaseCardioMyocyteDifferentiation>;
 
 export interface UnpackedStemCellCharacteristics {
     pluripotencyAnalysis: PluripotencyAnalysisData;

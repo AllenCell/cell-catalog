@@ -3,7 +3,7 @@ import { IconComponentProps } from "@ant-design/icons/lib/components/Icon";
 import classNames from "classnames";
 import React from "react";
 
-const Tube = require("../../img/tube.svg");
+import TubeSVG from "../../img/tube.svg";
 
 type IconBaseProps = Omit<IconComponentProps, "ref" | "component">;
 
@@ -27,7 +27,7 @@ const TubeIcon: React.FC<TubeIconProps> = ({
     return (
         <Icon
             className={classNames("tube-icon", className)}
-            component={Tube}
+            component={TubeSVG}
             style={mergedStyle}
             {...props}
         />

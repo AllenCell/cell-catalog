@@ -6,12 +6,11 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
 
 import { CellLineStatus } from "../../component-queries/types";
+import CertificateIcon from "../../img/cert-icon.svg";
 import { WHITE } from "../../style/theme";
 import { formatCellLineId, openLinkInNewTab } from "../../utils";
 import TubeIcon from "../Icons/TubeIcon";
 import { UnpackedCellLine, mdBreakpoint } from "./types";
-
-const CertificateIcon = require("../../img/cert-icon.svg");
 
 const {
     actionButton,

@@ -10,6 +10,7 @@ import { unpackNormalFrontmatterForSubpage } from "../components/SubPage/convert
 import { UnpackedNormalCellLineFull } from "../components/SubPage/types";
 import { DefaultButton } from "../components/shared/Buttons";
 import { TABS_WITH_STEM_CELL } from "../constants";
+import Arrow from "../img/arrow.svg";
 import { getImages, getVideos, hasMedia } from "../utils/mediaUtils";
 
 const {
@@ -18,8 +19,6 @@ const {
     leftCard,
     returnArrow,
 } = require("../style/disease-cell-line.module.css");
-
-const Arrow = require("../img/arrow.svg");
 
 interface QueryResult {
     location: Location;
