@@ -1,5 +1,7 @@
-import React from "react";
+import { WindowLocation } from "@reach/router";
+import { Spin } from "antd";
 import { graphql } from "gatsby";
+import React from "react";
 
 import { DiseaseCellLineFrontmatter } from "../component-queries/types";
 import { DiseaseCellLineInfoCard } from "../components/CellLineInfoCard/DiseaseCellLineInfoCard";
@@ -13,7 +15,10 @@ import { DEFAULT_TABS, TABS_WITH_STEM_CELL } from "../constants";
 import Arrow from "../img/arrow.svg";
 import { Disease } from "../types";
 import { getImages, getVideos, hasMedia } from "../utils/mediaUtils";
-import { useReturnToCatalog } from "../hooks/useReturnToCatalog";
+import {
+    CatalogLocationState,
+    returnToCatalog,
+} from "../utils/returnToCatalog";
 
 const {
     container,
@@ -23,7 +28,9 @@ const {
 } = require("../style/disease-cell-line.module.css");
 
 interface DiseaseCellLineTemplateProps extends UnpackedDiseaseCellLineFull {
-    href: string;
+    location: WindowLocation<unknown> & {
+        state?: CatalogLocationState;
+    };
 }
 
 export const DiseaseCellLineTemplate = ({
@@ -36,15 +43,28 @@ export const DiseaseCellLineTemplate = ({
     geneSymbol,
     genomicCharacterization,
     healthCertificate,
-    href,
     imagesAndVideos,
+    location,
     orderLink,
     parentalLine,
     snp,
     stemCellCharacteristics,
 }: DiseaseCellLineTemplateProps) => {
     const hasImagesOrVideos = hasMedia(imagesAndVideos);
-    const handleReturnClick = useReturnToCatalog("/disease-catalog");
+    const [hasClickedReturn, setHasClickedReturn] = React.useState(false);
+    if (cellLineId === 0) {
+        return null;
+    }
+    // Show loading spinner while navigating back to catalog
+    // instead of showing the cell line content scrolled down
+    if (hasClickedReturn) {
+        return <Spin fullscreen />;
+    }
+
+    const handleReturnClick = () => {
+        returnToCatalog(location, "/disease-cell-catalog");
+        setHasClickedReturn(true);
+    };
     return (
         <>
             <div className={container}>
@@ -54,7 +74,7 @@ export const DiseaseCellLineTemplate = ({
                         Return to Cell Catalog
                     </DefaultButton>
                     <DiseaseCellLineInfoCard
-                        href={href}
+                        href={location.href}
                         cellLineId={cellLineId}
                         geneName={geneName}
                         geneSymbol={geneSymbol}
@@ -104,7 +124,11 @@ const CellLine = ({ data, location }: QueryResult) => {
     return (
         <Layout>
             <DiseaseCellLineTemplate
-                href={location.href || ""}
+                location={
+                    location as WindowLocation<unknown> & {
+                        state?: CatalogLocationState;
+                    }
+                }
                 {...unpackedCellLine}
             />
         </Layout>

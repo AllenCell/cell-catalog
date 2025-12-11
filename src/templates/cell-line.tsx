@@ -1,8 +1,9 @@
+import { WindowLocation } from "@reach/router";
+import { Spin } from "antd";
 import { graphql } from "gatsby";
 import React from "react";
-import {
-    NormalCellLineFrontmatter,
-} from "../component-queries/types";
+
+import { NormalCellLineFrontmatter } from "../component-queries/types";
 import { NormalCellLineInfoCard } from "../components/CellLineInfoCard/NormalCellLineInfoCard";
 import ImagesAndVideos from "../components/ImagesAndVideos";
 import Layout from "../components/Layout";
@@ -13,7 +14,8 @@ import { DefaultButton } from "../components/shared/Buttons";
 import { TABS_WITH_STEM_CELL } from "../constants";
 import Arrow from "../img/arrow.svg";
 import { getImages, getVideos, hasMedia } from "../utils/mediaUtils";
-import { useReturnToCatalog } from "../hooks/useReturnToCatalog";
+import { CatalogLocationState } from "../utils/returnToCatalog";
+import { returnToCatalog } from "../utils/returnToCatalog";
 
 const {
     container,
@@ -37,7 +39,9 @@ interface QueryResult {
 }
 
 interface CellLineProps extends UnpackedNormalCellLineFull {
-    href: string;
+    location: WindowLocation<unknown> & {
+        state?: CatalogLocationState;
+    };
 }
 
 export const CellLineTemplate = ({
@@ -49,18 +53,29 @@ export const CellLineTemplate = ({
     fluorescentTag,
     genomicCharacterization,
     healthCertificate,
-    href,
     imagesAndVideos,
+    location,
     orderLink,
     orderPlasmid,
     stemCellCharacteristics,
     taggedGene,
 }: CellLineProps) => {
-    const hasImagesOrVideos = hasMedia(imagesAndVideos);
+    const [hasClickedReturn, setHasClickedReturn] = React.useState(false);
     if (cellLineId === 0) {
         return null;
     }
-    const handleReturnClick = useReturnToCatalog("/");
+    // Show loading spinner while navigating back to catalog
+    // instead of showing the cell line content scrolled down
+    if (hasClickedReturn) {
+        return <Spin fullscreen />;
+    }
+
+    const handleReturnClick = () => {
+        returnToCatalog(location, "/");
+        setHasClickedReturn(true);
+    };
+
+    const hasImagesOrVideos = hasMedia(imagesAndVideos);
 
     return (
         <>
@@ -71,7 +86,7 @@ export const CellLineTemplate = ({
                         Return to Cell Catalog
                     </DefaultButton>
                     <NormalCellLineInfoCard
-                        href={href}
+                        href={location.href}
                         cellLineId={cellLineId}
                         geneName={taggedGene[0].name}
                         geneSymbol={taggedGene[0].symbol}
@@ -116,7 +131,11 @@ const CellLine = ({ data, location }: QueryResult) => {
     return (
         <Layout>
             <CellLineTemplate
-                href={location.href || ""}
+                location={
+                    location as WindowLocation<unknown> & {
+                        state?: CatalogLocationState;
+                    }
+                }
                 {...unpackedCellLine}
             />
         </Layout>
