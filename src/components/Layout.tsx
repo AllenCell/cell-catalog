@@ -6,6 +6,7 @@ import { Helmet as RawHelmet } from "react-helmet";
 import "../style/index.sass";
 import theme from "../style/theme";
 import useSiteMetadata from "./SiteMetadata";
+import NavBar from "../component-queries/NavBar";
 
 const { Content } = AntLayout;
 
@@ -90,6 +91,7 @@ const TemplateWrapper = ({ children, header }: TemplateWrapperProps) => {
                 />
             </Helmet>
             <AntLayout className={container}>
+                <NavBar />
                 {header}
                 <Content className={content}>{children}</Content>
             </AntLayout>

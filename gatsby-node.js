@@ -38,6 +38,16 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
             rnaseq_analysis: [RnaSeqRow]
             }
 
+            type NavBarDropdownItem {
+            label: String
+            href: String
+            }
+
+            type NavBarDropdownItemGroup {
+            label: String
+            options: [NavBarDropdownItem]
+            }
+
             `,
         `type GeneticModification {
                 gene: MarkdownRemark @link(by: "frontmatter.symbol", from: "gene")
@@ -89,6 +99,10 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
                 footer_text: String @md
                 genomic_characterization: MarkdownRemarkFrontmatterGenomic_characterization
                 stem_cell_characteristics: StemCellCharacteristics
+                catalogs: [NavBarDropdownItem]
+                protocols: [NavBarDropdownItemGroup]
+                normalCollections: [NavBarDropdownItem]
+                diseaseCollections: [NavBarDropdownItem]
             }`,
     ];
     createTypes(typeDefs);
@@ -122,6 +136,13 @@ exports.createPages = ({ actions, graphql }) => {
         const edges = result.data.allMarkdownRemark.edges;
         edges.forEach((edge) => {
             const id = edge.node.id;
+            const templateKey = edge.node.frontmatter.templateKey;
+
+            // Skip creating pages for data-only markdown files
+            if (templateKey === 'nav-bar') {
+                return;
+            }
+
             createPage({
                 path: edge.node.fields.slug,
                 component: path.resolve(

@@ -1,0 +1,90 @@
+.dropdown-popup-wrapper {
+    background-color: var(--SERIOUS_GRAY) !important;
+    border-radius: 4px;
+    padding: 12px 24px !important;
+
+}
+
+.dropdown-trigger {
+    color: white !important;
+    border: 1px solid white;
+    padding: 6px 13px;
+    font-size: 14px;
+    font-weight: 400;
+    display: flex;
+    gap: 12px;
+}
+
+.dropdown-trigger:global(.ant-dropdown-open) {
+    text-shadow: 0.5px 0 0 currentColor, -0.5px 0 0 currentColor;
+}
+
+.dropdown-popup-wrapper :global(.ant-dropdown-menu) {
+    box-shadow: none !important;
+    padding: 0px !important;
+}
+
+.dropdown-popup-wrapper :global(.ant-dropdown-menu .ant-dropdown-menu-item) {
+    border-radius: 0px;
+    padding: 5px 0px;
+}
+
+:global(.ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-group-title) .group-title {
+    color: var(--RAIN_SHADOW);
+    cursor: default;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 0px;
+}
+
+.dropdown-popup-wrapper :global(.ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-group-list) {
+    margin: 0px;
+    margin-bottom: 21px;
+}
+
+.dropdown-popup-wrapper :global(.ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-group:last-child .ant-dropdown-menu-item-group-list) {
+    margin-bottom: 0px;
+}
+
+.dropdown-popup-wrapper :global(.ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-group-title)
+.has-bottom-border {
+    padding-bottom: 6px;
+}
+
+.dropdown-popup-wrapper :global(.ant-dropdown-menu-title-content) {
+    font-size: 20px;
+}
+
+.dropdown-popup-wrapper :global(.ant-dropdown-menu-item-group-list .ant-dropdown-menu-title-content) {
+    font-size: 14px;
+}
+
+.dropdown-popup-wrapper :global(.ant-dropdown-menu-title-content):hover {
+    text-decoration: underline;
+    text-shadow: 0.5px 0 0 currentColor, -0.5px 0 0 currentColor;
+}
+
+.has-bottom-border {
+    border-bottom: 1px solid var(--RAIN_SHADOW);
+}
+
+.tube-icon, .plasmid-icon {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-left: 6px;
+    margin-right: 12px;
+}
+
+.tube-icon :global(.tube-icon) {
+    color: transparent;
+}
+
+.tube-icon :global(.tube-icon) path,
+.tube-icon :global(.tube-icon) line {
+    stroke: white;
+}
+
+.plasmid-icon :global(.plasmid-icon) path {
+    fill: white;
+}
