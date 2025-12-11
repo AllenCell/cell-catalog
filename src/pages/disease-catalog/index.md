@@ -1,6 +1,10 @@
 ---
 templateKey: disease-catalog
 title: About the collection
+header: 
+  title: Disease Collection Cell Catalog
+  subtitle: ""
+  background: /img/banner.jpg
 main:
   heading: Disease models available in our collection
   description: ""

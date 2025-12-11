@@ -1,5 +1,9 @@
 ---
 templateKey: normal-catalog
+header: 
+  title: Cell Catalog
+  subtitle: The catalog below provides a list of our completed cell lines, as well as those in progress. Click a row in the table to see images and quality control data related to each completed line.
+  background: /img/banner.jpg
 title: About the collection
 about_block: 
   primary:

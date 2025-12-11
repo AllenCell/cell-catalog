@@ -76,6 +76,11 @@ fields_single_image_diagram: &fields_single_image_diagram
   - *field_image
   - *field_caption
 
+header: &header
+  - { label: "Title", name: "title", widget: "string" }
+  - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
+  - { label: "Background Image", name: "background", widget: "image", required: false }
+
 collections:
     - name: "cell-line"
       label: "Cell Lines"
@@ -937,6 +942,7 @@ collections:
                     widget: "hidden",
                     default: "normal-catalog",
                 }
+                -  { label: "Header", name: "header", widget: "object", fields: *header }
                 - { label: "Title", name: "title", widget: "string" }
                 - {
                       label: "About Block",

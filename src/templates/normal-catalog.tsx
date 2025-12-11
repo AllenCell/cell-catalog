@@ -1,11 +1,14 @@
 import { Divider } from "antd";
 import { graphql } from "gatsby";
+import { FileNode } from "gatsby-plugin-image/dist/src/components/hooks";
 import React from "react";
 
 import About from "../component-queries/About";
 import NormalCellLines from "../component-queries/NormalCellLines";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 import Layout from "../components/Layout";
+import { getImageSrcFromFileNode } from "../utils/mediaUtils";
 
 const { container, mainHeading } = require("../style/catalog.module.css");
 interface NormalCatalogTemplateProps {
@@ -45,6 +48,11 @@ interface QueryResult {
             html: string;
             frontmatter: {
                 title: string;
+                header: {
+                    title?: string;
+                    subtitle?: string;
+                    background?: FileNode;
+                };
                 funding_text: {
                     html: string;
                 };
@@ -61,8 +69,20 @@ interface QueryResult {
 
 const NormalCatalog = ({ data }: QueryResult) => {
     const { markdownRemark: post } = data;
+    const imageFile = post.frontmatter.header?.background;
+    const backgroundImageUrl = imageFile
+        ? getImageSrcFromFileNode(imageFile)
+        : undefined;
     return (
-        <Layout>
+        <Layout
+            header={
+                <Header
+                    backgroundImageUrl={backgroundImageUrl}
+                    title={post.frontmatter.header?.title}
+                    subtitle={post.frontmatter.header?.subtitle}
+                />
+            }
+        >
             <NormalCatalogTemplate
                 title={post.frontmatter.title}
                 content={post.html}
@@ -82,6 +102,19 @@ export const aboutPageQuery = graphql`
             html
             frontmatter {
                 title
+                header {
+                    title
+                    subtitle
+                    background {
+                        childImageSharp {
+                            gatsbyImageData(
+                                width: 2000
+                                placeholder: BLURRED
+                                layout: CONSTRAINED
+                            )
+                        }
+                    }
+                }
                 funding_text {
                     html
                 }

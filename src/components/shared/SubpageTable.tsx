@@ -25,7 +25,6 @@ const SubpageTable: React.FC<SubpageTableProps> = ({
     if (dataSource.length === 0) {
         return null;
     }
-
     return (
         <SubpageContentCard
             {...cardProps}

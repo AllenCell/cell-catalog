@@ -1,9 +1,14 @@
 import { getImage, IGatsbyImageData } from "gatsby-plugin-image";
 import { RawImageData, UnpackedImageData, RawVideoData, MediaFrontmatter, ImageOrVideo } from "../component-queries/types";
+import { FileNode } from "gatsby-plugin-image/dist/src/components/hooks";
 
 // type guard to distinguish images and videos at runtime
 export function isImage(item: ImageOrVideo): item is UnpackedImageData {
   return "image" in item;
+}
+
+export const getImageSrcFromFileNode = (file: FileNode): string | undefined  => {
+  return file.childImageSharp?.gatsbyImageData?.images?.fallback?.src;
 }
 
 // flatten and validate image data

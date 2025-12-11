@@ -3,39 +3,43 @@
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    max-width: 1728px;
-    padding: 32px;
-    margin: auto;
 }
 
-.container h1,
+.content {
+    margin: auto;
+    max-width: 1728px;
+    padding: 32px;
+    width: 100%;
+}
+
+h1,
 h2,
 h3,
 h4 {
     margin: 0;
 }
 
-.container h1 {
+.content h1 {
     font-family: "Raleway", sans-serif;
     font-size: 32px;
     font-weight: 400;
     font-style: normal;
 }
 
-.container h2 {
+.content h2 {
     font-family: "Open Sans", sans-serif;
     font-size: 30px;
     font-weight: 700;
     margin-bottom: 12px;
 }
 
-.container h3 {
+.content h3 {
     font-weight: 700;
     color: var(--primary-color);
     font-size: 24px;
 }
 
-.container h4 {
+.content h4 {
     font-family: Raleway;
     font-size: 20px;
     font-weight: 500;

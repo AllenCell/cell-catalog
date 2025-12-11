@@ -30,13 +30,15 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
                 column={1}
                 layout="horizontal"
                 colon={false}
-                labelStyle={{
-                    alignItems: baseline ? "baseline" : "center",
-                }}
-                contentStyle={{
-                    alignItems: "center",
-                    fontWeight: "semi-bold",
-                    lineHeight: "1.5",
+                styles={{
+                    content: {
+                        alignItems: "center",
+                        fontWeight: "semi-bold",
+                        lineHeight: "1.5",
+                    },
+                    label: {
+                        alignItems: baseline ? "baseline" : "center",
+                    },
                 }}
             />
         </div>

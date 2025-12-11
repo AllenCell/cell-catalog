@@ -6,8 +6,10 @@ import React from "react";
 import Diseases from "../component-queries/Diseases";
 import AboutButton from "../components/AboutButton";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/shared/Content";
+import { getImageSrcFromFileNode } from "../utils/mediaUtils";
 
 const { container, contentWrapper } = require("../style/about.module.css");
 const {
@@ -94,6 +96,11 @@ interface QueryResult {
             html: string;
             frontmatter: {
                 title: string;
+                header: {
+                    title?: string;
+                    subtitle?: string;
+                    background?: FileNode;
+                };
                 footer_text: {
                     html: string;
                 };
@@ -120,8 +127,18 @@ interface QueryResult {
 
 const DiseaseCatalog = ({ data }: QueryResult) => {
     const { markdownRemark: post } = data;
+    const imageFile = post.frontmatter.header?.background;
+    const backgroundImageUrl = getImageSrcFromFileNode(imageFile!);
     return (
-        <Layout>
+        <Layout
+            header={
+                <Header
+                    title={post.frontmatter.header?.title}
+                    subtitle={post.frontmatter.header?.subtitle}
+                    backgroundImageUrl={backgroundImageUrl}
+                />
+            }
+        >
             <DiseaseCatalogTemplate
                 contentComponent={HTMLContent}
                 title={post.frontmatter.title}
@@ -145,6 +162,18 @@ export const aboutPageQuery = graphql`
             html
             frontmatter {
                 title
+                header {
+                    title
+                    subtitle
+                    background {
+                        childImageSharp {
+                            gatsbyImageData(
+                                placeholder: BLURRED
+                                layout: CONSTRAINED
+                            )
+                        }
+                    }
+                }
                 footer_text {
                     html
                 }

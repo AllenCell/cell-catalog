@@ -10,6 +10,7 @@ import { unpackDiseaseFrontmatterForSubpage } from "../components/SubPage/conver
 import { UnpackedDiseaseCellLineFull } from "../components/SubPage/types";
 import { DefaultButton } from "../components/shared/Buttons";
 import { DEFAULT_TABS, TABS_WITH_STEM_CELL } from "../constants";
+import Arrow from "../img/arrow.svg";
 import { Disease } from "../types";
 import { getImages, getVideos, hasMedia } from "../utils/mediaUtils";
 import { useReturnToCatalog } from "../hooks/useReturnToCatalog";
@@ -20,8 +21,6 @@ const {
     leftCard,
     returnArrow,
 } = require("../style/disease-cell-line.module.css");
-
-const Arrow = require("../img/arrow.svg");
 
 interface DiseaseCellLineTemplateProps extends UnpackedDiseaseCellLineFull {
     href: string;

@@ -6,15 +6,20 @@ import { Helmet as RawHelmet } from "react-helmet";
 import "../style/index.sass";
 import theme from "../style/theme";
 import useSiteMetadata from "./SiteMetadata";
+import NavBar from "../component-queries/NavBar";
 
 const { Content } = AntLayout;
 
-const { container } = require("../style/layout.module.css");
+const { container, content } = require("../style/layout.module.css");
 
 const Helmet =
     RawHelmet as unknown as React.ComponentType<React.PropsWithChildren>;
 
-const TemplateWrapper = ({ children }: React.PropsWithChildren) => {
+interface TemplateWrapperProps extends React.PropsWithChildren {
+    header?: React.ReactNode;
+}
+
+const TemplateWrapper = ({ children, header }: TemplateWrapperProps) => {
     const { description, title } = useSiteMetadata();
     return (
         <ConfigProvider theme={theme}>
@@ -86,7 +91,9 @@ const TemplateWrapper = ({ children }: React.PropsWithChildren) => {
                 />
             </Helmet>
             <AntLayout className={container}>
-                <Content>{children}</Content>
+                <NavBar />
+                {header}
+                <Content className={content}>{children}</Content>
             </AntLayout>
             <Script type="text/javascript" src="/iframeResizer.js" />
         </ConfigProvider>
