@@ -1,4 +1,3 @@
-import { LoginOutlined } from "@ant-design/icons";
 import React from "react";
 
 import PlasmidIcon from "../Icons/PlasmidIcon";
