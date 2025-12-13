@@ -1,35 +1,44 @@
-import React from "react";
 import { MenuProps } from "antd";
 import classNames from "classnames";
+import React from "react";
 
-import { NavBarAnchorType, NavBarDropdownItem, NavBarDropdownItemGroup } from "../../component-queries/types";
+import {
+    NavBarAnchorType,
+    NavBarDropdownItem,
+    NavBarDropdownItemGroup,
+} from "../../component-queries/types";
 import LinkOut from "../LinkOut";
 import PdfAnchor from "../PdfAnchor";
 import { COLLECTION_COMPONENTS_MAP } from "./constants";
 
 const {
+    groupTitle,
     hasBottomBorder,
-    groupTitle
 } = require("../../style/navbarDropdown.module.css");
 
 const isGroupedItems = (
-    items: NavBarDropdownItem[] | NavBarDropdownItemGroup[]
+    items: NavBarDropdownItem[] | NavBarDropdownItemGroup[],
 ): items is NavBarDropdownItemGroup[] => {
     return items.length > 0 && "options" in items[0];
 };
 
 const getItemComponent = (item: NavBarDropdownItem) => {
     if (item.anchorType === NavBarAnchorType.Download) {
-        const filename = item.href.split('/').pop();
+        const filename = item.href.split("/").pop();
         return <PdfAnchor label={item.label} href={`/pdf/${filename}`} />;
     }
 
     if (item.anchorType === NavBarAnchorType.Internal) {
-        return <LinkOut label={item.label} href={item.href} samePage={true}/>;
+        return <LinkOut label={item.label} href={item.href} samePage={true} />;
     }
 
     if (COLLECTION_COMPONENTS_MAP[item.label]) {
-        return <LinkOut label={COLLECTION_COMPONENTS_MAP[item.label]} href={item.href} />;
+        return (
+            <LinkOut
+                label={COLLECTION_COMPONENTS_MAP[item.label]}
+                href={item.href}
+            />
+        );
     }
 
     return <LinkOut label={item.label} href={item.href} />;
@@ -40,17 +49,21 @@ const getFlatItems = (items: NavBarDropdownItem[]): MenuProps["items"] => {
         return {
             key: item.label,
             className: idx < items.length - 1 ? hasBottomBorder : undefined,
-            label:  getItemComponent(item),
+            label: getItemComponent(item),
         };
     });
 };
 
 const getGroupedMenuItems = (
-    groups: NavBarDropdownItemGroup[]
+    groups: NavBarDropdownItemGroup[],
 ): MenuProps["items"] => {
     return groups.map((group, groupIndex) => ({
         type: "group" as const,
-        label: <div className={classNames(hasBottomBorder, groupTitle)}>{group.label}</div>,
+        label: (
+            <div className={classNames(hasBottomBorder, groupTitle)}>
+                {group.label}
+            </div>
+        ),
         key: `group-${groupIndex}`,
         children: group.options.map((item) => {
             return {
@@ -62,7 +75,7 @@ const getGroupedMenuItems = (
 };
 
 export const formatDropdownMenuItems = (
-    items: NavBarDropdownItem[] | NavBarDropdownItemGroup[]
+    items: NavBarDropdownItem[] | NavBarDropdownItemGroup[],
 ): MenuProps["items"] => {
     if (isGroupedItems(items)) {
         return getGroupedMenuItems(items);

@@ -6,9 +6,13 @@ interface LinkOutProps {
     samePage?: boolean;
 }
 
-export const LinkOut = ({label, href, samePage}: LinkOutProps) => {
+export const LinkOut = ({ href, label, samePage }: LinkOutProps) => {
     return (
-        <a href={href} target={samePage ? "": "_blank"} rel={samePage ? "" : "noopener noreferrer"}>
+        <a
+            href={href}
+            target={samePage ? "" : "_blank"}
+            rel={samePage ? "" : "noopener noreferrer"}
+        >
             {label}
         </a>
     );

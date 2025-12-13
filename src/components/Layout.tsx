@@ -3,10 +3,10 @@ import { Layout as AntLayout, ConfigProvider } from "antd";
 import { Script, withPrefix } from "gatsby";
 import { Helmet as RawHelmet } from "react-helmet";
 
+import NavBar from "../component-queries/NavBar";
 import "../style/index.sass";
 import theme from "../style/theme";
 import useSiteMetadata from "./SiteMetadata";
-import NavBar from "../component-queries/NavBar";
 
 const { Content } = AntLayout;
 

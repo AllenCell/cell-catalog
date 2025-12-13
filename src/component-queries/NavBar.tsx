@@ -1,6 +1,7 @@
-import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
 import { Flex } from "antd";
+import { graphql, useStaticQuery } from "gatsby";
+import React from "react";
+
 import NavBarDropdown from "../components/NavBarDropdown/NavBarDropdown";
 import { formatDropdownMenuItems } from "../components/NavBarDropdown/formatDropDownMenuItems";
 import { NavBarDropdownItem, NavBarDropdownItemGroup } from "./types";
@@ -8,11 +9,11 @@ import { NavBarDropdownItem, NavBarDropdownItemGroup } from "./types";
 const AllenLogo = require("../img/aics-logo-white.png");
 
 const {
+    container,
     content,
     divider,
     leftContent,
     logoLink,
-    container,
     rightContent,
     titleLink,
 } = require("../style/navbar.module.css");
@@ -31,9 +32,7 @@ interface NavBarQueryData {
 const NavBar: React.FC = () => {
     const data = useStaticQuery<NavBarQueryData>(graphql`
         query NavBarQuery {
-            markdownRemark(
-                frontmatter: { templateKey: { eq: "nav-bar" } }
-            ) {
+            markdownRemark(frontmatter: { templateKey: { eq: "nav-bar" } }) {
                 frontmatter {
                     catalogs {
                         label
@@ -68,9 +67,8 @@ const NavBar: React.FC = () => {
 
     const formattedCatalogs = formatDropdownMenuItems(catalogs);
     const formattedProtocols = formatDropdownMenuItems(protocols);
-    const formattedDiseaseCollections = formatDropdownMenuItems(
-        diseaseCollections
-    );
+    const formattedDiseaseCollections =
+        formatDropdownMenuItems(diseaseCollections);
 
     return (
         <div className={container}>

@@ -1,11 +1,11 @@
-import React from "react";
-import { Dropdown, Button } from "antd";
-import type { MenuProps } from "antd";
 import { DownOutlined } from "@ant-design/icons";
+import { Button, Dropdown } from "antd";
+import type { MenuProps } from "antd";
+import React from "react";
 
 const {
-    dropdownTrigger,
     dropdownPopupWrapper,
+    dropdownTrigger,
 } = require("../../style/navbarDropdown.module.css");
 
 export interface NavBarDropdownProps {
@@ -15,11 +15,10 @@ export interface NavBarDropdownProps {
 }
 
 const NavBarDropdown: React.FC<NavBarDropdownProps> = ({
-    label,
-    items,
     buttonComponent,
+    items,
+    label,
 }) => {
-
     const defaultButton = (
         <Button className={dropdownTrigger} type="text">
             {label}
