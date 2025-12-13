@@ -8,7 +8,7 @@ const browser = typeof window !== "undefined" && window;
 const NotFoundPage = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
-            navigate("/");
+            navigate(CatalogRoutes.CellCatalog);
         }, 2000);
         return () => clearTimeout(timer);
     }, [browser]);
@@ -20,7 +20,7 @@ const NotFoundPage = () => {
                     <h1>NOT FOUND</h1>
                     <p>
                         You just hit a route that doesn&#39;t exist...
-                        Redirecting to home page...
+                        Redirecting to Cell Catalog home page...
                     </p>
                 </div>
             </Layout>
