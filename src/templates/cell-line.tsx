@@ -1,7 +1,7 @@
 import { WindowLocation } from "@reach/router";
 import { Spin } from "antd";
 import { graphql } from "gatsby";
-import React, { useState } from "react";
+import React from "react";
 
 import { NormalCellLineFrontmatter } from "../component-queries/types";
 import { NormalCellLineInfoCard } from "../components/CellLineInfoCard/NormalCellLineInfoCard";
@@ -12,12 +12,11 @@ import { unpackNormalFrontmatterForSubpage } from "../components/SubPage/convert
 import { UnpackedNormalCellLineFull } from "../components/SubPage/types";
 import { DefaultButton } from "../components/shared/Buttons";
 import { TABS_WITH_STEM_CELL } from "../constants";
-import useBackButton from "../hooks/useBackButton";
+import useReturnHandler from "../hooks/useReturnToCatalog";
 import Arrow from "../img/arrow.svg";
-import { CatalogRoutes } from "../types";
+import { CatalogRoute } from "../types";
 import { getImages, getVideos, hasMedia } from "../utils/mediaUtils";
 import { CatalogLocationState } from "../utils/returnToCatalog";
-import { returnToCatalog } from "../utils/returnToCatalog";
 
 const {
     container,
@@ -62,18 +61,16 @@ export const CellLineTemplate = ({
     stemCellCharacteristics,
     taggedGene,
 }: CellLineProps) => {
-    const [hasClickedReturn, setHasClickedReturn] = useState(false);
-    useBackButton(() => setHasClickedReturn(true));
+    const { handleReturnClick, hasClickedReturn } = useReturnHandler(
+        CatalogRoute.CellCatalog,
+        location,
+    );
 
     // Show loading spinner while navigating back to catalog
     // instead of showing the cell line content scrolled down
     if (hasClickedReturn) {
         return <Spin fullscreen />;
     }
-    const handleReturnClick = () => {
-        returnToCatalog(location, CatalogRoutes.CellCatalog);
-        setHasClickedReturn(true);
-    };
 
     const hasImagesOrVideos = hasMedia(imagesAndVideos);
     if (cellLineId === 0) {

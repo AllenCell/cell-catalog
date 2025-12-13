@@ -2,13 +2,14 @@ import { navigate } from "gatsby";
 import React, { useEffect } from "react";
 
 import Layout from "../components/Layout";
+import { CatalogRoute } from "../types";
 
 const browser = typeof window !== "undefined" && window;
 
 const NotFoundPage = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
-            navigate(CatalogRoutes.CellCatalog);
+            navigate(CatalogRoute.CellCatalog);
         }, 2000);
         return () => clearTimeout(timer);
     }, [browser]);

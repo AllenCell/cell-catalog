@@ -1,7 +1,7 @@
 import { WindowLocation } from "@reach/router";
 import { Spin } from "antd";
 import { graphql } from "gatsby";
-import React, { useState } from "react";
+import React from "react";
 
 import { DiseaseCellLineFrontmatter } from "../component-queries/types";
 import { DiseaseCellLineInfoCard } from "../components/CellLineInfoCard/DiseaseCellLineInfoCard";
@@ -12,14 +12,11 @@ import { unpackDiseaseFrontmatterForSubpage } from "../components/SubPage/conver
 import { UnpackedDiseaseCellLineFull } from "../components/SubPage/types";
 import { DefaultButton } from "../components/shared/Buttons";
 import { DEFAULT_TABS, TABS_WITH_STEM_CELL } from "../constants";
-import useBackButton from "../hooks/useBackButton";
+import useReturnHandler from "../hooks/useReturnToCatalog";
 import Arrow from "../img/arrow.svg";
-import { CatalogRoutes, Disease } from "../types";
+import { CatalogRoute, Disease } from "../types";
 import { getImages, getVideos, hasMedia } from "../utils/mediaUtils";
-import {
-    CatalogLocationState,
-    returnToCatalog,
-} from "../utils/returnToCatalog";
+import { CatalogLocationState } from "../utils/returnToCatalog";
 
 const {
     container,
@@ -53,13 +50,10 @@ export const DiseaseCellLineTemplate = ({
 }: DiseaseCellLineTemplateProps) => {
     const hasImagesOrVideos = hasMedia(imagesAndVideos);
     // used only to show loading spinner when returning to catalog
-    const [hasClickedReturn, setHasClickedReturn] = useState(false);
-    const handleReturnClick = () => {
-        returnToCatalog(location, CatalogRoutes.DiseaseCatalog);
-        setHasClickedReturn(true);
-    };
-    // makes the back button do the same behavior as the return button
-    useBackButton(handleReturnClick);
+    const { handleReturnClick, hasClickedReturn } = useReturnHandler(
+        CatalogRoute.DiseaseCatalog,
+        location,
+    );
 
     // Show loading spinner while navigating back to catalog
     // instead of showing the cell line content scrolled down

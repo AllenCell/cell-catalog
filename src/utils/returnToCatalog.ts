@@ -1,6 +1,6 @@
 import { navigate } from "gatsby";
 
-import { CatalogRoutes } from "../types";
+import { CatalogRoute } from "../types";
 
 export type CatalogLocationState = {
     fromCellCatalog?: boolean;
@@ -8,7 +8,7 @@ export type CatalogLocationState = {
 
 export const returnToCatalog = (
     location: Location & { state?: CatalogLocationState },
-    catalogPath: CatalogRoutes,
+    catalogPath: CatalogRoute,
 ) => {
     if (location.state?.fromCellCatalog) {
         navigate(-1);
