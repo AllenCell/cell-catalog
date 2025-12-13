@@ -8,17 +8,14 @@ interface NavLinkProps {
 }
 
 export const NavLink = ({ href, label, samePage }: NavLinkProps) => {
-    // internal link, so we want to use gatsby Link because it's a faster navigation
-    // and it will take you to the top of the page, which is what nav bar links to do
+    // for internal links using gatsby Link because it's a faster navigation
+    // and it will take you to the top of the page, which is the expected behavior for
+    // nav bar links
     if (samePage) {
         return <Link to={href}>{label}</Link>;
     }
     return (
-        <a
-            href={href}
-            target={samePage ? "" : "_blank"}
-            rel={samePage ? "" : "noopener noreferrer"}
-        >
+        <a href={href} target={"_blank"} rel={"noopener noreferrer"}>
             {label}
         </a>
     );
