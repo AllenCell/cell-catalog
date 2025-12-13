@@ -7,8 +7,8 @@ import {
     NavBarDropdownItem,
     NavBarDropdownItemGroup,
 } from "../../component-queries/types";
-import NavLink from "../NavLink";
 import PdfAnchor from "../PdfAnchor";
+import LinkOut from "./LinkOut";
 import { COLLECTION_COMPONENTS_MAP } from "./constants";
 
 const {
@@ -29,19 +29,19 @@ const getItemComponent = (item: NavBarDropdownItem) => {
     }
 
     if (item.anchorType === NavBarAnchorType.Internal) {
-        return <NavLink label={item.label} href={item.href} samePage={true} />;
+        return <LinkOut label={item.label} href={item.href} samePage={true} />;
     }
 
     if (COLLECTION_COMPONENTS_MAP[item.label]) {
         return (
-            <NavLink
+            <LinkOut
                 label={COLLECTION_COMPONENTS_MAP[item.label]}
                 href={item.href}
             />
         );
     }
 
-    return <NavLink label={item.label} href={item.href} />;
+    return <LinkOut label={item.label} href={item.href} />;
 };
 
 const getFlatItems = (items: NavBarDropdownItem[]): MenuProps["items"] => {

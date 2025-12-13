@@ -1,13 +1,13 @@
 import { Link } from "gatsby";
 import React from "react";
 
-interface NavLinkProps {
+interface LinkOutProps {
     label: string | JSX.Element;
     href: string;
     samePage?: boolean;
 }
 
-export const NavLink = ({ href, label, samePage }: NavLinkProps) => {
+export const LinkOut = ({ href, label, samePage }: LinkOutProps) => {
     // for internal links using gatsby Link because it's a faster navigation
     // and it will take you to the top of the page, which is the expected behavior for
     // nav bar links
@@ -21,4 +21,4 @@ export const NavLink = ({ href, label, samePage }: NavLinkProps) => {
     );
 };
 
-export default NavLink;
+export default LinkOut;
