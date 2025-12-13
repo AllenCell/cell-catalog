@@ -1,7 +1,7 @@
 import { WindowLocation } from "@reach/router";
 import { Spin } from "antd";
 import { graphql } from "gatsby";
-import React from "react";
+import React, { useState } from "react";
 
 import { DiseaseCellLineFrontmatter } from "../component-queries/types";
 import { DiseaseCellLineInfoCard } from "../components/CellLineInfoCard/DiseaseCellLineInfoCard";
@@ -53,7 +53,7 @@ export const DiseaseCellLineTemplate = ({
 }: DiseaseCellLineTemplateProps) => {
     const hasImagesOrVideos = hasMedia(imagesAndVideos);
     // used only to show loading spinner when returning to catalog
-    const [hasClickedReturn, setHasClickedReturn] = React.useState(false);
+    const [hasClickedReturn, setHasClickedReturn] = useState(false);
     const handleReturnClick = () => {
         returnToCatalog(location, CatalogRoutes.DiseaseCatalog);
         setHasClickedReturn(true);

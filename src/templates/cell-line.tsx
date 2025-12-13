@@ -1,7 +1,7 @@
 import { WindowLocation } from "@reach/router";
 import { Spin } from "antd";
 import { graphql } from "gatsby";
-import React from "react";
+import React, { useState } from "react";
 
 import { NormalCellLineFrontmatter } from "../component-queries/types";
 import { NormalCellLineInfoCard } from "../components/CellLineInfoCard/NormalCellLineInfoCard";
@@ -62,7 +62,7 @@ export const CellLineTemplate = ({
     stemCellCharacteristics,
     taggedGene,
 }: CellLineProps) => {
-    const [hasClickedReturn, setHasClickedReturn] = React.useState(false);
+    const [hasClickedReturn, setHasClickedReturn] = useState(false);
     useBackButton(() => setHasClickedReturn(true));
 
     // Show loading spinner while navigating back to catalog
