@@ -60,10 +60,6 @@ export const DiseaseCellLineTemplate = ({
     if (hasClickedReturn) {
         return <Spin fullscreen />;
     }
-
-    if (cellLineId === 0) {
-        return null;
-    }
     return (
         <>
             <div className={container}>
