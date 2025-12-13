@@ -5,7 +5,7 @@ interface PdfAnchorProps {
     href: string;
 }
 
-export const PdfAnchor = ({ label, href }: PdfAnchorProps) => {
+export const PdfAnchor = ({ href, label }: PdfAnchorProps) => {
     return (
         <a href={href} download={true}>
             {label}
