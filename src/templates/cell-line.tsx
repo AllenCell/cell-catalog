@@ -1,4 +1,3 @@
-import { WindowLocation } from "@reach/router";
 import { Spin } from "antd";
 import { graphql } from "gatsby";
 import React from "react";
@@ -14,9 +13,8 @@ import { DefaultButton } from "../components/shared/Buttons";
 import { TABS_WITH_STEM_CELL } from "../constants";
 import useReturnHandler from "../hooks/useReturnToCatalog";
 import Arrow from "../img/arrow.svg";
-import { CatalogRoute } from "../types";
+import { CatalogRoute, LocationWithState } from "../types";
 import { getImages, getVideos, hasMedia } from "../utils/mediaUtils";
-import { CatalogLocationState } from "../utils/returnToCatalog";
 
 const {
     container,
@@ -40,9 +38,7 @@ interface QueryResult {
 }
 
 interface CellLineProps extends UnpackedNormalCellLineFull {
-    location: WindowLocation<unknown> & {
-        state?: CatalogLocationState;
-    };
+    location: LocationWithState;
 }
 
 export const CellLineTemplate = ({
@@ -130,11 +126,7 @@ const CellLine = ({ data, location }: QueryResult) => {
     return (
         <Layout>
             <CellLineTemplate
-                location={
-                    location as WindowLocation<unknown> & {
-                        state?: CatalogLocationState;
-                    }
-                }
+                location={location as LocationWithState}
                 {...unpackedCellLine}
             />
         </Layout>

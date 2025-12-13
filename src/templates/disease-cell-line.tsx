@@ -1,4 +1,3 @@
-import { WindowLocation } from "@reach/router";
 import { Spin } from "antd";
 import { graphql } from "gatsby";
 import React from "react";
@@ -14,9 +13,8 @@ import { DefaultButton } from "../components/shared/Buttons";
 import { DEFAULT_TABS, TABS_WITH_STEM_CELL } from "../constants";
 import useReturnHandler from "../hooks/useReturnToCatalog";
 import Arrow from "../img/arrow.svg";
-import { CatalogRoute, Disease } from "../types";
+import { CatalogRoute, Disease, LocationWithState } from "../types";
 import { getImages, getVideos, hasMedia } from "../utils/mediaUtils";
-import { CatalogLocationState } from "../utils/returnToCatalog";
 
 const {
     container,
@@ -26,9 +24,7 @@ const {
 } = require("../style/disease-cell-line.module.css");
 
 interface DiseaseCellLineTemplateProps extends UnpackedDiseaseCellLineFull {
-    location: WindowLocation<unknown> & {
-        state?: CatalogLocationState;
-    };
+    location: LocationWithState;
 }
 
 export const DiseaseCellLineTemplate = ({
@@ -119,11 +115,7 @@ const CellLine = ({ data, location }: QueryResult) => {
     return (
         <Layout>
             <DiseaseCellLineTemplate
-                location={
-                    location as WindowLocation<unknown> & {
-                        state?: CatalogLocationState;
-                    }
-                }
+                location={location as LocationWithState}
                 {...unpackedCellLine}
             />
         </Layout>

@@ -1,16 +1,23 @@
+import { navigate } from "gatsby-link";
 import { useCallback, useState } from "react";
 
 import { CatalogRoute } from "../types";
-import { returnToCatalog } from "../utils/returnToCatalog";
 import useBackButton from "./useBackButton";
 
-const useReturnHandler = (catalog: CatalogRoute, location: Location) => {
+const useReturnHandler = (
+    catalog: CatalogRoute,
+    location: Location & { state?: { fromCellCatalog?: boolean } },
+) => {
     const [hasClickedReturn, setHasClickedReturn] = useState(false);
 
     useBackButton(() => setHasClickedReturn(true));
 
     const handleReturnClick = useCallback(() => {
-        returnToCatalog(location, catalog);
+        if (location.state?.fromCellCatalog) {
+            navigate(-1);
+        } else {
+            navigate(catalog);
+        }
         setHasClickedReturn(true);
     }, [location, catalog]);
 
