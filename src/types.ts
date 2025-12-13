@@ -10,3 +10,8 @@ export enum Disease {
     Laminopathy = "Laminopathy",
     SkeletalMyopathy = "Skeletal Myopathy",
 }
+
+export enum CatalogRoutes {
+    CellCatalog = "/",
+    DiseaseCatalog = "/disease-catalog",
+}

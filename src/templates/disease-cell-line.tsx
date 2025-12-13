@@ -12,8 +12,9 @@ import { unpackDiseaseFrontmatterForSubpage } from "../components/SubPage/conver
 import { UnpackedDiseaseCellLineFull } from "../components/SubPage/types";
 import { DefaultButton } from "../components/shared/Buttons";
 import { DEFAULT_TABS, TABS_WITH_STEM_CELL } from "../constants";
+import useBackButton from "../hooks/useBackButton";
 import Arrow from "../img/arrow.svg";
-import { Disease } from "../types";
+import { CatalogRoutes, Disease } from "../types";
 import { getImages, getVideos, hasMedia } from "../utils/mediaUtils";
 import {
     CatalogLocationState,
@@ -51,20 +52,24 @@ export const DiseaseCellLineTemplate = ({
     stemCellCharacteristics,
 }: DiseaseCellLineTemplateProps) => {
     const hasImagesOrVideos = hasMedia(imagesAndVideos);
+    // used only to show loading spinner when returning to catalog
     const [hasClickedReturn, setHasClickedReturn] = React.useState(false);
-    if (cellLineId === 0) {
-        return null;
-    }
+    const handleReturnClick = () => {
+        returnToCatalog(location, CatalogRoutes.DiseaseCatalog);
+        setHasClickedReturn(true);
+    };
+    // makes the back button do the same behavior as the return button
+    useBackButton(handleReturnClick);
+
     // Show loading spinner while navigating back to catalog
     // instead of showing the cell line content scrolled down
     if (hasClickedReturn) {
         return <Spin fullscreen />;
     }
 
-    const handleReturnClick = () => {
-        returnToCatalog(location, "/disease-cell-catalog");
-        setHasClickedReturn(true);
-    };
+    if (cellLineId === 0) {
+        return null;
+    }
     return (
         <>
             <div className={container}>

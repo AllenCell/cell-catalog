@@ -12,7 +12,9 @@ import { unpackNormalFrontmatterForSubpage } from "../components/SubPage/convert
 import { UnpackedNormalCellLineFull } from "../components/SubPage/types";
 import { DefaultButton } from "../components/shared/Buttons";
 import { TABS_WITH_STEM_CELL } from "../constants";
+import useBackButton from "../hooks/useBackButton";
 import Arrow from "../img/arrow.svg";
+import { CatalogRoutes } from "../types";
 import { getImages, getVideos, hasMedia } from "../utils/mediaUtils";
 import { CatalogLocationState } from "../utils/returnToCatalog";
 import { returnToCatalog } from "../utils/returnToCatalog";
@@ -61,22 +63,22 @@ export const CellLineTemplate = ({
     taggedGene,
 }: CellLineProps) => {
     const [hasClickedReturn, setHasClickedReturn] = React.useState(false);
-    if (cellLineId === 0) {
-        return null;
-    }
+    useBackButton(() => setHasClickedReturn(true));
+
     // Show loading spinner while navigating back to catalog
     // instead of showing the cell line content scrolled down
     if (hasClickedReturn) {
         return <Spin fullscreen />;
     }
-
     const handleReturnClick = () => {
-        returnToCatalog(location, "/");
+        returnToCatalog(location, CatalogRoutes.CellCatalog);
         setHasClickedReturn(true);
     };
 
     const hasImagesOrVideos = hasMedia(imagesAndVideos);
-
+    if (cellLineId === 0) {
+        return null;
+    }
     return (
         <>
             <div className={container}>
