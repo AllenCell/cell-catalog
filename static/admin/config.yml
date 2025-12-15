@@ -15,71 +15,87 @@ local_backend: true
 media_folder: static/img
 public_folder: /img
 
-# Section below defines reusable field collections defined with 
+# Section below defines reusable field collections defined with
 # yaml anchors &[anchor], referenced with alias *[anchor]
 richTextFields: &richTextFields
-  - &f_text       { label: "Text", name: "text", widget: "string" }
-  - &f_emphasis
-    label: "emphasis"
-    name: "emphasis"
-    widget: "list"
-    required: false
-    fields: [ { label: "Text", name: "text", widget: "string" } ]
-  - &f_link
-    label: "URL"
-    name: "link"
-    widget: "list"
-    required: false
-    fields:
-      - { label: "Text", name: "text", widget: "string" }
-      - { label: "URL",  name: "url",  widget: "string" }
-
+    - &f_text { label: "Text", name: "text", widget: "string" }
+    - &f_emphasis
+      label: "emphasis"
+      name: "emphasis"
+      widget: "list"
+      required: false
+      fields: [{ label: "Text", name: "text", widget: "string" }]
+    - &f_link
+      label: "URL"
+      name: "link"
+      widget: "list"
+      required: false
+      fields:
+          - { label: "Text", name: "text", widget: "string" }
+          - { label: "URL", name: "url", widget: "string" }
 
 field_image: &field_image { label: "Image", name: "image", widget: "image" }
-field_caption: &field_caption { label: "Caption", name: "caption", widget: "string", required: false }
+field_caption:
+    &field_caption {
+        label: "Caption",
+        name: "caption",
+        widget: "string",
+        required: false,
+    }
 field_video: &field_video { label: "Video", name: "video", widget: "file" }
-field_title: &field_title { label: "Title", name: "title", widget: "string", required: false }
+field_title:
+    &field_title {
+        label: "Title",
+        name: "title",
+        widget: "string",
+        required: false,
+    }
 
 fields_image_list: &fields_image_list
-  - *field_image
-  - *field_caption
+    - *field_image
+    - *field_caption
 
 fields_video_list: &fields_video_list
-  - *field_video
-  - *field_caption
+    - *field_video
+    - *field_caption
 
 objects/imagesAndVideos: &objects_images_and_videos
-  widget: "object"
-  required: false
-  fields:
+    widget: "object"
+    required: false
+    fields:
+        - label: "Images"
+          name: "images"
+          widget: "list"
+          required: false
+          hint: "The first image will be used as the thumbnail in the catalog. Drag to rearrange the order."
+          fields: *fields_image_list
+        - label: "Videos"
+          name: "videos"
+          widget: "list"
+          required: false
+          fields: *fields_video_list
+
+fields_multi_image_diagram: &fields_multi_image_diagram
+    - *field_title
     - label: "Images"
       name: "images"
       widget: "list"
-      required: false
-      hint: "The first image will be used as the thumbnail in the catalog. Drag to rearrange the order."
       fields: *fields_image_list
-    - label: "Videos"
-      name: "videos"
-      widget: "list"
-      required: false
-      fields: *fields_video_list
-
-fields_multi_image_diagram: &fields_multi_image_diagram
-  - *field_title
-  - label: "Images"
-    name: "images"
-    widget: "list"
-    fields: *fields_image_list
 
 fields_single_image_diagram: &fields_single_image_diagram
-  - *field_title
-  - *field_image
-  - *field_caption
+    - *field_title
+    - *field_image
+    - *field_caption
 
 header: &header
-  - { label: "Title", name: "title", widget: "string" }
-  - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
-  - { label: "Background Image", name: "background", widget: "image", required: false }
+    - { label: "Title", name: "title", widget: "string" }
+    - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
+    - {
+          label: "Background Image",
+          name: "background",
+          widget: "image",
+          required: false,
+      }
 
 collections:
     - name: "cell-line"
@@ -223,7 +239,7 @@ collections:
           - {
                 label: "Image and Video Carousel",
                 name: "images_and_videos",
-                <<: *objects_images_and_videos
+                <<: *objects_images_and_videos,
             }
           - {
                 label: "Editing Design",
@@ -231,15 +247,14 @@ collections:
                 widget: "object",
                 required: false,
                 collapsed: true,
-                fields:
-                    [
+                fields: [
                         {
                             # TODO: confirm with the team what data we need for this field. I'll leave it as it is for now.
                             label: "NCBI Isoform(s)",
                             name: "ncbi_isoforms",
                             widget: "string",
                             required: false,
-                            hint: "Use / to separate multiple isoforms (e.g., NM_002859 / NM_001080855)"
+                            hint: "Use / to separate multiple isoforms (e.g., NM_002859 / NM_001080855)",
                         },
                         {
                             label: "crRNA",
@@ -258,7 +273,12 @@ collections:
                             name: "cas9",
                             widget: "select",
                             default: "",
-                            options: ["", "Wildtype spCas9", "TrueCut™ Cas9 Protein"],
+                            options:
+                                [
+                                    "",
+                                    "Wildtype spCas9",
+                                    "TrueCut™ Cas9 Protein",
+                                ],
                             required: false,
                         },
                         {
@@ -266,7 +286,7 @@ collections:
                             name: "diagrams",
                             widget: "list",
                             required: false,
-                            fields: *fields_multi_image_diagram
+                            fields: *fields_multi_image_diagram,
                         },
                     ],
             }
@@ -284,15 +304,14 @@ collections:
                             widget: "list",
                             required: false,
                             collapsed: true,
-                            fields: *fields_multi_image_diagram
+                            fields: *fields_multi_image_diagram,
                         },
                         {
                             label: "Amplified Junctions",
                             name: "amplified_junctions",
                             widget: "list",
                             required: false,
-                            fields:
-                                [
+                            fields: [
                                     {
                                         label: "Edited Gene",
                                         name: "edited_gene",
@@ -308,14 +327,15 @@ collections:
                                     {
                                         label: "Expected Size",
                                         name: "expected_size",
-                                        widget: "string",  # Using string to handle both numbers and text like "Tagged:3006; Untagged:2256"
+                                        widget: "string", # Using string to handle both numbers and text like "Tagged:3006; Untagged:2256"
                                         required: false,
                                     },
                                     {
                                         label: "Confirmed Sequence",
                                         name: "confirmed_sequence",
                                         widget: "select",
-                                        options: ["", "Yes", "NA", "Not Sequenced"],
+                                        options:
+                                            ["", "Yes", "NA", "Not Sequenced"],
                                         default: "",
                                         required: false,
                                     },
@@ -339,7 +359,7 @@ collections:
                                         name: "tag",
                                         widget: "string",
                                         required: false,
-                                        hint: "Enter the tag in the format [gene symbol]-[fluorescent tag]"
+                                        hint: "Enter the tag in the format [gene symbol]-[fluorescent tag]",
                                     },
                                     {
                                         label: "Clone",
@@ -399,7 +419,7 @@ collections:
                                         name: "mutations_identified",
                                         widget: "number",
                                         required: false,
-                                    }
+                                    },
                                 ],
                         },
                         {
@@ -409,14 +429,20 @@ collections:
                             required: false,
                         },
                     ],
-                
-            } 
+            }
           - {
                 label: "Category Labels",
                 name: "category_labels",
                 widget: "select",
                 options:
-                    ["Key Structure and Organelle", "Nuclear Structure", "Stress", "Cardiac Structure", "Tools", "Endothelial"],
+                    [
+                        "Key Structure and Organelle",
+                        "Nuclear Structure",
+                        "Stress",
+                        "Cardiac Structure",
+                        "Tools",
+                        "Endothelial",
+                    ],
                 required: false,
                 multiple: true,
             }
@@ -467,7 +493,12 @@ collections:
                                         label: "Germ Layer",
                                         name: "germ_layer",
                                         widget: "select",
-                                        options: ["Ectoderm", "Endoderm", "Mesoderm"],
+                                        options:
+                                            [
+                                                "Ectoderm",
+                                                "Endoderm",
+                                                "Mesoderm",
+                                            ],
                                         required: false,
                                     },
                                     {
@@ -502,7 +533,7 @@ collections:
                                         name: "troponin_percent_positive",
                                         widget: "string",
                                         required: false,
-                                        hint: "Enter the tag in the format [gene symbol]-[fluorescent tag]"
+                                        hint: "Enter the tag in the format [gene symbol]-[fluorescent tag]",
                                     },
                                     {
                                         label: "Day of Beating Percent",
@@ -547,7 +578,7 @@ collections:
                                         name: "mutations_identified",
                                         widget: "number",
                                         required: false,
-                                    }
+                                    },
                                 ],
                         },
                         {
@@ -557,7 +588,6 @@ collections:
                             required: false,
                         },
                     ],
-                
             }
     - name: "disease-cell-line"
       label: "Disease Cell Lines"
@@ -735,7 +765,7 @@ collections:
           - {
                 label: "Image and Video Carousel",
                 name: "images_and_videos",
-                <<: *objects_images_and_videos
+                <<: *objects_images_and_videos,
             }
           - {
                 label: "Genomic Characterization",
@@ -751,7 +781,7 @@ collections:
                             widget: "list",
                             required: false,
                             collapsed: true,
-                            fields: *fields_single_image_diagram
+                            fields: *fields_single_image_diagram,
                         },
                     ],
             }
@@ -818,7 +848,7 @@ collections:
                             widget: "list",
                             required: false,
                             collapsed: true,
-                            fields: *fields_multi_image_diagram
+                            fields: *fields_multi_image_diagram,
                         },
                     ],
             }
@@ -937,12 +967,17 @@ collections:
             name: "normal-catalog"
             fields:
                 - {
-                    label: "Template Key",
-                    name: "templateKey",
-                    widget: "hidden",
-                    default: "normal-catalog",
-                }
-                -  { label: "Header", name: "header", widget: "object", fields: *header }
+                      label: "Template Key",
+                      name: "templateKey",
+                      widget: "hidden",
+                      default: "normal-catalog",
+                  }
+                - {
+                      label: "Header",
+                      name: "header",
+                      widget: "object",
+                      fields: *header,
+                  }
                 - { label: "Title", name: "title", widget: "string" }
                 - {
                       label: "About Block",
@@ -954,87 +989,199 @@ collections:
                                   label: "Primary Text",
                                   name: "primary",
                                   widget: "object",
-                                  fields: *richTextFields
+                                  fields: *richTextFields,
                               },
                               {
                                   label: "Disease Catalog Copy",
                                   name: "disease",
                                   widget: "object",
-                                  fields: *richTextFields
+                                  fields: *richTextFields,
                               },
                           ],
                   }
                 - { label: "Body", name: "body", widget: "markdown" }
                 - {
-                    label: "Main",
-                    name: "main",
-                    widget: "object",
-                    fields:
-                        [
-                            {
-                                label: "Heading",
-                                name: "heading",
-                                widget: "string",
-                            },
-                            {
-                                label: "Subheading",
-                                name: "subheading",
-                                required: false,
-                                widget: "string",
-                            },
-                            {
-                                label: "Description",
-                                name: "description",
-                                widget: "markdown",
-                            },
-                        ],
-                }
+                      label: "Main",
+                      name: "main",
+                      widget: "object",
+                      fields:
+                          [
+                              {
+                                  label: "Heading",
+                                  name: "heading",
+                                  widget: "string",
+                              },
+                              {
+                                  label: "Subheading",
+                                  name: "subheading",
+                                  required: false,
+                                  widget: "string",
+                              },
+                              {
+                                  label: "Description",
+                                  name: "description",
+                                  widget: "markdown",
+                              },
+                          ],
+                  }
                 - {
-                    label: "Coriell Image",
-                    name: "coriell_image",
-                    widget: "image",
-                }
+                      label: "Coriell Image",
+                      name: "coriell_image",
+                      widget: "image",
+                  }
                 - {
-                    label: "Coriell Link",
-                    name: "coriell_link",
-                    widget: "string",
-                }
+                      label: "Coriell Link",
+                      name: "coriell_link",
+                      widget: "string",
+                  }
                 - {
-                    label: "Acknowledgements Block",
-                    name: "acknowledgements_block",
-                    widget: "object",
-                    fields:
-                        [
-                            {
-                                label: "Intro",
-                                name: "intro",
-                                widget: "string",
-                            },
-                            {
-                                label: "Contributors",
-                                name: "contributors",
-                                widget: "list",
-                                required: false,
-                                collapsed: true,
-                                fields:
-                                    [
-                                        {
-                                            label: "Name",
-                                            name: "name",
-                                            widget: "string",
-                                        },
-                                        {
-                                            label: "Institution",
-                                            name: "institution",
-                                            widget: "string",
-                                        },
-                                    ],
-                            },
-                            {
-                                label: "Outro",
-                                name: "outro",
-                                widget: "string",
-                            },
-                        ],
-                }
+                      label: "Acknowledgements Block",
+                      name: "acknowledgements_block",
+                      widget: "object",
+                      fields:
+                          [
+                              {
+                                  label: "Intro",
+                                  name: "intro",
+                                  widget: "string",
+                              },
+                              {
+                                  label: "Contributors",
+                                  name: "contributors",
+                                  widget: "list",
+                                  required: false,
+                                  collapsed: true,
+                                  fields:
+                                      [
+                                          {
+                                              label: "Name",
+                                              name: "name",
+                                              widget: "string",
+                                          },
+                                          {
+                                              label: "Institution",
+                                              name: "institution",
+                                              widget: "string",
+                                          },
+                                      ],
+                              },
+                              {
+                                  label: "Outro",
+                                  name: "outro",
+                                  widget: "string",
+                              },
+                          ],
+                  }
+                - { label: "Funding", name: "funding_text", widget: "markdown" }
+          - file: "src/pages/disease-catalog.md"
+            label: "Disease Catalog"
+            name: "disease-catalog"
+            fields:
+                - {
+                      label: "Template Key",
+                      name: "templateKey",
+                      widget: "hidden",
+                      default: "normal-catalog",
+                  }
+                - {
+                      label: "Header",
+                      name: "header",
+                      widget: "object",
+                      fields: *header,
+                  }
+                - { label: "Title", name: "title", widget: "string" }
+
+                - { label: "Body", name: "body", widget: "markdown" }
+                - {
+                      label: "Main",
+                      name: "main",
+                      widget: "object",
+                      fields:
+                          [
+                              {
+                                  label: "Heading",
+                                  name: "heading",
+                                  widget: "string",
+                              },
+                              {
+                                  label: "Subheading",
+                                  name: "subheading",
+                                  required: false,
+                                  widget: "string",
+                              },
+                              {
+                                  label: "Description",
+                                  name: "description",
+                                  widget: "markdown",
+                              },
+                          ],
+                  }
+                - {
+                      label: "Coriell Image",
+                      name: "coriell_image",
+                      widget: "image",
+                  }
+                - {
+                      label: "Coriell Link",
+                      name: "coriell_link",
+                      widget: "string",
+                  }
+                - {
+                      label: "Acknowledgements Block",
+                      name: "acknowledgements_block",
+                      widget: "object",
+                      fields:
+                          [
+                              {
+                                  label: "Intro",
+                                  name: "intro",
+                                  widget: "string",
+                              },
+                              {
+                                  label: "Collaborators",
+                                  name: "collaborators",
+                                  widget: "list",
+                                  required: false,
+                                  collapsed: true,
+                                  fields:
+                                      [
+                                          {
+                                              label: "Name",
+                                              name: "name",
+                                              widget: "string",
+                                          },
+                                          {
+                                              label: "Institution",
+                                              name: "institution",
+                                              widget: "string",
+                                          },
+                                      ],
+                              },
+                              {
+                                  label: "Contributor text",
+                                  name: "contributor_text",
+                                  widget: "string",
+                              },
+                              {
+                                  label: "Contributors",
+                                  name: "contributors",
+                                  widget: "list",
+                                  required: false,
+                                  collapsed: true,
+                                  fields:
+                                      [
+                                          {
+                                              label: "Name",
+                                              name: "name",
+                                              widget: "string",
+                                          },
+                                          {
+                                              label: "Institution",
+                                              name: "institution",
+                                              widget: "string",
+                                          },
+                                      ],
+                              },
+                          ],
+                  }
                 - { label: "Funding", name: "funding_text", widget: "markdown" }
