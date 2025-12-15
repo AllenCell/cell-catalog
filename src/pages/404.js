@@ -12,7 +12,7 @@ const NotFoundPage = () => {
             navigate(CatalogRoute.CellCatalog);
         }, 2000);
         return () => clearTimeout(timer);
-    }, [browser]);
+    }, []);
 
     return (
         browser && (
