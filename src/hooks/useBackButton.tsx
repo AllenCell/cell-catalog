@@ -3,7 +3,6 @@ import { useEffect } from "react";
 const useBackButton = (onBack: () => void) => {
     useEffect(() => {
         const handleBackButtonClick = (event: PopStateEvent) => {
-            event.preventDefault();
             onBack();
         };
         if (typeof window !== "undefined") {
