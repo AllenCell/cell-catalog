@@ -19,10 +19,6 @@ about_block:
       - text: Check out our Disease Cell Catalog
         url: /disease-catalog/
 table_header: "Allen Cell Collection Cell Lines"
-coriell_image: /img/coriell.png
-coriell_link: https://www.coriell.org/1/AllenCellCollection
-addgene_image: /img/addgene.png
-addgene_link: https://www.addgene.org/depositor-collections/allen-institute-cell-science/
 acknowledgements_block:
     intro: >
         The Allen Institute for Cell Science also acknowledges the following people for their expertise and support:
