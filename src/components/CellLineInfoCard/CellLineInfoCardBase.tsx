@@ -49,9 +49,7 @@ const CellLineInfoCardBase = ({
     infoRows,
     multiGene,
 }: CellLineInfoCardBaseProps) => {
-    const defaultToolTipText = "";
-    const [shareTooltipText, setShareTooltipText] =
-        useState(defaultToolTipText);
+    const [showToolTip, setShowToolTip] = useState(false);
 
     const getDefaultButton = (label: string, href: string) => (
         <DefaultButton key={href} href={href} target="_blank" rel="noreferrer">
@@ -109,16 +107,14 @@ const CellLineInfoCardBase = ({
             <Tooltip
                 title={"Cell line link copied to clipboard!"}
                 placement="bottom"
-                open={shareTooltipText !== defaultToolTipText}
+                open={showToolTip}
             >
                 <DarkThemeGhostButton
                     onClick={() => {
                         navigator.clipboard.writeText(href).then(() => {
-                            setShareTooltipText(
-                                "Cell line link copied to clipboard!",
-                            );
+                            setShowToolTip(true);
                             setTimeout(() => {
-                                setShareTooltipText(defaultToolTipText);
+                                setShowToolTip(false);
                             }, 1500);
                         });
                     }}
