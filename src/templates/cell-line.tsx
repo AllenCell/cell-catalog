@@ -1,4 +1,5 @@
-import { Link, graphql } from "gatsby";
+import { Spin } from "antd";
+import { graphql } from "gatsby";
 import React from "react";
 
 import { NormalCellLineFrontmatter } from "../component-queries/types";
@@ -10,7 +11,9 @@ import { unpackNormalFrontmatterForSubpage } from "../components/SubPage/convert
 import { UnpackedNormalCellLineFull } from "../components/SubPage/types";
 import { DefaultButton } from "../components/shared/Buttons";
 import { TABS_WITH_STEM_CELL } from "../constants";
+import useReturnHandler from "../hooks/useReturnToCatalog";
 import Arrow from "../img/arrow.svg";
+import { CatalogRoute, LocationWithState } from "../types";
 import { getImages, getVideos, hasMedia } from "../utils/mediaUtils";
 
 const {
@@ -35,7 +38,7 @@ interface QueryResult {
 }
 
 interface CellLineProps extends UnpackedNormalCellLineFull {
-    href: string;
+    location: LocationWithState;
 }
 
 export const CellLineTemplate = ({
@@ -47,13 +50,24 @@ export const CellLineTemplate = ({
     fluorescentTag,
     genomicCharacterization,
     healthCertificate,
-    href,
     imagesAndVideos,
+    location,
     orderLink,
     orderPlasmid,
     stemCellCharacteristics,
     taggedGene,
 }: CellLineProps) => {
+    const { handleReturnClick, hasClickedReturn } = useReturnHandler(
+        CatalogRoute.CellCatalog,
+        location,
+    );
+
+    // Show loading spinner while navigating back to catalog
+    // instead of showing the cell line content scrolled down
+    if (hasClickedReturn) {
+        return <Spin fullscreen />;
+    }
+
     const hasImagesOrVideos = hasMedia(imagesAndVideos);
     if (cellLineId === 0) {
         return null;
@@ -62,14 +76,12 @@ export const CellLineTemplate = ({
         <>
             <div className={container}>
                 <div className={leftCard}>
-                    <Link to="/">
-                        <DefaultButton>
-                            <Arrow className={returnArrow} />
-                            Return to Cell Catalog
-                        </DefaultButton>
-                    </Link>
+                    <DefaultButton onClick={handleReturnClick}>
+                        <Arrow className={returnArrow} />
+                        Return to Cell Catalog
+                    </DefaultButton>
                     <NormalCellLineInfoCard
-                        href={href}
+                        href={location.href}
                         cellLineId={cellLineId}
                         geneName={taggedGene[0].name}
                         geneSymbol={taggedGene[0].symbol}
@@ -114,7 +126,7 @@ const CellLine = ({ data, location }: QueryResult) => {
     return (
         <Layout>
             <CellLineTemplate
-                href={location.href || ""}
+                location={location as LocationWithState}
                 {...unpackedCellLine}
             />
         </Layout>
