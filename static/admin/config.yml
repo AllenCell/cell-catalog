@@ -1067,7 +1067,7 @@ collections:
                       label: "Template Key",
                       name: "templateKey",
                       widget: "hidden",
-                      default: "normal-catalog",
+                      default: "disease-catalog",
                   }
                 - {
                       label: "Header",
@@ -1076,7 +1076,6 @@ collections:
                       fields: *header,
                   }
                 - { label: "Title", name: "title", widget: "string" }
-
                 - { label: "Body", name: "body", widget: "markdown" }
                 - {
                       label: "Main",
