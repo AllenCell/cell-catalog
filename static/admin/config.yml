@@ -1051,7 +1051,6 @@ collections:
                       fields: *header,
                   }
                 - { label: "Title", name: "title", widget: "string" }
-                - { label: "Body", name: "body", widget: "markdown" }
                 - {
                       label: "Main",
                       name: "main",
@@ -1075,6 +1074,11 @@ collections:
                                   widget: "markdown",
                               },
                           ],
+                  }
+                - {
+                      label: "Footer Text",
+                      name: "footer_text",
+                      widget: "markdown",
                   }
                 - {
                       label: "Acknowledgements Block",
@@ -1135,3 +1139,4 @@ collections:
                           ],
                   }
                 - { label: "Funding", name: "funding_text", widget: "markdown" }
+                - { label: "Body", name: "body", widget: "markdown" }
