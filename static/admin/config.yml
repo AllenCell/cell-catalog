@@ -999,30 +999,15 @@ collections:
                               },
                           ],
                   }
-                - { label: "Body", name: "body", widget: "markdown" }
                 - {
-                      label: "Main",
-                      name: "main",
-                      widget: "object",
-                      fields:
-                          [
-                              {
-                                  label: "Heading",
-                                  name: "heading",
-                                  widget: "string",
-                              },
-                              {
-                                  label: "Subheading",
-                                  name: "subheading",
-                                  required: false,
-                                  widget: "string",
-                              },
-                              {
-                                  label: "Description",
-                                  name: "description",
-                                  widget: "markdown",
-                              },
-                          ],
+                      label: "Coriell Image",
+                      name: "coriell_image",
+                      widget: "image",
+                  }
+                - {
+                      label: "Coriell Link",
+                      name: "coriell_link",
+                      widget: "string",
                   }
                 - {
                       label: "Acknowledgements Block",
@@ -1033,6 +1018,31 @@ collections:
                               {
                                   label: "Intro",
                                   name: "intro",
+                                  widget: "string",
+                              },
+                              {
+                                  label: "Collaborators",
+                                  name: "collaborators",
+                                  widget: "list",
+                                  required: false,
+                                  collapsed: true,
+                                  fields:
+                                      [
+                                          {
+                                              label: "Name",
+                                              name: "name",
+                                              widget: "string",
+                                          },
+                                          {
+                                              label: "Institution",
+                                              name: "institution",
+                                              widget: "string",
+                                          },
+                                      ],
+                              },
+                              {
+                                  label: "Contributor text",
+                                  name: "contributor_text",
                                   widget: "string",
                               },
                               {
@@ -1054,11 +1064,6 @@ collections:
                                               widget: "string",
                                           },
                                       ],
-                              },
-                              {
-                                  label: "Outro",
-                                  name: "outro",
-                                  widget: "string",
                               },
                           ],
                   }

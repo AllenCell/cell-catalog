@@ -78,7 +78,9 @@ const CellLineTable = ({
                 // if we are not in production, make it easier to
                 // navigate to the cell line page
                 if (isClickable(record) && record.path) {
-                    navigate(record.path);
+                    navigate(record.path, {
+                        state: { fromCellCatalog: true },
+                    });
                 }
             },
         };

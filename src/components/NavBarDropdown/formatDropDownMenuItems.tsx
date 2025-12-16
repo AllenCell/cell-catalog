@@ -7,8 +7,8 @@ import {
     NavBarDropdownItem,
     NavBarDropdownItemGroup,
 } from "../../component-queries/types";
-import LinkOut from "../LinkOut";
 import PdfAnchor from "../PdfAnchor";
+import LinkOut from "./LinkOut";
 import { COLLECTION_COMPONENTS_MAP } from "./constants";
 
 const {

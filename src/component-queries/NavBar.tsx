@@ -62,7 +62,7 @@ const NavBar: React.FC = () => {
         }
     `);
 
-    const { catalogs, protocols, diseaseCollections } =
+    const { catalogs, diseaseCollections, protocols } =
         data.markdownRemark.frontmatter;
 
     const formattedCatalogs = formatDropdownMenuItems(catalogs);
