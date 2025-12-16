@@ -14,7 +14,7 @@ about_block:
       cellular structures and substructures. These cell lines and their editing
       plasmids are openly available to academic and commercial researchers
       through Coriell and Addgene respectively. New lines are released
-      frequently. Subscribe to our newsletter to stay current with out latest
+      frequently. Subscribe to our newsletter to stay current with our latest
       releases!
     emphasis:
       - text: Allen Cell Collection
