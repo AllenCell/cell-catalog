@@ -33,41 +33,6 @@
     font-weight: 600;
 }
 
-.about-card {
-    border: 1.5px solid var(--border-color);
-    border-radius: 8px;
-    color: var(--BLUE_90);
-    height: 114px;
-    width: 250px;
-    display: flex;
-    flex-direction: column;
-    padding: 16px 0px;
-    justify-content: space-around;
-}
-
-.about-card:hover {
-    border: solid 1.5px var(--primary-color);
-}
-
-.about-card :global(.ant-card-head) {
-    font-family: "Open Sans";
-    font-size: 16px;
-    font-weight: 600;
-    text-align: center;
-    border-bottom: none;
-    color: var(--primary-color);
-    padding: 0px;
-    min-height: inherit;
-}
-
-.about-card :global(.ant-card-body) {
-    padding: 4px;
-}
-
-.about-card :global(.gatsby-image-wrapper) {
-    margin: auto;
-}
-
 @media screen and (max-width: 768px) {
     .content-wrapper {
         flex-direction: column;

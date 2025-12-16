@@ -1,10 +1,9 @@
-import { Card, Divider, Flex } from "antd";
+import { Card, Flex } from "antd";
 import { graphql } from "gatsby";
 import { FileNode } from "gatsby-plugin-image/dist/src/components/hooks";
 import React from "react";
 
 import Diseases from "../component-queries/Diseases";
-import AboutButton from "../components/AboutButton";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Layout from "../components/Layout";
@@ -35,16 +34,12 @@ export interface DiseaseCatalogTemplateProps {
         description: string;
         subheading: string;
     };
-    coriellImage: FileNode;
-    coriellLink: string;
 }
 
 export const DiseaseCatalogTemplate = ({
     acknowledgementsBlock,
     content,
     contentComponent,
-    coriellImage,
-    coriellLink,
     footerText,
     fundingText,
     main,
@@ -57,15 +52,6 @@ export const DiseaseCatalogTemplate = ({
                 <h1>{title}</h1>
                 <Flex className={contentWrapper}>
                     <PageContent className="content" content={content} />
-                    <Divider
-                        type="vertical"
-                        style={{ height: "initial", marginInline: "20px" }}
-                    />
-                    <AboutButton
-                        image={coriellImage}
-                        link={coriellLink}
-                        title="View Allen Cell Collection on"
-                    />
                 </Flex>
             </section>
             <h2 className={mainHeading}>{main.heading}</h2>
@@ -118,8 +104,6 @@ interface QueryResult {
                     subheading: string;
                     description: string;
                 };
-                coriell_image: FileNode;
-                coriell_link: string;
             };
         };
     };
@@ -147,8 +131,6 @@ const DiseaseCatalog = ({ data }: QueryResult) => {
                 fundingText={post.frontmatter.funding_text.html}
                 acknowledgementsBlock={post.frontmatter.acknowledgements_block}
                 main={post.frontmatter.main}
-                coriellImage={post.frontmatter.coriell_image}
-                coriellLink={post.frontmatter.coriell_link}
             />
         </Layout>
     );
@@ -197,16 +179,6 @@ export const aboutPageQuery = graphql`
                     subheading
                     description
                 }
-                coriell_image {
-                    childImageSharp {
-                        gatsbyImageData(
-                            placeholder: BLURRED
-                            layout: FIXED
-                            width: 190
-                        )
-                    }
-                }
-                coriell_link
             }
         }
     }

@@ -990,16 +990,6 @@ collections:
                         ],
                 }
                 - {
-                    label: "Coriell Image",
-                    name: "coriell_image",
-                    widget: "image",
-                }
-                - {
-                    label: "Coriell Link",
-                    name: "coriell_link",
-                    widget: "string",
-                }
-                - {
                     label: "Acknowledgements Block",
                     name: "acknowledgements_block",
                     widget: "object",

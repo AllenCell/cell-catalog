@@ -1,9 +1,7 @@
 import { Flex } from "antd";
 import { graphql, useStaticQuery } from "gatsby";
-import { FileNode } from "gatsby-plugin-image/dist/src/components/hooks";
 import React from "react";
 
-import AboutButton from "../components/AboutButton";
 import { RichText, renderRichText } from "../utils/formattingUtils";
 
 const {
@@ -21,10 +19,6 @@ interface AboutQueryData {
                 primary: RichText;
                 disease: RichText;
             };
-            coriell_image: FileNode;
-            coriell_link: string;
-            addgene_image: FileNode;
-            addgene_link: string;
         };
     };
 }
@@ -56,26 +50,6 @@ const About: React.FC = () => {
                             }
                         }
                     }
-                    coriell_image {
-                        childImageSharp {
-                            gatsbyImageData(
-                                placeholder: BLURRED
-                                layout: FIXED
-                                width: 190
-                            )
-                        }
-                    }
-                    coriell_link
-                    addgene_image {
-                        childImageSharp {
-                            gatsbyImageData(
-                                placeholder: BLURRED
-                                layout: FIXED
-                                width: 190
-                            )
-                        }
-                    }
-                    addgene_link
                 }
             }
         }
@@ -83,10 +57,6 @@ const About: React.FC = () => {
 
     const {
         about_block,
-        addgene_image,
-        addgene_link,
-        coriell_image,
-        coriell_link,
         title,
     } = data.markdownRemark.frontmatter;
 
@@ -108,18 +78,6 @@ const About: React.FC = () => {
                         </div>
                     </Flex>
                 </section>
-                <Flex gap={8} vertical>
-                    <AboutButton
-                        image={coriell_image}
-                        link={coriell_link}
-                        title="View Allen Cell Collection on"
-                    />
-                    <AboutButton
-                        image={addgene_image}
-                        link={addgene_link}
-                        title="View Plasmid Collection on"
-                    />
-                </Flex>
             </Flex>
         </section>
     );
