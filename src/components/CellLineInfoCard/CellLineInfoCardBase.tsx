@@ -49,7 +49,7 @@ const CellLineInfoCardBase = ({
     infoRows,
     multiGene,
 }: CellLineInfoCardBaseProps) => {
-    const defaultToolTipText = "Copy cell line link to clipboard";
+    const defaultToolTipText = "";
     const [shareTooltipText, setShareTooltipText] =
         useState(defaultToolTipText);
 
@@ -106,19 +106,20 @@ const CellLineInfoCardBase = ({
     const titleContents = (
         <Flex justify="space-between" align="center">
             <div className={title}>{formatCellLineId(cellLineId)}</div>
-            <Tooltip title={shareTooltipText} placement="bottom">
+            <Tooltip
+                title={"Cell line link copied to clipboard!"}
+                placement="bottom"
+                open={shareTooltipText !== defaultToolTipText}
+            >
                 <DarkThemeGhostButton
-                    onMouseEnter={() => {
-                        if (!shareTooltipText) {
-                            setShareTooltipText(defaultToolTipText);
-                        }
-                    }}
                     onClick={() => {
                         navigator.clipboard.writeText(href).then(() => {
-                            setShareTooltipText("Copied!");
+                            setShareTooltipText(
+                                "Cell line link copied to clipboard!",
+                            );
                             setTimeout(() => {
-                                setShareTooltipText("");
-                            }, 1000);
+                                setShareTooltipText(defaultToolTipText);
+                            }, 1500);
                         });
                     }}
                 >
