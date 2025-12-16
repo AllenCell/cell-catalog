@@ -1011,31 +1011,6 @@ collections:
                                   widget: "string",
                               },
                               {
-                                  label: "Collaborators",
-                                  name: "collaborators",
-                                  widget: "list",
-                                  required: false,
-                                  collapsed: true,
-                                  fields:
-                                      [
-                                          {
-                                              label: "Name",
-                                              name: "name",
-                                              widget: "string",
-                                          },
-                                          {
-                                              label: "Institution",
-                                              name: "institution",
-                                              widget: "string",
-                                          },
-                                      ],
-                              },
-                              {
-                                  label: "Contributor text",
-                                  name: "contributor_text",
-                                  widget: "string",
-                              },
-                              {
                                   label: "Contributors",
                                   name: "contributors",
                                   widget: "list",
