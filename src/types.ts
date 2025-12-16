@@ -1,3 +1,5 @@
+import { WindowLocation } from "@reach/router";
+
 export enum SubPage {
     EditingDesign = "Editing Design",
     GenomicCharacterization = "Genomic Characterization",
@@ -10,3 +12,16 @@ export enum Disease {
     Laminopathy = "Laminopathy",
     SkeletalMyopathy = "Skeletal Myopathy",
 }
+
+export enum CatalogRoute {
+    CellCatalog = "/",
+    DiseaseCatalog = "/disease-catalog",
+}
+
+export type CatalogLocationState = {
+    fromCellCatalog?: boolean;
+};
+
+export type LocationWithState = WindowLocation<unknown> & {
+    state?: CatalogLocationState;
+};
