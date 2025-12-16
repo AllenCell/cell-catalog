@@ -1,5 +1,5 @@
 import { Card } from "antd";
-import { StaticQuery, graphql } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 
 import Filter from "../components/Filter";
@@ -25,16 +25,14 @@ interface SearchAndFilterProps {
 }
 
 // This query groups all cell lines by gene symbol
-const SearchAndFilter = ({
+const SearchAndFilter: React.FC<SearchAndFilterProps> = ({
     allCellLines,
     filteredCellLines,
     selectedCategories,
     setResults,
     setSelectedCategories,
-}: SearchAndFilterProps) => {
-    return (
-        <StaticQuery
-            query={graphql`
+}) => {
+    const data = useStaticQuery<SearchAndFilterQueryResult>(graphql`
                 query SearchAndFilterQuery {
                     allMarkdownRemark(
                         filter: {
@@ -78,32 +76,26 @@ const SearchAndFilter = ({
                         }
                     }
                 }
-            `}
-            render={(data: SearchAndFilterQueryResult) => {
-                const mappings = createLookupMappings(
-                    data.allMarkdownRemark.group,
-                );
-                return (
-                    <Card className={container}>
-                        <div>
-                            Search below or sort by clicking on column headers
-                        </div>
-                        <div className={inputContainer}>
-                            <SearchBar
-                                allCellLines={allCellLines}
-                                mappings={mappings}
-                                setResults={setResults}
-                            />
-                            <Filter
-                                filteredList={filteredCellLines}
-                                value={selectedCategories}
-                                onChange={setSelectedCategories}
-                            />
-                        </div>
-                    </Card>
-                );
-            }}
-        />
+            `);
+
+    const mappings = createLookupMappings(data.allMarkdownRemark.group);
+
+    return (
+        <Card className={container}>
+            <div>Search below or sort by clicking on column headers</div>
+            <div className={inputContainer}>
+                <SearchBar
+                    allCellLines={allCellLines}
+                    mappings={mappings}
+                    setResults={setResults}
+                />
+                <Filter
+                    filteredList={filteredCellLines}
+                    value={selectedCategories}
+                    onChange={setSelectedCategories}
+                />
+            </div>
+        </Card>
     );
 };
 

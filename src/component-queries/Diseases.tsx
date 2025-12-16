@@ -1,22 +1,20 @@
-import { StaticQuery, graphql } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 
 import DiseaseCellLineQuery from "./DiseaseCellLines";
 import { DiseaseFrontmatter } from "./types";
 
-export interface QueryResult {
-    data: {
-        allMarkdownRemark: {
-            edges: {
-                node: {
-                    id: string;
-                    fields: {
-                        slug: string;
-                    };
-                    frontmatter: DiseaseFrontmatter;
+export interface DiseasesQueryResult {
+    allMarkdownRemark: {
+        edges: {
+            node: {
+                id: string;
+                fields: {
+                    slug: string;
                 };
-            }[];
-        };
+                frontmatter: DiseaseFrontmatter;
+            };
+        }[];
     };
 }
 
@@ -27,8 +25,8 @@ export interface UnpackedDisease {
     status: string;
 }
 
-const DiseaseTemplate = (props: QueryResult) => {
-    const { edges: diseases } = props.data.allMarkdownRemark;
+const DiseaseTemplate = (props: DiseasesQueryResult) => {
+    const { edges: diseases } = props.allMarkdownRemark;
 
     const unpackedDiseases = diseases
         .map(({ node: disease }) => {
@@ -57,38 +55,33 @@ const DiseaseTemplate = (props: QueryResult) => {
 };
 
 export default function Diseases() {
-    return (
-        <StaticQuery
-            query={graphql`
-                query DiseasesQuery {
-                    allMarkdownRemark(
-                        filter: {
-                            frontmatter: { templateKey: { in: "disease" } }
+    const data = useStaticQuery<DiseasesQueryResult>(graphql`
+        query DiseasesQuery {
+            allMarkdownRemark(
+                filter: { frontmatter: { templateKey: { in: "disease" } } }
+            ) {
+                edges {
+                    node {
+                        id
+                        fields {
+                            slug
                         }
-                    ) {
-                        edges {
-                            node {
-                                id
-                                fields {
-                                    slug
-                                }
+                        frontmatter {
+                            templateKey
+                            name
+                            status
+                            gene {
                                 frontmatter {
-                                    templateKey
+                                    symbol
                                     name
-                                    status
-                                    gene {
-                                        frontmatter {
-                                            symbol
-                                            name
-                                        }
-                                    }
                                 }
                             }
                         }
                     }
                 }
-            `}
-            render={(data) => <DiseaseTemplate data={data} />}
-        />
-    );
+            }
+        }
+    `);
+
+    return <DiseaseTemplate {...data} />;
 }
