@@ -1056,6 +1056,7 @@ collections:
                                       ],
                               },
                           ],
+                      { label: "Outro", name: "outro", widget: "string" },
                   }
                 - { label: "Funding", name: "funding_text", widget: "markdown" }
           - file: "src/pages/disease-catalog.md"
