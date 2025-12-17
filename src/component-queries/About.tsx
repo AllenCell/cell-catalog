@@ -1,5 +1,5 @@
 import { Flex } from "antd";
-import { StaticQuery, graphql } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 
 import { RichText, renderRichText } from "../utils/formattingUtils";
@@ -11,7 +11,7 @@ const {
     italic,
 } = require("../style/about.module.css");
 
-interface AboutProps {
+interface AboutQueryData {
     markdownRemark: {
         frontmatter: {
             title: string;
@@ -24,74 +24,62 @@ interface AboutProps {
 }
 
 const About: React.FC = () => {
-    return (
-        <StaticQuery
-            query={graphql`
-                query AboutQuery {
-                    markdownRemark(
-                        frontmatter: { templateKey: { eq: "normal-catalog" } }
-                    ) {
-                        frontmatter {
-                            title
-                            about_block {
-                                primary {
-                                    text
-                                    emphasis {
-                                        text
-                                    }
-                                    link {
-                                        text
-                                        url
-                                    }
-                                }
-                                disease {
-                                    text
-                                    link {
-                                        text
-                                        url
-                                    }
-                                }
+    const data = useStaticQuery<AboutQueryData>(graphql`
+        query AboutQuery {
+            markdownRemark(
+                frontmatter: { templateKey: { eq: "normal-catalog" } }
+            ) {
+                frontmatter {
+                    title
+                    about_block {
+                        primary {
+                            text
+                            emphasis {
+                                text
+                            }
+                            link {
+                                text
+                                url
+                            }
+                        }
+                        disease {
+                            text
+                            link {
+                                text
+                                url
                             }
                         }
                     }
                 }
-            `}
-            render={(data: AboutProps) => {
-                const {
-                    about_block,
-                    title,
-                } = data.markdownRemark.frontmatter;
+            }
+        }
+    `);
 
-                return (
-                    <section className={container}>
-                        <Flex gap={48}>
-                            <section>
-                                <h1>{title}</h1>
-                                <Flex
-                                    className={contentWrapper}
-                                    vertical
-                                    justify="space-between"
-                                >
-                                    <div className="content">
-                                        <p>
-                                            {renderRichText(
-                                                about_block.primary,
-                                                italic,
-                                            )}
-                                        </p>
-                                        <div className={diseaseCopy}>
-                                            {renderRichText(
-                                                about_block.disease,
-                                            )}
-                                        </div>
-                                    </div>
-                                </Flex>
-                            </section>
-                        </Flex>
-                    </section>
-                );
-            }}
-        />
+    const {
+        about_block,
+        title,
+    } = data.markdownRemark.frontmatter;
+
+    return (
+        <section className={container}>
+            <Flex gap={48}>
+                <section>
+                    <h1>{title}</h1>
+                    <Flex
+                        className={contentWrapper}
+                        vertical
+                        justify="space-between"
+                    >
+                        <div className="content">
+                            <p>{renderRichText(about_block.primary, italic)}</p>
+                            <div className={diseaseCopy}>
+                                {renderRichText(about_block.disease)}
+                            </div>
+                        </div>
+                    </Flex>
+                </section>
+            </Flex>
+        </section>
     );
 };
 

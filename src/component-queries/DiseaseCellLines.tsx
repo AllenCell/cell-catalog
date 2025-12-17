@@ -1,4 +1,4 @@
-import { StaticQuery, graphql } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import React, { useRef } from "react";
 
 import CellLineTable from "../components/CellLineTable";
@@ -35,20 +35,91 @@ const groupLines = (
     }, diseaseObj);
 };
 
-interface QueryResult {
-    data: {
-        allMarkdownRemark: {
-            edges: DiseaseCellLineEdge[];
-        };
+interface DiseaseCellLinesQueryResult {
+    allMarkdownRemark: {
+        edges: DiseaseCellLineEdge[];
     };
 }
 
-interface DiseaseCellLinesTemplateProps extends QueryResult {
+export default function DiseaseCellLineQuery(props: {
     diseases: UnpackedDisease[];
-}
+}) {
+    const data = useStaticQuery<DiseaseCellLinesQueryResult>(graphql`
+        query DiseaseCellLineQuery {
+            allMarkdownRemark(
+                sort: { frontmatter: { cell_line_id: ASC } }
+                filter: {
+                    frontmatter: {
+                        templateKey: { eq: "disease-cell-line" }
+                        status: { ne: "in progress" }
+                    }
+                }
+            ) {
+                edges {
+                    node {
+                        id
+                        fields {
+                            slug
+                        }
+                        frontmatter {
+                            templateKey
+                            cell_line_id
+                            parental_line {
+                                frontmatter {
+                                    cell_line_id
+                                    clone_number
+                                    images_and_videos {
+                                        images {
+                                            image {
+                                                childImageSharp {
+                                                    gatsbyImageData(
+                                                        placeholder: BLURRED
+                                                        layout: FIXED
+                                                        width: 192
+                                                    )
+                                                }
+                                            }
+                                            caption
+                                        }
+                                    }
+                                    genetic_modifications {
+                                        tag_location
+                                        fluorescent_tag
+                                        gene {
+                                            frontmatter {
+                                                symbol
+                                                name
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            disease {
+                                frontmatter {
+                                    name
+                                    gene {
+                                        frontmatter {
+                                            symbol
+                                            name
+                                        }
+                                    }
+                                }
+                            }
+                            clones {
+                                type
+                            }
+                            snp
+                            certificate_of_analysis
+                            order_link
+                            status
+                        }
+                    }
+                }
+            }
+        }
+    `);
 
-const DiseaseCellLinesTemplate = (props: DiseaseCellLinesTemplateProps) => {
-    const { edges: cellLines } = props.data.allMarkdownRemark;
+    const { edges: cellLines } = data.allMarkdownRemark;
     const { diseases } = props;
     const groupedCellLines = groupLines(diseases, cellLines);
     return diseases.map((disease) => {
@@ -77,93 +148,4 @@ const DiseaseCellLinesTemplate = (props: DiseaseCellLinesTemplateProps) => {
             </div>
         );
     });
-};
-
-export default function DiseaseCellLineQuery(props: {
-    diseases: UnpackedDisease[];
-}) {
-    return (
-        <StaticQuery
-            query={graphql`
-                query DiseaseCellLineQuery {
-                    allMarkdownRemark(
-                        sort: { frontmatter: { cell_line_id: ASC } }
-                        filter: {
-                            frontmatter: {
-                                templateKey: { eq: "disease-cell-line" }
-                                status: { ne: "in progress" }
-                            }
-                        }
-                    ) {
-                        edges {
-                            node {
-                                id
-                                fields {
-                                    slug
-                                }
-                                frontmatter {
-                                    templateKey
-                                    cell_line_id
-                                    parental_line {
-                                        frontmatter {
-                                            cell_line_id
-                                            clone_number
-                                            images_and_videos {
-                                                images {
-                                                    image {
-                                                        childImageSharp {
-                                                            gatsbyImageData(
-                                                                placeholder: BLURRED
-                                                                layout: FIXED
-                                                                width: 192
-                                                            )
-                                                        }
-                                                    }
-                                                    caption
-                                                }
-                                            }
-                                            genetic_modifications {
-                                                tag_location
-                                                fluorescent_tag
-                                                gene {
-                                                    frontmatter {
-                                                        symbol
-                                                        name
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                    disease {
-                                        frontmatter {
-                                            name
-                                            gene {
-                                                frontmatter {
-                                                    symbol
-                                                    name
-                                                }
-                                            }
-                                        }
-                                    }
-                                    clones {
-                                        type
-                                    }
-                                    snp
-                                    certificate_of_analysis
-                                    order_link
-                                    status
-                                }
-                            }
-                        }
-                    }
-                }
-            `}
-            render={(data) => (
-                <DiseaseCellLinesTemplate
-                    data={data}
-                    diseases={props.diseases}
-                />
-            )}
-        />
-    );
 }

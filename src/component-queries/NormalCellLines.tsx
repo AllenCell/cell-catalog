@@ -1,4 +1,4 @@
-import { StaticQuery, graphql } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 
 import CategorySections from "../components/CategorySections";
@@ -11,8 +11,81 @@ import SearchAndFilter from "./SearchAndFilter";
 import { convertFrontmatterToNormalCellLines } from "./convert-data";
 import { CategoryLabel, CellLineStatus, NormalCellLineNode } from "./types";
 
-const CellLineTableTemplate = (props: QueryResult) => {
-    const { edges: cellLines } = props.data.allMarkdownRemark;
+interface NormalCellLinesQueryResult {
+    allMarkdownRemark: {
+        edges: {
+            node: NormalCellLineNode;
+        }[];
+    };
+}
+
+export default function NormalCellLines() {
+    const data = useStaticQuery<NormalCellLinesQueryResult>(graphql`
+        query CellLineTableQuery {
+            allMarkdownRemark(
+                sort: { frontmatter: { cell_line_id: ASC } }
+                filter: {
+                    frontmatter: {
+                        templateKey: { eq: "cell-line" }
+                        cell_line_id: { ne: 0 }
+                        status: { ne: "hide" }
+                    }
+                }
+            ) {
+                edges {
+                    node {
+                        excerpt(pruneLength: 400)
+                        id
+                        fields {
+                            slug
+                        }
+                        frontmatter {
+                            templateKey
+                            cell_line_id
+                            clone_number
+                            status
+                            order_link
+                            donor_plasmid
+                            images_and_videos {
+                                images {
+                                    image {
+                                        childImageSharp {
+                                            gatsbyImageData(
+                                                placeholder: BLURRED
+                                                layout: CONSTRAINED
+                                            )
+                                        }
+                                    }
+                                    caption
+                                }
+                            }
+                            genetic_modifications {
+                                gene {
+                                    frontmatter {
+                                        protein
+                                        structure
+                                        symbol
+                                        name
+                                    }
+                                }
+                                allele_count
+                                tag_location
+                                fluorescent_tag
+                            }
+                            parental_line {
+                                frontmatter {
+                                    name
+                                }
+                            }
+                            category_labels
+                        }
+                    }
+                }
+            }
+        }
+    `);
+
+    const { edges: cellLines } = data.allMarkdownRemark;
 
     const allCellLines = cellLines.map((cellLine) =>
         convertFrontmatterToNormalCellLines(cellLine),
@@ -89,88 +162,5 @@ const CellLineTableTemplate = (props: QueryResult) => {
                 ? sortedBySelectedCategoryRender
                 : defaultRender}
         </>
-    );
-};
-
-interface QueryResult {
-    data: {
-        allMarkdownRemark: {
-            edges: {
-                node: NormalCellLineNode;
-            }[];
-        };
-    };
-}
-export default function NormalCellLines() {
-    // query filters out the original cell line, WTC (cell_line_id: 0)
-    // and any cell lines that are marked as hidden
-    return (
-        <StaticQuery
-            query={graphql`
-                query CellLineTableQuery {
-                    allMarkdownRemark(
-                        sort: { frontmatter: { cell_line_id: ASC } }
-                        filter: {
-                            frontmatter: {
-                                templateKey: { eq: "cell-line" }
-                                cell_line_id: { ne: 0 }
-                                status: { ne: "hide" }
-                            }
-                        }
-                    ) {
-                        edges {
-                            node {
-                                excerpt(pruneLength: 400)
-                                id
-                                fields {
-                                    slug
-                                }
-                                frontmatter {
-                                    templateKey
-                                    cell_line_id
-                                    clone_number
-                                    status
-                                    order_link
-                                    donor_plasmid
-                                    images_and_videos {
-                                        images {
-                                            image {
-                                                childImageSharp {
-                                                    gatsbyImageData(
-                                                        placeholder: BLURRED
-                                                        layout: CONSTRAINED
-                                                    )
-                                                }
-                                            }
-                                            caption
-                                        }
-                                    }
-                                    genetic_modifications {
-                                        gene {
-                                            frontmatter {
-                                                protein
-                                                structure
-                                                symbol
-                                                name
-                                            }
-                                        }
-                                        allele_count
-                                        tag_location
-                                        fluorescent_tag
-                                    }
-                                    parental_line {
-                                        frontmatter {
-                                            name
-                                        }
-                                    }
-                                    category_labels
-                                }
-                            }
-                        }
-                    }
-                }
-            `}
-            render={(data) => <CellLineTableTemplate data={data} />}
-        />
     );
 }
