@@ -1072,6 +1072,7 @@ collections:
                                   label: "Description",
                                   name: "description",
                                   widget: "markdown",
+                                  required: false,
                               },
                           ],
                   }
