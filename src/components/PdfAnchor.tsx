@@ -6,8 +6,10 @@ interface PdfAnchorProps {
 }
 
 export const PdfAnchor = ({ href, label }: PdfAnchorProps) => {
+    const filename = href.split("/").pop();
+    const pdfHref = `/pdf/${filename}`;
     return (
-        <a href={href} download={true}>
+        <a href={pdfHref} target="_blank" rel="noreferrer">
             {label}
         </a>
     );

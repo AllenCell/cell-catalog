@@ -24,8 +24,7 @@ const isGroupedItems = (
 
 const getItemComponent = (item: NavBarDropdownItem) => {
     if (item.anchorType === NavBarAnchorType.Download) {
-        const filename = item.href.split("/").pop();
-        return <PdfAnchor label={item.label} href={`/pdf/${filename}`} />;
+        return <PdfAnchor label={item.label} href={item.href} />;
     }
 
     if (item.anchorType === NavBarAnchorType.Internal) {
