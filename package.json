@@ -1,7 +1,7 @@
 {
   "name": "cell-catalog",
   "description": "Cell catalog for Allen Institute for Cell Science",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "author": "Megan Riel-Mehan",
   "dependencies": {
     "@ant-design/icons": "^5.5.1",
