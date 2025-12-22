@@ -2,7 +2,7 @@
 templateKey: disease-catalog
 header:
   title: Disease Collection Cell Catalog
-  subtitle: Browse our cell lines with primers, images, and quality control data
+  subtitle: Browse our disease mutation cell lines with images and quality control data
   background: /img/cellsaround.jpg
 title: About the collection
 main:
