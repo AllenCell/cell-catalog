@@ -76,6 +76,11 @@
     margin-right: 12px;
 }
 
+.plasmid-icon :global(.plasmid-icon) {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
 .tube-icon :global(.tube-icon) {
     color: transparent;
 }
