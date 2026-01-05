@@ -286,8 +286,8 @@ export interface UnpackedNormalCellLine extends UnpackedCellLineMainInfo {
     key: string;
     cloneNumber: number;
     parentalLine: string;
-    structure: string[];
-    protein: string[];
+    structures: string[];
+    proteins: string[];
     geneticModifications?: {
         taggedGene: UnpackedGene;
         alleleCount: string;
