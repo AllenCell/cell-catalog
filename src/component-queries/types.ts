@@ -92,12 +92,6 @@ export interface ParentalLineFrontmatter {
     cell_line_id: number;
     clone_number: number;
     genetic_modifications?: GeneticModification[];
-    tagged_gene: {
-        frontmatter: GeneFrontmatter;
-    }[];
-    allele_count: string[];
-    tag_location: string[];
-    fluorescent_tag: string[];
     images_and_videos?: MediaFrontmatter;
 }
 
@@ -133,12 +127,6 @@ export interface NormalCellLineFrontmatter {
     clone_number: number;
     order_link: string;
     genetic_modifications?: GeneticModification[];
-    tagged_gene: {
-        frontmatter: GeneFrontmatter;
-    }[];
-    allele_count: string[];
-    tag_location: string[];
-    fluorescent_tag: string[];
     donor_plasmid: string;
     parental_line: {
         frontmatter: {
