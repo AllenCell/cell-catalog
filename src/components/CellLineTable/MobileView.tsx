@@ -46,7 +46,7 @@ export const getDiseaseTableMobileConfig = (
                     )}
                     <div>
                         <label>Gene Symbol & Name:</label>
-                        {diseaseCellLine.mutatedGene.map((gene, index) => (
+                        {diseaseCellLine.mutatedGenes.map((gene, index) => (
                             <GeneDisplay key={index} gene={gene} />
                         ))}
                     </div>

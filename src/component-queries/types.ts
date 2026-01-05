@@ -320,7 +320,7 @@ export interface UnpackedDiseaseCellLine extends UnpackedCellLineMainInfo {
     snp: string;
     clones: Clone[];
     parentalLine: ParentLine;
-    mutatedGene: UnpackedGene[];
+    mutatedGenes: UnpackedGene[];
 }
 
 export interface LookupGroup {

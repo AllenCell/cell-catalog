@@ -71,7 +71,7 @@ export const convertFrontmatterToDiseaseCellLine = (
         clones: cellLineNode.frontmatter.clones,
         orderLink: cellLineNode.frontmatter.order_link,
         diseaseStatus: diseaseData.status,
-        mutatedGene: mutatedGenes,
+        mutatedGenes: mutatedGenes,
         path: cellLineNode.fields.slug,
         parentalLine: {
             thumbnailImage: getThumbnail(
