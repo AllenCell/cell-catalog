@@ -86,10 +86,10 @@ export const getDiseaseTableColumns = (
                         cellLineId={parentalLine.cellLineId}
                         cloneNumber={parentalLine.cloneNumber}
                         image={parentalLine.thumbnailImage}
-                        taggedGene={parentalLine.taggedGene}
+                        taggedGenes={parentalLine.taggedGenes}
                         status={cellLine.diseaseStatus}
-                        tagLocation={parentalLine.tagLocation}
-                        fluorescentTag={parentalLine.fluorescentTag}
+                        tagLocations={parentalLine.tagLocations}
+                        fluorescentTags={parentalLine.fluorescentTags}
                     />
                 );
             },

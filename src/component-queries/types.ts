@@ -294,10 +294,10 @@ export interface UnpackedNormalCellLine extends UnpackedCellLineMainInfo {
         tagLocation: string;
         fluorescentTag: string;
     }[];
-    taggedGene: UnpackedGene[];
-    alleleCount: string[];
-    tagLocation: string[];
-    fluorescentTag: string[];
+    taggedGenes: UnpackedGene[];
+    alleleCounts: string[];
+    tagLocations: string[];
+    fluorescentTags: string[];
     orderPlasmid: string;
     categoryLabels: CategoryLabel[];
 }
@@ -306,10 +306,10 @@ export type ParentLine = Pick<UnpackedNormalCellLine,
     "thumbnailImage" |
     "cellLineId" |
     "cloneNumber" |
-    "taggedGene" |
-    "alleleCount" |
-    "tagLocation" |
-    "fluorescentTag" |
+    "taggedGenes" |
+    "alleleCounts" |
+    "tagLocations" |
+    "fluorescentTags" |
     "geneticModifications"
 >
 

@@ -117,15 +117,15 @@ export const getNormalTableColumns = (
         {
             title: "Gene Symbol & Name",
             width: 310,
-            key: "taggedGene",
-            dataIndex: "taggedGene",
+            key: "taggedGenes",
+            dataIndex: "taggedGenes",
             responsive: mdBreakpoint,
             sortIcon: sortIcon,
             className: gene,
-            render: (taggedGene: UnpackedGene[]) => {
+            render: (taggedGenes: UnpackedGene[]) => {
                 return (
                     <div className={tableMultiLineCell}>
-                        {taggedGene.map((gene, index) => (
+                        {taggedGenes.map((gene, index) => (
                             <GeneDisplay key={index} gene={gene} />
                         ))}
                     </div>
@@ -135,29 +135,29 @@ export const getNormalTableColumns = (
                 const recordA = a as UnpackedNormalCellLine;
                 const recordB = b as UnpackedNormalCellLine;
                 return caseInsensitiveStringCompare(
-                    recordA.taggedGene[0].name,
-                    recordB.taggedGene[0].name,
+                    recordA.taggedGenes[0].name,
+                    recordB.taggedGenes[0].name,
                 );
             },
         },
         {
             title: "Tagged Alleles",
-            key: "alleleCount",
-            dataIndex: "alleleCount",
+            key: "alleleCounts",
+            dataIndex: "alleleCounts",
             responsive: mdBreakpoint,
             sortIcon: sortIcon,
-            render: (alleleCount: string[]) => (
+            render: (alleleCounts: string[]) => (
                 <MultiLineTableCell
                     parent={ParentComponent.TABLE}
-                    entries={alleleCount}
+                    entries={alleleCounts}
                 />
             ),
             sorter: (a: UnpackedCellLine, b: UnpackedCellLine) => {
                 const recordA = a as UnpackedNormalCellLine;
                 const recordB = b as UnpackedNormalCellLine;
                 return caseInsensitiveStringCompare(
-                    (recordA.alleleCount ?? []).join("|"),
-                    (recordB.alleleCount ?? []).join("|"),
+                    (recordA.alleleCounts ?? []).join("|"),
+                    (recordB.alleleCounts ?? []).join("|"),
                 );
             },
         },
@@ -186,8 +186,8 @@ export const getNormalTableColumns = (
         },
         {
             title: "Fluorescent Tag",
-            key: "fluorescentTag",
-            dataIndex: "fluorescentTag",
+            key: "fluorescentTags",
+            dataIndex: "fluorescentTags",
             responsive: mdBreakpoint,
             render: (tags: string[]) => (
                 <MultiLineTableCell
@@ -200,15 +200,15 @@ export const getNormalTableColumns = (
                 const recordA = a as UnpackedNormalCellLine;
                 const recordB = b as UnpackedNormalCellLine;
                 return caseInsensitiveStringCompare(
-                    (recordA.fluorescentTag ?? []).join("|"),
-                    (recordB.fluorescentTag ?? []).join("|"),
+                    (recordA.fluorescentTags ?? []).join("|"),
+                    (recordB.fluorescentTags ?? []).join("|"),
                 );
             },
         },
         {
             title: "Tag Location",
-            key: "tagLocation",
-            dataIndex: "tagLocation",
+            key: "tagLocations",
+            dataIndex: "tagLocations",
             responsive: mdBreakpoint,
             render: (locations: string[]) => (
                 <MultiLineTableCell
@@ -221,8 +221,8 @@ export const getNormalTableColumns = (
                 const recordA = a as UnpackedNormalCellLine;
                 const recordB = b as UnpackedNormalCellLine;
                 return caseInsensitiveStringCompare(
-                    (recordA.tagLocation ?? []).join("|"),
-                    (recordB.tagLocation ?? []).join("|"),
+                    (recordA.tagLocations ?? []).join("|"),
+                    (recordB.tagLocations ?? []).join("|"),
                 );
             },
         },
@@ -244,8 +244,8 @@ export const getNormalTableColumns = (
                 const recordA = a as UnpackedNormalCellLine;
                 const recordB = b as UnpackedNormalCellLine;
                 return caseInsensitiveStringCompare(
-                    (recordA.tagLocation ?? []).join("|"),
-                    (recordB.tagLocation ?? []).join("|"),
+                    (recordA.tagLocations ?? []).join("|"),
+                    (recordB.tagLocations ?? []).join("|"),
                 );
             },
         },

@@ -216,7 +216,7 @@ export const getStemCellCharData = (
 export const unpackParentLineFromFrontmatter = (
     data: ParentalLineFrontmatter,
 ): ParentLine => {
-    const { alleleCount, fluorescentTag, taggedGene, tagLocation } =
+    const { alleleCounts, fluorescentTags, taggedGenes, tagLocations } =
         extractGeneticModifications(data.genetic_modifications);
     const thumbnailImage = getThumbnail(data.images_and_videos);
     const cellLineId = data.cell_line_id;
@@ -225,10 +225,10 @@ export const unpackParentLineFromFrontmatter = (
         thumbnailImage,
         cellLineId,
         cloneNumber,
-        taggedGene,
-        alleleCount,
-        tagLocation,
-        fluorescentTag,
+        taggedGenes,
+        alleleCounts,
+        tagLocations,
+        fluorescentTags,
     };
 };
 
@@ -295,15 +295,15 @@ export const unpackNormalStemCellCharacteristics = (
 export const unpackNormalFrontmatterForSubpage = (
     cellLineNode: NormalCellLineNode,
 ): UnpackedNormalCellLineFull => {
-    const { alleleCount, fluorescentTag, taggedGene, tagLocation } =
+    const { alleleCounts, fluorescentTags, taggedGenes, tagLocations } =
         extractGeneticModifications(
             cellLineNode.frontmatter.genetic_modifications,
         );
-    const proteins = taggedGene
+    const proteins = taggedGenes
         .map((gene) => gene.protein)
         .filter((protein): protein is string => protein !== undefined);
 
-    const structures = taggedGene
+    const structures = taggedGenes
         .map((gene) => gene.structure)
         .filter((structure): structure is string => structure !== undefined);
 
@@ -324,10 +324,10 @@ export const unpackNormalFrontmatterForSubpage = (
         path: cellLineNode.fields.slug,
         cellLineId: cellLineNode.frontmatter.cell_line_id,
         cloneNumber: cellLineNode.frontmatter.clone_number,
-        taggedGene: taggedGene,
-        alleleCount: alleleCount,
-        tagLocation: tagLocation,
-        fluorescentTag: fluorescentTag,
+        taggedGenes: taggedGenes,
+        alleleCounts: alleleCounts,
+        tagLocations: tagLocations,
+        fluorescentTags: fluorescentTags,
         parentalLine: cellLineNode.frontmatter.parental_line.frontmatter.name,
         proteins: proteins,
         structures: structures,

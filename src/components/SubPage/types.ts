@@ -150,10 +150,10 @@ export interface UnpackedNormalCellLineFull extends UnpackedCellLineMainInfo {
         tagLocation: string;
         fluorescentTag: string;
     }[];
-    taggedGene: UnpackedGene[];
-    alleleCount: string[];
-    tagLocation: string[];
-    fluorescentTag: string[];
+    taggedGenes: UnpackedGene[];
+    alleleCounts: string[];
+    tagLocations: string[];
+    fluorescentTags: string[];
     orderPlasmid: string;
     editingDesign: UnpackedEditingDesign | null;
     genomicCharacterization: UnpackedGenomicCharacterization | null;

@@ -25,9 +25,9 @@ interface ParentalLineModalProps {
     cellLineId: number;
     cloneNumber: number;
     status: string;
-    taggedGene: UnpackedGene[];
-    tagLocation: string[];
-    fluorescentTag: string[];
+    taggedGenes: UnpackedGene[];
+    tagLocations: string[];
+    fluorescentTags: string[];
     suppressRowClickRef: React.MutableRefObject<boolean>;
 }
 const ParentalLineModal = (props: ParentalLineModalProps) => {
@@ -57,9 +57,9 @@ const ParentalLineModal = (props: ParentalLineModalProps) => {
         return <>{props.formattedId}</>;
     }
 
-    const { name, symbol } = props.taggedGene[0];
-    const fluorescentTag = props.fluorescentTag[0];
-    const tagLocation = props.tagLocation[0];
+    const { name, symbol } = props.taggedGenes[0];
+    const fluorescentTag = props.fluorescentTags[0];
+    const tagLocation = props.tagLocations[0];
     const parentalLineItems = [
         {
             key: "1",
