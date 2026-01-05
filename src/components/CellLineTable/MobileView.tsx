@@ -78,7 +78,7 @@ export const getNormalTableMobileConfig = (
     return {
         expandedRowRender: (record: UnpackedCellLine) => {
             const normalCellLine = record as UnpackedNormalCellLine;
-            if (!normalCellLine.protein || !normalCellLine.taggedGene) {
+            if (!normalCellLine.proteins || !normalCellLine.taggedGene) {
                 return <div></div>;
             }
             return (
@@ -92,7 +92,7 @@ export const getNormalTableMobileConfig = (
                     {isPhone && (
                         <div>
                             <label>Tagged Protein:</label>
-                            {normalCellLine.protein.map((protein, index) => (
+                            {normalCellLine.proteins.map((protein, index) => (
                                 <Flex vertical={true} key={index}>
                                     <span key={protein}>{protein}</span>
                                 </Flex>

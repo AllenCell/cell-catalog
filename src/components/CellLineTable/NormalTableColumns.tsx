@@ -93,8 +93,8 @@ export const getNormalTableColumns = (
         },
         {
             title: "Protein",
-            key: "protein",
-            dataIndex: "protein",
+            key: "proteins",
+            dataIndex: "proteins",
             width: 220,
             responsive: mdBreakpoint,
             sortIcon: sortIcon,
@@ -109,8 +109,8 @@ export const getNormalTableColumns = (
                 const recordA = a as UnpackedNormalCellLine;
                 const recordB = b as UnpackedNormalCellLine;
                 return caseInsensitiveStringCompare(
-                    (recordA.protein ?? []).join("|"),
-                    (recordB.protein ?? []).join("|"),
+                    (recordA.proteins ?? []).join("|"),
+                    (recordB.proteins ?? []).join("|"),
                 );
             },
         },
@@ -163,9 +163,9 @@ export const getNormalTableColumns = (
         },
         {
             title: "Structure",
-            key: "structure",
+            key: "structures",
             width: 220,
-            dataIndex: "structure",
+            dataIndex: "structures",
             responsive: mdBreakpoint,
             sortIcon: sortIcon,
             className: structure,
@@ -179,8 +179,8 @@ export const getNormalTableColumns = (
                 const recordA = a as UnpackedNormalCellLine;
                 const recordB = b as UnpackedNormalCellLine;
                 return caseInsensitiveStringCompare(
-                    (recordA.structure ?? []).join("|"),
-                    (recordB.structure ?? []).join("|"),
+                    (recordA.structures ?? []).join("|"),
+                    (recordB.structures ?? []).join("|"),
                 );
             },
         },
