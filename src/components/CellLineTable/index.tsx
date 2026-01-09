@@ -48,7 +48,7 @@ const CellLineTable = ({
     const width = useWindowWidth();
     const env = useEnv();
     const isTablet = width < TABLET_BREAKPOINT;
-    const isMobile = width < PHONE_BREAKPOINT;
+    const isMobile = width <= PHONE_BREAKPOINT;
 
     const isClickable = (record: UnpackedCellLine): boolean => {
         if (suppressRowClickRef?.current) {
