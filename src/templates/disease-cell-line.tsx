@@ -81,11 +81,11 @@ export const DiseaseCellLineTemplate = ({
                     <div className={imagesContainer}>
                         <ImagesAndVideos
                             cellLineId={cellLineId}
-                            fluorescentTag={parentalLine.fluorescentTag[0]}
+                            fluorescentTag={parentalLine.fluorescentTags[0]}
                             parentalGeneSymbol={
-                                parentalLine.taggedGene[0].symbol
+                                parentalLine.taggedGenes[0].symbol
                             }
-                            alleleTag={parentalLine.alleleCount[0]}
+                            alleleTag={parentalLine.alleleCounts[0]}
                             geneSymbol={geneSymbol}
                             snp={snp}
                             images={getImages(imagesAndVideos)}
