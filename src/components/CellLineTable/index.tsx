@@ -100,9 +100,8 @@ const CellLineTable = ({
                     ...column,
                     fixed: undefined,
                 };
-            } else {
-                return column;
             }
+            return column;
         }
         return {
             ...column,
