@@ -115,9 +115,36 @@
     width: 95%;
 }
 
+/* tablet sizing */
+@media (max-width: 1280px) {
+    .extra-large-button .extra-large-button-header.spaced-button {
+        justify-content: center;
+    }
+}
+
 /* mobile sizing */
 @media (max-width: 744px) {
     .container .title {
-        font-size: 40px;
+        font-size: 32px;
+    }
+
+    .extra-large-button {
+        height: 80px;
+    }
+
+    .extra-large-button .extra-large-button-header h2 {
+        font-size: 18px;
+        gap: 6px;
+    }
+
+    .extra-large-button .extra-large-button-header.spaced-button {
+        align-items: center;
+        justify-content: center;
+        padding: 0px 5px 0px 10px;
+        width: 100%;
+    }
+
+    .extra-large-button .linkout-icon {
+        display: none;
     }
 }

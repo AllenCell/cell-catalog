@@ -17,6 +17,7 @@ const {
     extraLargeButtonHeader,
     spacedButton,
     title,
+    linkoutIcon,
 } = require("../../style/cell-line-info-card.module.css");
 
 interface OrderButtonProps {
@@ -86,7 +87,7 @@ const CellLineInfoCardBase = ({
                         {icon}
                         {label}
                     </h2>
-                    <LinkOutIcon />
+                    <LinkOutIcon className={linkoutIcon}/>
                 </div>
                 {subtitle}
             </Button>
