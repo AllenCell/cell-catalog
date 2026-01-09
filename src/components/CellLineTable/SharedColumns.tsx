@@ -25,6 +25,7 @@ const {
 
 export const cellLineIdColumn = {
     title: "Cell Collection ID",
+    mobileTitle: "ID",
     key: "cellLineId",
     className: cellLineId,
     dataIndex: "cellLineId",

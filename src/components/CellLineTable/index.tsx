@@ -103,11 +103,16 @@ const CellLineTable = ({
             }
             return column;
         }
+        const showMobileTitle =
+            isMobile && "mobileTitle" in column && column.mobileTitle;
+
         return {
             ...column,
+            title: (showMobileTitle ? column.mobileTitle : column.title) as typeof column.title,
             sorter: inProgress ? undefined : column.sorter,
             onCell: inProgress ? undefined : onCellInteraction,
             fixed: isMobile ? undefined : column.fixed, // disable fixed columns on mobile
+            mobileTitle: undefined, // remove mobileTitle prop after use
         };
     });
 
