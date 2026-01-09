@@ -55,10 +55,7 @@ const About: React.FC = () => {
         }
     `);
 
-    const {
-        about_block,
-        title,
-    } = data.markdownRemark.frontmatter;
+    const { about_block, title } = data.markdownRemark.frontmatter;
 
     return (
         <section className={container}>
