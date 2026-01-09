@@ -1,7 +1,8 @@
 import { Flex } from "antd";
 import { graphql, useStaticQuery } from "gatsby";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
+import HamburgerMenu from "../components/HamburgerMenu/HamburgerMenu";
 import NavBarDropdown from "../components/NavBarDropdown/NavBarDropdown";
 import { formatDropdownMenuItems } from "../components/NavBarDropdown/formatDropDownMenuItems";
 import { NavBarDropdownItem, NavBarDropdownItemGroup } from "./types";
@@ -12,9 +13,11 @@ const {
     container,
     content,
     divider,
+    hamburgerMenu,
     leftContent,
     logoLink,
     rightContent,
+    dropdownButtons,
     titleLink,
 } = require("../style/navbar.module.css");
 
@@ -30,6 +33,8 @@ interface NavBarQueryData {
 }
 
 const NavBar: React.FC = () => {
+    const [dropdownKey, setDropdownKey] = useState(0);
+
     const data = useStaticQuery<NavBarQueryData>(graphql`
         query NavBarQuery {
             markdownRemark(frontmatter: { templateKey: { eq: "nav-bar" } }) {
@@ -70,6 +75,21 @@ const NavBar: React.FC = () => {
     const formattedDiseaseCollections =
         formatDropdownMenuItems(diseaseCollections);
 
+    // Handles edge case where menus are open during a resize that goes
+    // below the mobile breakpoint by forcing remount of dropdowns when
+    // crossing the breakpoint.
+    useEffect(() => {
+        const handleResize = () => {
+            const isMobile = window.innerWidth <= 768;
+            if (isMobile) {
+                setDropdownKey((prev) => prev + 1);
+            }
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     return (
         <div className={container}>
             <div className={content}>
@@ -86,27 +106,39 @@ const NavBar: React.FC = () => {
                         />
                     </a>
                     <span className={divider}>|</span>
-                    <NavBarDropdown
-                        buttonComponent={
-                            <div className={titleLink}>
-                                Allen Cell Collection
-                            </div>
-                        }
-                        label="Catalogs"
-                        items={formattedCatalogs}
-                    />
+                    <div className={dropdownButtons} key={`left-${dropdownKey}`}>
+                        <NavBarDropdown
+                            buttonComponent={
+                                <div className={titleLink}>
+                                    Allen Cell Collection
+                                </div>
+                            }
+                            label="Catalogs"
+                            items={formattedCatalogs}
+                        />
+                    </div>
                 </div>
                 <div className={rightContent}>
-                    <Flex gap="large">
-                        <NavBarDropdown
-                            label="Protocols"
-                            items={formattedProtocols}
+                    <div className={dropdownButtons} key={dropdownKey}>
+                        <Flex gap="large">
+                            <NavBarDropdown
+                                label="Protocols"
+                                items={formattedProtocols}
+                            />
+                            <NavBarDropdown
+                                label="Collections"
+                                items={formattedDiseaseCollections}
+                            />
+                        </Flex>
+                    </div>
+                    {/* Displayed on small screens */}
+                    <div className={hamburgerMenu}>
+                        <HamburgerMenu
+                            catalogItems={formattedCatalogs}
+                            protocolItems={formattedProtocols}
+                            collectionItems={formattedDiseaseCollections}
                         />
-                        <NavBarDropdown
-                            label="Collections"
-                            items={formattedDiseaseCollections}
-                        />
-                    </Flex>
+                    </div>
                 </div>
             </div>
         </div>

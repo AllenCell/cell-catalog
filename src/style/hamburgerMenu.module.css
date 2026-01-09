@@ -1,0 +1,41 @@
+.hamburger-button {
+    color: var(--WHITE);
+    font-size: 20px;
+}
+
+.hamburger-button:hover,
+.hamburger-button:focus,
+.hamburger-button:focus-visible {
+    border: 1px solid var(--WHITE);
+    outline: none;
+}
+
+.drawer-container :global(.ant-drawer-close) {
+    color: var(--WHITE);
+}
+
+.menu-section :global(.ant-menu) :global(.ant-menu-item) {
+    border-bottom: none;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 700;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--RAIN_SHADOW);
+}
+
+.drawer-content :global(.ant-menu-item) {
+    padding-left: 0;
+}
+
+.drawer-content :global(.ant-menu-item-group-title) {
+    font-size: 16px;
+    font-weight: 600;
+    padding-left: 4px;
+    color: var(--RAIN_SHADOW);
+}
+
+.drawer-content :global(.ant-menu-item-group-list .ant-menu-item.ant-menu-item-only-child) {
+    padding-left: 12px;
+}
