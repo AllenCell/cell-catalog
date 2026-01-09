@@ -15,15 +15,15 @@ type ExtractedGeneFields = Record<keyof UnpackedGene, string[]>;
 interface NormalCellLineInfoCardProps extends CellLineInfoCardRequiredProps {
     orderPlasmid: string;
     cloneNumber: number;
-    taggedGene: UnpackedGene[];
-    fluorescentTag: string[];
-    alleleCount: string[];
+    taggedGenes: UnpackedGene[];
+    fluorescentTags: string[];
+    alleleCounts: string[];
 }
 
 export const NormalCellLineInfoCard: React.FC<NormalCellLineInfoCardProps> = (
     props,
 ) => {
-    const extractedGeneFields = props.taggedGene.reduce<ExtractedGeneFields>(
+    const extractedGeneFields = props.taggedGenes.reduce<ExtractedGeneFields>(
         (acc, gene) => {
             acc.name.push(gene.name);
             acc.symbol.push(gene.symbol);
@@ -107,7 +107,7 @@ export const NormalCellLineInfoCard: React.FC<NormalCellLineInfoCardProps> = (
             {...props}
             buttonList={buttonList}
             infoRows={infoRows}
-            multiGene={props.taggedGene.length > 1}
+            multiGene={props.taggedGenes.length > 1}
         />
     );
 };

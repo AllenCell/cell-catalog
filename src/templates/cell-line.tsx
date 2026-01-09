@@ -42,12 +42,12 @@ interface CellLineProps extends UnpackedNormalCellLineFull {
 }
 
 export const CellLineTemplate = ({
-    alleleCount,
+    alleleCounts,
     cellLineId,
     certificateOfAnalysis,
     cloneNumber,
     editingDesign,
-    fluorescentTag,
+    fluorescentTags,
     genomicCharacterization,
     healthCertificate,
     imagesAndVideos,
@@ -55,7 +55,7 @@ export const CellLineTemplate = ({
     orderLink,
     orderPlasmid,
     stemCellCharacteristics,
-    taggedGene,
+    taggedGenes,
 }: CellLineProps) => {
     const { handleReturnClick, hasClickedReturn } = useReturnHandler(
         CatalogRoute.CellCatalog,
@@ -83,25 +83,25 @@ export const CellLineTemplate = ({
                     <NormalCellLineInfoCard
                         href={location.href}
                         cellLineId={cellLineId}
-                        geneName={taggedGene[0].name}
-                        geneSymbol={taggedGene[0].symbol}
+                        geneName={taggedGenes[0].name}
+                        geneSymbol={taggedGenes[0].symbol}
                         orderLink={orderLink}
                         certificateOfAnalysis={certificateOfAnalysis}
                         orderPlasmid={orderPlasmid}
                         healthCertificate={healthCertificate}
                         cloneNumber={cloneNumber}
-                        taggedGene={taggedGene}
-                        fluorescentTag={fluorescentTag}
-                        alleleCount={alleleCount}
+                        taggedGenes={taggedGenes}
+                        fluorescentTags={fluorescentTags}
+                        alleleCounts={alleleCounts}
                     />
                 </div>
                 <div className={imagesContainer}>
                     {hasImagesOrVideos && (
                         <ImagesAndVideos
                             cellLineId={cellLineId}
-                            geneSymbol={taggedGene?.[0]?.symbol || ""}
-                            fluorescentTag={fluorescentTag?.[0] || ""}
-                            alleleTag={alleleCount?.[0] || ""}
+                            geneSymbol={taggedGenes?.[0]?.symbol || ""}
+                            fluorescentTag={fluorescentTags?.[0] || ""}
+                            alleleTag={alleleCounts?.[0] || ""}
                             images={getImages(imagesAndVideos)}
                             videos={getVideos(imagesAndVideos)}
                         />
