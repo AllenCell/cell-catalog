@@ -92,12 +92,6 @@ export interface ParentalLineFrontmatter {
     cell_line_id: number;
     clone_number: number;
     genetic_modifications?: GeneticModification[];
-    tagged_gene: {
-        frontmatter: GeneFrontmatter;
-    }[];
-    allele_count: string[];
-    tag_location: string[];
-    fluorescent_tag: string[];
     images_and_videos?: MediaFrontmatter;
 }
 
@@ -133,12 +127,6 @@ export interface NormalCellLineFrontmatter {
     clone_number: number;
     order_link: string;
     genetic_modifications?: GeneticModification[];
-    tagged_gene: {
-        frontmatter: GeneFrontmatter;
-    }[];
-    allele_count: string[];
-    tag_location: string[];
-    fluorescent_tag: string[];
     donor_plasmid: string;
     parental_line: {
         frontmatter: {
@@ -286,18 +274,18 @@ export interface UnpackedNormalCellLine extends UnpackedCellLineMainInfo {
     key: string;
     cloneNumber: number;
     parentalLine: string;
-    structure: string[];
-    protein: string[];
+    structures: string[];
+    proteins: string[];
     geneticModifications?: {
         taggedGene: UnpackedGene;
         alleleCount: string;
         tagLocation: string;
         fluorescentTag: string;
     }[];
-    taggedGene: UnpackedGene[];
-    alleleCount: string[];
-    tagLocation: string[];
-    fluorescentTag: string[];
+    taggedGenes: UnpackedGene[];
+    alleleCounts: string[];
+    tagLocations: string[];
+    fluorescentTags: string[];
     orderPlasmid: string;
     categoryLabels: CategoryLabel[];
 }
@@ -306,10 +294,10 @@ export type ParentLine = Pick<UnpackedNormalCellLine,
     "thumbnailImage" |
     "cellLineId" |
     "cloneNumber" |
-    "taggedGene" |
-    "alleleCount" |
-    "tagLocation" |
-    "fluorescentTag" |
+    "taggedGenes" |
+    "alleleCounts" |
+    "tagLocations" |
+    "fluorescentTags" |
     "geneticModifications"
 >
 
@@ -320,7 +308,7 @@ export interface UnpackedDiseaseCellLine extends UnpackedCellLineMainInfo {
     snp: string;
     clones: Clone[];
     parentalLine: ParentLine;
-    mutatedGene: UnpackedGene[];
+    mutatedGenes: UnpackedGene[];
 }
 
 export interface LookupGroup {

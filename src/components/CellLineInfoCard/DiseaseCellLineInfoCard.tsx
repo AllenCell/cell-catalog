@@ -42,7 +42,7 @@ export const DiseaseCellLineInfoCard: React.FC<DiseaseCellLineInfoCardProps> = (
                 <TruncatedText>
                     {`${formatCellLineId(props.parentalLine.cellLineId)} cl. ${
                         props.parentalLine.cloneNumber
-                    } ${props.parentalLine.taggedGene[0].symbol}`}
+                    } ${props.parentalLine.taggedGenes[0].symbol}`}
                 </TruncatedText>
             ),
         },

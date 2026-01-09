@@ -142,18 +142,18 @@ export interface UnpackedNormalCellLineFull extends UnpackedCellLineMainInfo {
     key: string;
     cloneNumber: number;
     parentalLine: string;
-    structure: string[];
-    protein: string[];
+    structures: string[];
+    proteins: string[];
     geneticModifications?: {
         taggedGene: UnpackedGene;
         alleleCount: string;
         tagLocation: string;
         fluorescentTag: string;
     }[];
-    taggedGene: UnpackedGene[];
-    alleleCount: string[];
-    tagLocation: string[];
-    fluorescentTag: string[];
+    taggedGenes: UnpackedGene[];
+    alleleCounts: string[];
+    tagLocations: string[];
+    fluorescentTags: string[];
     orderPlasmid: string;
     editingDesign: UnpackedEditingDesign | null;
     genomicCharacterization: UnpackedGenomicCharacterization | null;

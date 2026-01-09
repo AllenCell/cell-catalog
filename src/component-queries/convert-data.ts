@@ -16,21 +16,21 @@ import { formatCellLineId } from "../utils";
 export const extractGeneticModifications = (
     modifications?: GeneticModification[]
 ): {
-    taggedGene: UnpackedGene[];
-    alleleCount: string[];
-    tagLocation: string[];
-    fluorescentTag: string[];
+    taggedGenes: UnpackedGene[];
+    alleleCounts: string[];
+    tagLocations: string[];
+    fluorescentTags: string[];
 } => {
     if (!modifications || !modifications.length)
         return {
-            taggedGene: [],
-            alleleCount: [],
-            tagLocation: [],
-            fluorescentTag: [],
+            taggedGenes: [],
+            alleleCounts: [],
+            tagLocations: [],
+            fluorescentTags: [],
         };
 
     return {
-        taggedGene: modifications
+        taggedGenes: modifications
             .filter((mod) => mod.gene && mod.gene.frontmatter)
             .map((mod) => ({
                 name: mod.gene.frontmatter.name,
@@ -38,9 +38,9 @@ export const extractGeneticModifications = (
                 structure: mod.gene.frontmatter.structure,
                 protein: mod.gene.frontmatter.protein,
             })),
-        alleleCount: modifications.map((mod) => mod.allele_count),
-        tagLocation: modifications.map((mod) => mod.tag_location),
-        fluorescentTag: modifications.map((mod) => mod.fluorescent_tag),
+        alleleCounts: modifications.map((mod) => mod.allele_count),
+        tagLocations: modifications.map((mod) => mod.tag_location),
+        fluorescentTags: modifications.map((mod) => mod.fluorescent_tag),
     };
 };
 
@@ -56,7 +56,7 @@ export const convertFrontmatterToDiseaseCellLine = (
             structure: gene.frontmatter.structure,
             protein: gene.frontmatter.protein,
         }));
-    const { alleleCount, fluorescentTag, taggedGene, tagLocation } =
+    const { alleleCounts, fluorescentTags, taggedGenes, tagLocations } =
         extractGeneticModifications(
             cellLineNode.frontmatter.parental_line.frontmatter
                 .genetic_modifications
@@ -71,7 +71,7 @@ export const convertFrontmatterToDiseaseCellLine = (
         clones: cellLineNode.frontmatter.clones,
         orderLink: cellLineNode.frontmatter.order_link,
         diseaseStatus: diseaseData.status,
-        mutatedGene: mutatedGenes,
+        mutatedGenes: mutatedGenes,
         path: cellLineNode.fields.slug,
         parentalLine: {
             thumbnailImage: getThumbnail(
@@ -81,10 +81,10 @@ export const convertFrontmatterToDiseaseCellLine = (
                 cellLineNode.frontmatter.parental_line.frontmatter.cell_line_id,
             cloneNumber:
                 cellLineNode.frontmatter.parental_line.frontmatter.clone_number,
-            taggedGene,
-            alleleCount,
-            tagLocation,
-            fluorescentTag,
+            taggedGenes,
+            alleleCounts,
+            tagLocations,
+            fluorescentTags,
         },
         key: cellLineNode.id,
     };
@@ -95,15 +95,15 @@ export const convertFrontmatterToNormalCellLines = ({
 }: {
     node: NormalCellLineNode;
 }): UnpackedNormalCellLine => {
-    const { alleleCount, fluorescentTag, taggedGene, tagLocation } =
+    const { alleleCounts, fluorescentTags, taggedGenes, tagLocations } =
         extractGeneticModifications(
             cellLineNode.frontmatter.genetic_modifications
         );
-    const proteins = taggedGene
+    const proteins = taggedGenes
         .map((gene) => gene.protein)
         .filter((protein): protein is string => protein !== undefined);
 
-    const structures = taggedGene
+    const structures = taggedGenes
         .map((gene) => gene.structure)
         .filter((structure): structure is string => structure !== undefined);
 
@@ -112,13 +112,13 @@ export const convertFrontmatterToNormalCellLines = ({
         path: cellLineNode.fields.slug,
         cellLineId: cellLineNode.frontmatter.cell_line_id,
         cloneNumber: cellLineNode.frontmatter.clone_number,
-        taggedGene: taggedGene,
-        alleleCount: alleleCount,
-        tagLocation: tagLocation,
-        fluorescentTag: fluorescentTag,
+        taggedGenes: taggedGenes,
+        alleleCounts: alleleCounts,
+        tagLocations: tagLocations,
+        fluorescentTags: fluorescentTags,
         parentalLine: cellLineNode.frontmatter.parental_line.frontmatter.name,
-        protein: proteins,
-        structure: structures,
+        proteins: proteins,
+        structures: structures,
         status: cellLineNode.frontmatter.status,
         certificateOfAnalysis: cellLineNode.frontmatter.certificate_of_analysis,
         healthCertificate: cellLineNode.frontmatter.eu_hpsc_reg,
