@@ -3,9 +3,8 @@ import { navigate } from "gatsby";
 import React, { useState } from "react";
 
 import { CellLineStatus } from "../../component-queries/types";
-import { TABLET_BREAKPOINT } from "../../constants";
+import { useTabletBreakpoint } from "../../hooks/useWidthBreakpoint";
 import useEnv from "../../hooks/useEnv";
-import useWindowWidth from "../../hooks/useWindowWidth";
 import { CellLineColumns, TableStatus, UnpackedCellLine } from "./types";
 
 const {
@@ -45,9 +44,8 @@ const CellLineTable = ({
     const [hoveredRowIndex, setHoveredRowIndex] = useState(-1);
 
     const inProgress = !released;
-    const width = useWindowWidth();
     const env = useEnv();
-    const isTablet = width < TABLET_BREAKPOINT;
+    const isTablet = useTabletBreakpoint();
 
     const isClickable = (record: UnpackedCellLine): boolean => {
         if (suppressRowClickRef?.current) {
@@ -112,7 +110,7 @@ const CellLineTable = ({
                 title={() => (
                     <Flex className={titleContainer} align="center">
                         <h3 className={tableTitle}>{tableName}</h3>
-                        {tableDescription && width >= TABLET_BREAKPOINT && (
+                        {tableDescription && !isTablet && (
                             <div className={categoryText}>
                                 {tableDescription}
                             </div>
