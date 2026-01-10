@@ -32,6 +32,7 @@
         max-width: 960px;
         gap: 20px;
         min-height: auto;
+        margin-bottom: 20px;
     }
 
     .left-card {
