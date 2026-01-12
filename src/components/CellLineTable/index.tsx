@@ -114,7 +114,6 @@ const CellLineTable = ({
             sorter: inProgress ? undefined : column.sorter,
             onCell: inProgress ? undefined : onCellInteraction,
             fixed: isMobile ? undefined : column.fixed, // disable fixed columns on mobile
-            mobileTitle: undefined, // remove mobileTitle prop after use
         };
     });
 
