@@ -48,25 +48,3 @@
 .title-link:global(.ant-dropdown-open) {
         text-shadow: 0.5px 0 0 currentColor, -0.5px 0 0 currentColor;
 }
-
-.hamburger-menu {
-    display: none;
-}
-
-.left-content > :global(.ant-dropdown) {
-    display: block;
-}
-
-@media (max-width: 768px) {
-    .hamburger-menu {
-        display: block;
-    }
-
-    .dropdown-buttons {
-        display: none;
-    }
-
-    .divider {
-        display: none;
-    }
-}

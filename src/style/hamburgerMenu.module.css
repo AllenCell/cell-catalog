@@ -3,9 +3,10 @@
     font-size: 20px;
 }
 
-.hamburger-button:hover,
-.hamburger-button:focus,
-.hamburger-button:focus-visible {
+.hamburger-button:global(.ant-btn.ant-btn-icon-only):hover,
+.hamburger-button:global(.ant-btn.ant-btn-icon-only):focus,
+.hamburger-button:global(.ant-btn.ant-btn-icon-only):focus-visible {
+    color: var(--WHITE);
     border: 1px solid var(--WHITE);
     outline: none;
 }
