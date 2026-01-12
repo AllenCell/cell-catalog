@@ -55,7 +55,8 @@
     /* this keeps the change in border color from being 
     mitered at the corners, which looked weird
     */
-    box-shadow: inset 1.5px 0 0 0 var(--border-color),
+    box-shadow:
+        inset 1.5px 0 0 0 var(--border-color),
         inset -1.5px 0 0 0 var(--border-color),
         inset 0 -3px 0 0 var(--primary-color),
         inset 0 1.5px 0 0 var(--border-color);
@@ -95,7 +96,7 @@
 }
 
 .container .action-column:has(.action-button.disabled) {
-  cursor: not-allowed;
+    cursor: not-allowed;
 }
 
 .container .action-column:global(.ant-table-cell):has(a:not(.disabled)):hover {
@@ -106,14 +107,20 @@
     color: var(--WHITE);
 }
 
-.action-column:hover:has(a:not(.disabled)) .action-button :global(.tube-icon) path,
-.action-column:hover:has(a:not(.disabled)) .action-button :global(.tube-icon) line {
+.action-column:hover:has(a:not(.disabled))
+    .action-button
+    :global(.tube-icon)
+    path,
+.action-column:hover:has(a:not(.disabled))
+    .action-button
+    :global(.tube-icon)
+    line {
     fill: var(--primary-color);
     stroke: var(--WHITE);
 }
 
 .action-column .action-button :global(.tube-icon) {
-  color: var(--WHITE);
+    color: var(--WHITE);
 }
 
 .action-column .action-button .cert-icon path,
@@ -131,23 +138,23 @@
 }
 
 .action-button.disabled {
-  color: var(--RAIN_SHADOW);
-  cursor: not-allowed;
+    color: var(--RAIN_SHADOW);
+    cursor: not-allowed;
 }
 
 .action-button.disabled :global(.tube-icon) path {
-  fill: var(--WHITE);
+    fill: var(--WHITE);
 }
 
 .action-button.disabled :global(.tube-icon) line,
 .action-button.disabled :global(.tube-icon) path,
 .action-button.disabled .cert-icon path,
 .action-button.disabled .cert-icon line {
-  stroke: var(--RAIN_SHADOW);
+    stroke: var(--RAIN_SHADOW);
 }
 
 .action-button.disabled :global(.plasmid-icon) path {
-  fill: var(--RAIN_SHADOW);
+    fill: var(--RAIN_SHADOW);
 }
 
 .container .id-header h4,
@@ -318,7 +325,7 @@
     background-color: var(--WHITE);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 744px) {
     .container h4 {
         font-size: 20px;
     }
@@ -330,11 +337,16 @@
 }
 
 @media screen and (max-width: 576px) {
-    .container h4 {
+    .container .id-header h4 {
         font-size: 16px;
+        line-height: 16px;
     }
     .container :global(.ant-table-row .ant-table-cell) {
         padding-bottom: 4px;
+    }
+    .container :global(.ant-table-row .ant-table-cell).cell-line-id {
+        width: 70px;
+        padding: 0;
     }
     .action-column {
         width: 120px;
