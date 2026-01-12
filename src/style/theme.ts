@@ -67,6 +67,14 @@ export default {
         Dropdown: {
             colorBgElevated: SERIOUS_GRAY,
             colorText: WHITE,
+        },
+        Drawer: {
+            colorBgElevated: SERIOUS_GRAY,
+            colorText: WHITE,
+        },
+        Menu: {
+            colorBgContainer: SERIOUS_GRAY,
+            colorText: WHITE,
         }
     },
 };
