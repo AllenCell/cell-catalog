@@ -98,18 +98,18 @@ const NavBar: React.FC = () => {
                     </a>
                     {!isTablet && (
                         <>
-                        <span className={divider}>|</span>
-                        <div className={dropdownButtons}>
-                            <NavBarDropdown
-                                buttonComponent={
-                                    <div className={titleLink}>
-                                        Allen Cell Collection
-                                    </div>
-                                }
-                                label="Catalogs"
-                                items={formattedCatalogs}
-                            />
-                        </div>
+                            <span className={divider}>|</span>
+                            <div className={dropdownButtons}>
+                                <NavBarDropdown
+                                    buttonComponent={
+                                        <div className={titleLink}>
+                                            Allen Cell Collection
+                                        </div>
+                                    }
+                                    label="Catalogs"
+                                    items={formattedCatalogs}
+                                />
+                            </div>
                         </>
                     )}
                 </div>

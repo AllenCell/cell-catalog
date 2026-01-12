@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { MenuOutlined } from "@ant-design/icons";
 import { Button, Drawer } from "antd";
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
-import { MenuOutlined } from "@ant-design/icons";
+import React, { useState } from "react";
 
 const {
     hamburgerButton,
@@ -58,24 +58,15 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
                 <div className={drawerContent}>
                     <div className={menuSection}>
                         <div className={sectionTitle}>Catalogs</div>
-                        <Menu
-                            items={catalogItems}
-                            {...sharedMenuProps}
-                        />
+                        <Menu items={catalogItems} {...sharedMenuProps} />
                     </div>
                     <div className={menuSection}>
                         <div className={sectionTitle}>Protocols</div>
-                        <Menu
-                            items={protocolItems}
-                            {...sharedMenuProps}
-                        />
+                        <Menu items={protocolItems} {...sharedMenuProps} />
                     </div>
                     <div className={menuSection}>
                         <div className={sectionTitle}>Collections</div>
-                        <Menu
-                            items={collectionItems}
-                            {...sharedMenuProps}
-                        />
+                        <Menu items={collectionItems} {...sharedMenuProps} />
                     </div>
                 </div>
             </Drawer>
