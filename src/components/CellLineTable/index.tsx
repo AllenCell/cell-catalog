@@ -3,8 +3,11 @@ import { navigate } from "gatsby";
 import React, { useState } from "react";
 
 import { CellLineStatus } from "../../component-queries/types";
-import { useMobileBreakpoint, useTabletBreakpoint } from "../../hooks/useWidthBreakpoint";
 import useEnv from "../../hooks/useEnv";
+import {
+    useMobileBreakpoint,
+    useTabletBreakpoint,
+} from "../../hooks/useWidthBreakpoint";
 import { CellLineColumns, TableStatus, UnpackedCellLine } from "./types";
 
 const {
