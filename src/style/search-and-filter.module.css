@@ -44,7 +44,10 @@
     width: 100%;
 }
 
-.container .filter-container :global(.ant-select) :global(.ant-select-selector) {
+.container
+    .filter-container
+    :global(.ant-select)
+    :global(.ant-select-selector) {
     cursor: pointer;
 }
 
@@ -74,10 +77,14 @@
     display: none;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 744px) {
+    .container {
+        padding: 20px;
+    }
     .input-container {
         flex-direction: column;
         gap: 16px;
         margin-top: 16px;
+        align-items: stretch;
     }
 }

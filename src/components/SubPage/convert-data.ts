@@ -216,7 +216,7 @@ export const getStemCellCharData = (
 export const unpackParentLineFromFrontmatter = (
     data: ParentalLineFrontmatter,
 ): ParentLine => {
-    const { alleleCount, fluorescentTag, taggedGene, tagLocation } =
+    const { alleleCounts, fluorescentTags, taggedGenes, tagLocations } =
         extractGeneticModifications(data.genetic_modifications);
     const thumbnailImage = getThumbnail(data.images_and_videos);
     const cellLineId = data.cell_line_id;
@@ -225,10 +225,10 @@ export const unpackParentLineFromFrontmatter = (
         thumbnailImage,
         cellLineId,
         cloneNumber,
-        taggedGene,
-        alleleCount,
-        tagLocation,
-        fluorescentTag,
+        taggedGenes,
+        alleleCounts,
+        tagLocations,
+        fluorescentTags,
     };
 };
 
@@ -259,19 +259,19 @@ export const unpackNormalStemCellCharacteristics = (
         caption: scc.cardiomyocyte_differentiation_caption,
         data: scc.cardiomyocyte_differentiation
             ? [
-                  {
-                      troponinPercentPositive:
-                          scc.cardiomyocyte_differentiation
-                              .troponin_percent_positive,
-                      dayOfBeatingPercent:
-                          scc.cardiomyocyte_differentiation
-                              .day_of_beating_percent,
-                      dayOfBeatingRange:
-                          scc.cardiomyocyte_differentiation
-                              .day_of_beating_range,
-                      key: "0",
-                  },
-              ]
+                {
+                    troponinPercentPositive:
+                        scc.cardiomyocyte_differentiation
+                            .troponin_percent_positive,
+                    dayOfBeatingPercent:
+                        scc.cardiomyocyte_differentiation
+                            .day_of_beating_percent,
+                    dayOfBeatingRange:
+                        scc.cardiomyocyte_differentiation
+                            .day_of_beating_range,
+                    key: "0",
+                },
+            ]
             : [],
     };
 
@@ -295,15 +295,15 @@ export const unpackNormalStemCellCharacteristics = (
 export const unpackNormalFrontmatterForSubpage = (
     cellLineNode: NormalCellLineNode,
 ): UnpackedNormalCellLineFull => {
-    const { alleleCount, fluorescentTag, taggedGene, tagLocation } =
+    const { alleleCounts, fluorescentTags, taggedGenes, tagLocations } =
         extractGeneticModifications(
             cellLineNode.frontmatter.genetic_modifications,
         );
-    const proteins = taggedGene
+    const proteins = taggedGenes
         .map((gene) => gene.protein)
         .filter((protein): protein is string => protein !== undefined);
 
-    const structures = taggedGene
+    const structures = taggedGenes
         .map((gene) => gene.structure)
         .filter((structure): structure is string => structure !== undefined);
 
@@ -324,13 +324,13 @@ export const unpackNormalFrontmatterForSubpage = (
         path: cellLineNode.fields.slug,
         cellLineId: cellLineNode.frontmatter.cell_line_id,
         cloneNumber: cellLineNode.frontmatter.clone_number,
-        taggedGene: taggedGene,
-        alleleCount: alleleCount,
-        tagLocation: tagLocation,
-        fluorescentTag: fluorescentTag,
+        taggedGenes: taggedGenes,
+        alleleCounts: alleleCounts,
+        tagLocations: tagLocations,
+        fluorescentTags: fluorescentTags,
         parentalLine: cellLineNode.frontmatter.parental_line.frontmatter.name,
-        protein: proteins,
-        structure: structures,
+        proteins: proteins,
+        structures: structures,
         status: cellLineNode.frontmatter.status,
         certificateOfAnalysis: cellLineNode.frontmatter.certificate_of_analysis,
         healthCertificate: cellLineNode.frontmatter.eu_hpsc_reg,

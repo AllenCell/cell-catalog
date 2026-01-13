@@ -3,7 +3,7 @@ import { navigate } from "gatsby";
 import React, { useState } from "react";
 
 import { CellLineStatus } from "../../component-queries/types";
-import { useTabletBreakpoint } from "../../hooks/useWidthBreakpoint";
+import { useMobileBreakpoint, useTabletBreakpoint } from "../../hooks/useWidthBreakpoint";
 import useEnv from "../../hooks/useEnv";
 import { CellLineColumns, TableStatus, UnpackedCellLine } from "./types";
 
@@ -46,6 +46,7 @@ const CellLineTable = ({
     const inProgress = !released;
     const env = useEnv();
     const isTablet = useTabletBreakpoint();
+    const isMobile = useMobileBreakpoint();
 
     const isClickable = (record: UnpackedCellLine): boolean => {
         if (suppressRowClickRef?.current) {
@@ -90,12 +91,27 @@ const CellLineTable = ({
         // should not take you to the cell line page, and are not
         // sortable.
         if (column.className?.includes("action-column")) {
+            if (isMobile) {
+                // on mobile, remove the fixed property to evenly
+                // distribute the columns
+                return {
+                    ...column,
+                    fixed: undefined,
+                };
+            }
             return column;
         }
+        const showMobileTitle =
+            isMobile && "mobileTitle" in column && column.mobileTitle;
+
         return {
             ...column,
+            title: (showMobileTitle
+                ? column.mobileTitle
+                : column.title) as typeof column.title,
             sorter: inProgress ? undefined : column.sorter,
             onCell: inProgress ? undefined : onCellInteraction,
+            fixed: isMobile ? undefined : column.fixed, // disable fixed columns on mobile
         };
     });
 
@@ -122,7 +138,7 @@ const CellLineTable = ({
                         ) : null}
                     </Flex>
                 )}
-                scroll={{ x: "max-content" }}
+                scroll={isMobile ? undefined : { x: "max-content" }}
                 pagination={false}
                 expandable={isTablet ? mobileConfig : undefined}
                 columns={interactiveColumns}

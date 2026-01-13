@@ -33,50 +33,48 @@ const SearchAndFilter: React.FC<SearchAndFilterProps> = ({
     setSelectedCategories,
 }) => {
     const data = useStaticQuery<SearchAndFilterQueryResult>(graphql`
-                query SearchAndFilterQuery {
-                    allMarkdownRemark(
-                        filter: {
-                            frontmatter: {
-                                templateKey: { ne: "disease-cell-line" }
-                                cell_line_id: { ne: 0 }
-                                status: { ne: "hide" }
+        query SearchAndFilterQuery {
+            allMarkdownRemark(
+                filter: {
+                    frontmatter: {
+                        templateKey: { ne: "disease-cell-line" }
+                        cell_line_id: { ne: 0 }
+                        status: { ne: "hide" }
+                    }
+                }
+            ) {
+                group(
+                    field: {
+                        frontmatter: {
+                            genetic_modifications: {
+                                gene: { frontmatter: { symbol: SELECT } }
                             }
                         }
-                    ) {
-                        group(
-                            field: {
-                                frontmatter: {
-                                    genetic_modifications: {
-                                        gene: {
-                                            frontmatter: { symbol: SELECT }
+                    }
+                ) {
+                    fieldValue
+                    edges {
+                        node {
+                            frontmatter {
+                                cell_line_id
+                                genetic_modifications {
+                                    gene {
+                                        frontmatter {
+                                            name
+                                            symbol
+                                            protein
+                                            structure
                                         }
                                     }
                                 }
-                            }
-                        ) {
-                            fieldValue
-                            edges {
-                                node {
-                                    frontmatter {
-                                        cell_line_id
-                                        genetic_modifications {
-                                            gene {
-                                                frontmatter {
-                                                    name
-                                                    symbol
-                                                    protein
-                                                    structure
-                                                }
-                                            }
-                                        }
-                                        category_labels
-                                    }
-                                }
+                                category_labels
                             }
                         }
                     }
                 }
-            `);
+            }
+        }
+    `);
 
     const mappings = createLookupMappings(data.allMarkdownRemark.group);
 

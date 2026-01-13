@@ -44,7 +44,7 @@
 }
 
 /* mobile sizing */
-@media (max-width: 744px) {
+@media screen and (max-width: 744px) {
     .container :global(.ant-descriptions-item-label) {
         font-size: 12px;
     }
