@@ -1,27 +1,26 @@
 import { MenuOutlined } from "@ant-design/icons";
-import { Button, Drawer } from "antd";
+import { Button, Drawer, Menu } from "antd";
 import type { MenuProps } from "antd";
-import { Menu } from "antd";
 import React, { useState } from "react";
 
 const {
-    hamburgerButton,
+    drawerContainer,
     drawerContent,
+    hamburgerButton,
     menuSection,
     sectionTitle,
-    drawerContainer,
 } = require("../../style/hamburgerMenu.module.css");
 
 export interface HamburgerMenuProps {
     catalogItems: MenuProps["items"];
-    protocolItems: MenuProps["items"];
     collectionItems: MenuProps["items"];
+    protocolItems: MenuProps["items"];
 }
 
 const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
     catalogItems,
-    protocolItems,
     collectionItems,
+    protocolItems,
 }) => {
     const [open, setOpen] = useState(false);
 
