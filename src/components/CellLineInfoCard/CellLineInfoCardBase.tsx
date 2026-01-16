@@ -87,7 +87,7 @@ const CellLineInfoCardBase = ({
                         {icon}
                         {label}
                     </h2>
-                    <LinkOutIcon className={linkoutIcon}/>
+                    <LinkOutIcon className={linkoutIcon} />
                 </div>
                 {subtitle}
             </Button>
