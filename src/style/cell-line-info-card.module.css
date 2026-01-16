@@ -123,7 +123,7 @@
 }
 
 /* mobile sizing */
-@media (max-width: 744px) {
+@media screen and (max-width: 744px) {
     .container .title {
         font-size: 32px;
     }

@@ -1,7 +1,8 @@
 import { GetProp, Table } from "antd";
+
 import {
-    UnpackedNormalCellLine,
     UnpackedDiseaseCellLine,
+    UnpackedNormalCellLine,
 } from "../../component-queries/types";
 
 export const mdBreakpoint = ["md" as const];

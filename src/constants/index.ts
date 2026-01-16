@@ -1,6 +1,6 @@
 import { SubPage } from "../types";
 
-export const TABLET_BREAKPOINT = 768;
+export const TABLET_BREAKPOINT = 744;
 export const PHONE_BREAKPOINT = 576;
 export const PRODUCTION_HOST = "cell-catalog.allencell.org";
 
