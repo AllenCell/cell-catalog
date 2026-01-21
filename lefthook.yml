@@ -1,16 +1,18 @@
+rc: ~/.lefthookrc
+
 pre-commit:
     parallel: true
     jobs:
         - name: format
-          glob: "*.{ts,tsx}"
+          glob: "**/*.{ts,tsx}"
           run: npx prettier --check {staged_files}
 
         - name: lint
-          glob: "*.{ts,tsx}"
+          glob: "**/*.{ts,tsx}"
           run: npx eslint --quiet {staged_files}
 
-        # - name: typecheck
-        #   run: yarn typeCheck
+        - name: typecheck
+          run: npx tsc --noEmit
 
-        # - name: test
-        #   run: yarn test
+        - name: test
+          run: npx vitest run
