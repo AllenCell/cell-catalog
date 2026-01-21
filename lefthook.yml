@@ -5,9 +5,9 @@ pre-commit:
           glob: "*.{ts,tsx}"
           run: npx prettier --check {staged_files}
 
-        # - name: lint
-        #   glob: "*.{ts,tsx}"
-        #   run: npx eslint --quiet {staged_files}
+        - name: lint
+          glob: "*.{ts,tsx}"
+          run: npx eslint --quiet {staged_files}
 
         # - name: typecheck
         #   run: yarn typeCheck
