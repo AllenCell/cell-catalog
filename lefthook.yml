@@ -3,14 +3,14 @@ pre-commit:
     jobs:
         - name: format
           glob: "**/*.{ts,tsx}"
-          run: npx prettier --check {staged_files}
+          run: yarn format {staged_files}
 
         - name: lint
           glob: "**/*.{ts,tsx}"
           run: yarn lint {staged_files}
 
         - name: typecheck
-          run: npx tsc --noEmit
+          run: yarn typeCheck --noEmit
 
         - name: test
-          run: npx vitest run
+          run: npx vitest related --run {staged_files} 
