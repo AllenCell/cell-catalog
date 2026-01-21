@@ -91,3 +91,29 @@
         margin: 0px;
     }
 }
+
+/* Mobile button carousel styles */
+.mobile-tab-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+}
+
+.mobile-tab-button {
+    min-width: 281px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 64px;
+}
+
+
+.mobile-tab-button-active {
+    background-color: var(--primary-color);
+    color: var(--WHITE);
+}

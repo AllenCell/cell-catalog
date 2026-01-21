@@ -5,8 +5,7 @@ import CellLineTable from "../components/CellLineTable";
 import { getDiseaseTableColumns } from "../components/CellLineTable/DiseaseTableColumns";
 import { getDiseaseTableMobileConfig } from "../components/CellLineTable/MobileView";
 import { TableStatus } from "../components/CellLineTable/types";
-import { PHONE_BREAKPOINT } from "../constants";
-import useWindowWidth from "../hooks/useWindowWidth";
+import { useMobileBreakpoint } from "../hooks/useWidthBreakpoint";
 import { UnpackedDisease } from "./Diseases";
 import { convertFrontmatterToDiseaseCellLine } from "./convert-data";
 import { DiseaseCellLineEdge, UnpackedDiseaseCellLine } from "./types";
@@ -127,8 +126,7 @@ export default function DiseaseCellLineQuery(props: {
             return null;
         }
         const inProgress = disease.status === TableStatus.ComingSoon;
-        const width = useWindowWidth();
-        const isPhone = width < PHONE_BREAKPOINT;
+        const isPhone = useMobileBreakpoint();
 
         const suppressRowClickRef = useRef(false);
 

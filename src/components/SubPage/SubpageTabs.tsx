@@ -1,6 +1,7 @@
 import { Flex, Tabs } from "antd";
-import React from "react";
+import React, { useState } from "react";
 
+import { useTabletBreakpoint } from "../../hooks/useWidthBreakpoint";
 import { SubPage } from "../../types";
 import EditingDesignSubpage from "./EditingDesign";
 import GenomicCharacterization from "./GenomicCharacterization";
@@ -15,6 +16,9 @@ const {
     container,
     labelGroup,
     noData,
+    mobileTabBar,
+    mobileTabButton,
+    mobileTabButtonActive,
 } = require("../../style/subpage-tabs.module.css");
 
 export interface SubpageTabsProps {
@@ -30,6 +34,11 @@ const SubpageTabs: React.FC<SubpageTabsProps> = ({
     stemCellCharacteristics,
     tabsToRender,
 }) => {
+    const [activeTab, setActiveTab] = useState<SubPage>(
+        tabsToRender[0] || SubPage.EditingDesign,
+    );
+    const isTablet = useTabletBreakpoint();
+
     const getNoDataComponent = (tab: SubPage) => {
         return (
             <div className={noData}>
@@ -54,36 +63,52 @@ const SubpageTabs: React.FC<SubpageTabsProps> = ({
         ) : (
             getNoDataComponent(SubPage.StemCellCharacteristics)
         ),
-
-        // TODO: add this once we have the data
-        // [SubPage.Protocols]: <div>Protocols Content</div>,
     };
+
+    const renderTabLabel = (tabName: SubPage) => {
+        const label = tabName.split(" ").map((word) => {
+            return <span key={word}>{word}</span>;
+        });
+        return (
+            <Flex wrap justify="center" align="center" className={labelGroup}>
+                {label}
+            </Flex>
+        );
+    };
+
+    if (isTablet) {
+        return (
+            <div className={container}>
+                <div className={mobileTabBar}>
+                    {tabsToRender.map((tabName) => (
+                        <button
+                            key={tabName}
+                            className={`${mobileTabButton} ${
+                                activeTab === tabName
+                                    ? mobileTabButtonActive
+                                    : ""
+                            }`}
+                            onClick={() => setActiveTab(tabName)}
+                        >
+                            {renderTabLabel(tabName)}
+                        </button>
+                    ))}
+                </div>
+                {tabComponents[activeTab]}
+            </div>
+        );
+    }
 
     return (
         <Tabs
             className={container}
-            defaultActiveKey={SubPage.EditingDesign}
-            items={tabsToRender.map((tabName) => {
-                // TODO: Render <TabName> is not yet available for this cell line
-                // if the data doesn't exist
-                const label = tabName.split(" ").map((word) => {
-                    return <span key={word}>{word}</span>;
-                });
-                return {
-                    label: (
-                        <Flex
-                            wrap
-                            justify="center"
-                            align="center"
-                            className={labelGroup}
-                        >
-                            {label}
-                        </Flex>
-                    ),
-                    key: tabName,
-                    children: tabComponents[tabName],
-                };
-            })}
+            activeKey={activeTab}
+            onChange={(key) => setActiveTab(key as SubPage)}
+            items={tabsToRender.map((tabName) => ({
+                label: renderTabLabel(tabName),
+                key: tabName,
+                children: tabComponents[tabName],
+            }))}
         />
     );
 };
