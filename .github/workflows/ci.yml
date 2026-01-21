@@ -40,7 +40,7 @@ jobs:
               with:
                   node-version: ${{env.NODE_VERSION}}
             - run: yarn install --frozen-lockfile
-            - run: npm run typeCheck --if-present
+            - run: npm run typeCheck
     test:
         name: Test
         runs-on: ubuntu-latest
