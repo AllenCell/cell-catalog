@@ -13,4 +13,4 @@ pre-commit:
           run: yarn typeCheck --noEmit
 
         - name: test
-          run: npx vitest related --run {staged_files} 
+          run: yarn test
