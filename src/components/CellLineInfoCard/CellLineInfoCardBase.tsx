@@ -15,9 +15,9 @@ const {
     disabled,
     extraLargeButton,
     extraLargeButtonHeader,
+    linkoutIcon,
     spacedButton,
     title,
-    linkoutIcon,
 } = require("../../style/cell-line-info-card.module.css");
 
 interface OrderButtonProps {
