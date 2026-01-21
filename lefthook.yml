@@ -4,10 +4,12 @@ pre-commit:
         - name: format
           glob: "**/*.{ts,tsx}"
           run: yarn format {staged_files}
+          stage_fixed: true
 
         - name: lint
           glob: "**/*.{ts,tsx}"
           run: yarn lint {staged_files}
+          stage_fixed: true
 
         - name: typecheck
           run: yarn typeCheck --noEmit
