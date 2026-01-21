@@ -15,10 +15,10 @@ import {
 const {
     container,
     labelGroup,
-    noData,
     mobileTabBar,
     mobileTabButton,
     mobileTabButtonActive,
+    noData,
 } = require("../../style/subpage-tabs.module.css");
 
 export interface SubpageTabsProps {

@@ -14,7 +14,7 @@ const {
     videoIframe,
 } = require("../../style/images-and-videos.module.css");
 
-interface MobileImageCardProps {
+interface MediaCardProps {
     className?: string;
     item: ImageOrVideo;
     title: React.JSX.Element;
@@ -67,7 +67,7 @@ export const MediaCard = ({
     item,
     thumbnails,
     title,
-}: MobileImageCardProps) => {
+}: MediaCardProps) => {
     return (
         <Card key={index} className={className} title={title}>
             <Flex
