@@ -29,6 +29,7 @@
 }
 
 .container .header {
+    padding-top: 24px;
     width: 100%;
 }
 
@@ -199,12 +200,18 @@
         font-weight: 400;
     }
 
+    .mobile-card-container .title-section {
+        line-height: normal;
+    }
+
+
     .mobile-card-container .title-section,
     .mobile-card-container h3 {
         font-weight: 400;
     }
 
     .mobile-card-container .header {
+        padding-top: 20px;
         width: 100%;
     }
 
@@ -273,9 +280,8 @@
     }
 
     .mobile-media-card .caption {
-        text-align: center;
         font-size: 14px;
-        line-height: 1.5;
+        line-height: normal;
         margin-top: 12px;
         flex: 0 0 auto;
         max-height: 64px;

@@ -114,7 +114,6 @@ const ImagesAndVideos: React.FC<ImagesAndVideosProps> = ({
     const title = (
         <Flex
             justify="space-between"
-            style={{ paddingTop: 24 }}
             className={header}
             vertical={isMobile}
             gap={isTablet ? 8 : 0}
