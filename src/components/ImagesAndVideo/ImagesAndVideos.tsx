@@ -111,6 +111,13 @@ const ImagesAndVideos: React.FC<ImagesAndVideosProps> = ({
         </Flex>
     ) : undefined;
 
+    const formatGeneSubtitle = () => {
+        const base = `WTC-${fluorescentTag}`;
+        return parentalGeneSymbol
+            ? `${geneSymbol} in ${base}-${parentalGeneSymbol} (${alleleTag}-allelic tag)`
+            : `${geneSymbol} in ${base} (${alleleTag}-allelic tag)`;
+    };
+
     const title = (
         <Flex
             justify="space-between"
@@ -120,11 +127,7 @@ const ImagesAndVideos: React.FC<ImagesAndVideosProps> = ({
         >
             <div className={titleSection}>
                 <h3 className={mainTitle}>{formatCellLineId(cellLineId)}</h3>
-                <span className={subtitle}>
-                    {parentalGeneSymbol
-                        ? `${geneSymbol} in WTC-${fluorescentTag}-${parentalGeneSymbol} (${alleleTag}-allelic tag)`
-                        : `${geneSymbol} in WTC-${fluorescentTag} (${alleleTag}-allelic tag)`}
-                </span>
+                <span className={subtitle}>{formatGeneSubtitle()}</span>
             </div>
             {isDisease && (
                 <span className={rightTitle}>
