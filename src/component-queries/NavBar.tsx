@@ -15,11 +15,11 @@ const {
     container,
     content,
     divider,
+    dropdownButtons,
     hamburgerMenu,
     leftContent,
     logoLink,
     rightContent,
-    dropdownButtons,
     titleLink,
 } = require("../style/navbar.module.css");
 

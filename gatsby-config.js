@@ -73,7 +73,29 @@ module.exports = {
         `gatsby-plugin-image`,
         "gatsby-plugin-sharp",
         "gatsby-transformer-sharp",
-        "gatsby-plugin-react-svg",
+        {
+            resolve: "gatsby-plugin-svgr-svgo",
+            options: {
+                inlineSvgOptions: [
+                    {
+                        test: /src\/img\/.*\.svg$/,
+                        svgoConfig: {
+                            plugins: [
+                                {
+                                    name: "preset-default",
+                                    params: {
+                                        overrides: {
+                                            removeViewBox: false,
+                                        },
+                                    },
+                                },
+                                "prefixIds",
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
         "gatsby-transformer-remark-frontmatter",
         {
             resolve: "gatsby-transformer-remark",

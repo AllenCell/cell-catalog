@@ -19,6 +19,9 @@ const {
     mobileTabButton,
     mobileTabButtonActive,
     noData,
+    mobileTabBar,
+    mobileTabButton,
+    mobileTabButtonActive,
 } = require("../../style/subpage-tabs.module.css");
 
 export interface SubpageTabsProps {
