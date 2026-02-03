@@ -162,14 +162,14 @@ const ImagesAndVideos: React.FC<ImagesAndVideosProps> = ({
             <>
                 {previewGroup}
                 <div className={mobileCardContainer}>
-                    {mediaItems.map((_item, index) => (
+                    {mediaItems.map((item, index) => (
                         <MediaCard
                             className={mobileMediaCard}
                             key={index}
                             index={index}
                             title={title}
                             isMobile={isMobile}
-                            item={mediaItems[index]}
+                            item={item}
                             handleClick={handleMediaClick}
                         />
                     ))}
