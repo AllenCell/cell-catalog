@@ -1,5 +1,6 @@
 import { useLocation } from "@reach/router";
 import { Flex } from "antd";
+import classNames from "classnames";
 import React, { useState } from "react";
 
 import {
@@ -24,6 +25,7 @@ const {
     mobileCardContainer,
     mobileMediaCard,
     rightTitle,
+    singleImage,
     subtitle,
     thumbnailContainer,
     titleSection,
@@ -164,7 +166,10 @@ const ImagesAndVideos: React.FC<ImagesAndVideosProps> = ({
                 <div className={mobileCardContainer}>
                     {mediaItems.map((item, index) => (
                         <MediaCard
-                            className={mobileMediaCard}
+                            className={classNames(
+                                mobileMediaCard,
+                                mediaItems.length === 1 && singleImage,
+                            )}
                             key={index}
                             index={index}
                             title={title}
