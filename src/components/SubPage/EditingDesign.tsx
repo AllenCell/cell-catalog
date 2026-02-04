@@ -16,17 +16,21 @@ const { container, legendText } = require("../../style/subpage.module.css");
 const formatTextWithGeneLocations = (text: string, className: string) => {
     // PAM sites and mutations are indicated in the string using square brackets
     const parts = text.split(/(\[.*?\])/);
-    return parts.map((part, index) => {
-        if (part.startsWith("[") && part.endsWith("]")) {
-            const bracketsRemoved = part.slice(1, -1);
-            return (
-                <span key={index} className={className}>
-                    {bracketsRemoved}
-                </span>
-            );
-        }
-        return part;
-    });
+    return (
+        <span>
+            {parts.map((part, index) => {
+                if (part.startsWith("[") && part.endsWith("]")) {
+                    const bracketsRemoved = part.slice(1, -1);
+                    return (
+                        <span key={index} className={className}>
+                            {bracketsRemoved}
+                        </span>
+                    );
+                }
+                return part;
+            })}
+        </span>
+    );
 };
 
 const EditingDesignSubpage: React.FC<EditingDesignSubpageProps> = ({
@@ -111,7 +115,7 @@ const EditingDesignSubpage: React.FC<EditingDesignSubpageProps> = ({
     if (fPrimer) {
         rows.push({
             key: "f_primer",
-            label: "F Primer for PCR/Sequencing:",
+            label: <>F Primer for PCR/<wbr />Sequencing:</>,
             children: fPrimer,
         });
     }
@@ -119,7 +123,7 @@ const EditingDesignSubpage: React.FC<EditingDesignSubpageProps> = ({
     if (rPrimer) {
         rows.push({
             key: "r_primer",
-            label: "R Primer for PCR/Sequencing:",
+            label: <>R Primer for PCR/<wbr />Sequencing:</>,
             children: rPrimer,
         });
     }
