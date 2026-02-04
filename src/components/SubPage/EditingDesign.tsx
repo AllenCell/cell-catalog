@@ -115,7 +115,13 @@ const EditingDesignSubpage: React.FC<EditingDesignSubpageProps> = ({
     if (fPrimer) {
         rows.push({
             key: "f_primer",
-            label: <>F Primer for PCR/<wbr />Sequencing:</>,
+            label: (
+                <>
+                    F Primer for PCR/
+                    <wbr />
+                    Sequencing:
+                </>
+            ),
             children: fPrimer,
         });
     }
@@ -123,7 +129,13 @@ const EditingDesignSubpage: React.FC<EditingDesignSubpageProps> = ({
     if (rPrimer) {
         rows.push({
             key: "r_primer",
-            label: <>R Primer for PCR/<wbr />Sequencing:</>,
+            label: (
+                <>
+                    R Primer for PCR/
+                    <wbr />
+                    Sequencing:
+                </>
+            ),
             children: rPrimer,
         });
     }
