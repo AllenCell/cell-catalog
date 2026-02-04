@@ -204,7 +204,6 @@
         line-height: normal;
     }
 
-
     .mobile-card-container .title-section,
     .mobile-card-container h3 {
         font-weight: 400;
@@ -224,7 +223,7 @@
         padding: 0 20px 20px 0px;
     }
 
-    .mobile-card-container.single-image {
+    .mobile-media-card.single-image {
         width: 100%;
     }
 
@@ -307,6 +306,10 @@
     .mobile-card-container {
         gap: 16px;
         padding: 0 16px 16px 0px;
+    }
+
+    .mobile-card-container:has(.single-image) {
+        padding: 0px;
     }
 
     .mobile-media-card {
