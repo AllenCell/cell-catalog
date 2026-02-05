@@ -46,6 +46,9 @@
   ],
   "license": "MIT",
   "main": "n/a",
+  "resolutions": {
+    "@types/react": "18.0.28"
+  },
   "scripts": {
     "clean": "gatsby clean",
     "start": "npm run develop",
