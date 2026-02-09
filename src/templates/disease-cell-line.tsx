@@ -4,7 +4,7 @@ import React from "react";
 
 import { DiseaseCellLineFrontmatter } from "../component-queries/types";
 import { DiseaseCellLineInfoCard } from "../components/CellLineInfoCard/DiseaseCellLineInfoCard";
-import ImagesAndVideos from "../components/ImagesAndVideos";
+import ImagesAndVideos from "../components/ImagesAndVideo/ImagesAndVideos";
 import Layout from "../components/Layout";
 import SubpageTabs from "../components/SubPage/SubpageTabs";
 import { unpackDiseaseFrontmatterForSubpage } from "../components/SubPage/convert-data";
