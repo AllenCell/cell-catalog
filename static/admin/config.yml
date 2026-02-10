@@ -910,7 +910,8 @@ collections:
                 name: "geneId",
                 widget: "string",
                 required: true,
-                hint: "Unique identifier for this gene entry. If the gene symbol is unique, you can use that as the gene ID. Otherwise, you can create a unique ID (lowercase no spaces) using a combination of the gene symbol and other relevant information (e.g., species, isoform). ",
+                hint: "Unique identifier for this gene entry. If the gene symbol is unique, you can use that as the gene ID. Otherwise, you can create a unique ID (lowercase no spaces) using a combination of the gene symbol and other relevant information (e.g., species, isoform).",
+                pattern: ["^[a-z0-9-]+$", "Must be lowercase, using only letters, numbers, and hyphens (no spaces)."]
             }
           - {
                 label: "Gene Symbol",
