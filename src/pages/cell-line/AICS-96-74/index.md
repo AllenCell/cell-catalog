@@ -6,7 +6,7 @@ date: 2025-05-06T21:01:17.772Z
 clone_number: 74
 parental_line: 0
 genetic_modifications:
-  - gene: POLR2A
+  - gene: polr2a
     tag_location: N-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

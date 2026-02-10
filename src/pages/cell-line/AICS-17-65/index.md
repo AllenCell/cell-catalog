@@ -5,7 +5,7 @@ status: data complete
 clone_number: 65
 parental_line: 0
 genetic_modifications:
-  - gene: DSP
+  - gene: dsp
     tag_location: C-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

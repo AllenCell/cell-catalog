@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "st6gal1"
 symbol: ST6GAL1
 name: ST6 beta-galactoside alpha-2,6-sialyltransferase 1
 protein: sialyltransferase 1

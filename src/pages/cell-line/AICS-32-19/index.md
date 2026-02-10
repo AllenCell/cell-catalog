@@ -5,7 +5,7 @@ status: data complete
 clone_number: 19
 parental_line: 0
 genetic_modifications:
-  - gene: CETN2
+  - gene: cetn2
     tag_location: N-terminus
     fluorescent_tag: mTagRFP-T
     allele_count: mono

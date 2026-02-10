@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "ctnnb1"
 symbol: CTNNB1
 name: catenin beta 1
 protein: beta-catenin

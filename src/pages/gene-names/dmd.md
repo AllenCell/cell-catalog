@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "dmd"
 symbol: DMD
 name: dystrophin
 protein: dystrophin

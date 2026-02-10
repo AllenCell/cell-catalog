@@ -5,15 +5,15 @@ status: data complete
 clone_number: 61
 parental_line: 0
 genetic_modifications:
-  - gene: FBL
+  - gene: fbl
     tag_location: C-terminus
     fluorescent_tag: mEGFP
     allele_count: mono
-  - gene: NPM1
+  - gene: npm1
     tag_location: C-terminus
     fluorescent_tag: mTagRFP-T
     allele_count: mono
-  - gene: CLYBL-dCas9-KRAB
+  - gene: clybl-dcas9-krab
     tag_location: NA
     fluorescent_tag: TagBFP
     allele_count: mono

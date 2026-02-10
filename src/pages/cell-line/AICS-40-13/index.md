@@ -5,7 +5,7 @@ status: data complete
 clone_number: 13
 parental_line: 0
 genetic_modifications:
-  - gene: RAB5A
+  - gene: rab5a
     tag_location: N-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

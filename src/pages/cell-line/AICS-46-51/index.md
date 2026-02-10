@@ -5,7 +5,7 @@ status: data complete
 clone_number: 51
 parental_line: 0
 genetic_modifications:
-  - gene: ATP2A2
+  - gene: atp2a2
     tag_location: N-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

@@ -8,7 +8,7 @@ date: 2025-05-06T22:23:18.691Z
 clone_number: 1
 parental_line: 0
 genetic_modifications:
-  - gene: G3BP1
+  - gene: g3bp1
     tag_location: N-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

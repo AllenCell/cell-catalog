@@ -5,7 +5,7 @@ status: data complete
 clone_number: 24
 parental_line: 0
 genetic_modifications:
-  - gene: SON
+  - gene: son
     tag_location: N-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

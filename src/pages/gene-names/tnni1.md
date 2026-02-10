@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "tnni1"
 symbol: TNNI1
 name: troponin I1, slow skeletal type
 protein: troponin I, slow skeletal muscle

@@ -146,7 +146,7 @@ module.exports = {
         "gatsby-plugin-netlify", // make sure to keep it last in the array
     ],
     mapping: {
-        "MarkdownRemark.frontmatter.genetic_modifications.gene": `MarkdownRemark.frontmatter.symbol`,
+        "MarkdownRemark.frontmatter.genetic_modifications.gene": `MarkdownRemark.fields.geneId`,
         "MarkdownRemark.frontmatter.disease": `MarkdownRemark.frontmatter.name`,
         "MarkdownRemark.frontmatter.parental_line": `MarkdownRemark.frontmatter.cell_line_id`,
     },

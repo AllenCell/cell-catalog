@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "tjp1"
 symbol: TJP1
 name: tight junction protein 1
 protein: tight junction protein ZO-1

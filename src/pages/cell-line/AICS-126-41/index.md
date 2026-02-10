@@ -5,7 +5,7 @@ status: data complete
 clone_number: 41
 parental_line: 0
 genetic_modifications:
-  - gene: CDH5
+  - gene: cdh5
     tag_location: C-terminus
     fluorescent_tag: mEGFP
     allele_count: bi

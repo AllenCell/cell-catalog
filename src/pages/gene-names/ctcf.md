@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "ctcf"
 symbol: CTCF
 name: CCCTC-binding factor
 protein: CCCTC-binding factor (CTCF)

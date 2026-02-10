@@ -5,7 +5,7 @@ status: data complete
 clone_number: 50
 parental_line: 0
 genetic_modifications:
-  - gene: PXN
+  - gene: pxn
     tag_location: C-terminus
     fluorescent_tag: EGFP
     allele_count: mono

@@ -6,7 +6,7 @@ date: 2025-05-06T22:15:04.800Z
 clone_number: 20
 parental_line: 0
 genetic_modifications:
-  - gene: CTCF
+  - gene: ctcf
     tag_location: N-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "son"
 symbol: SON
 name: SON DNA and RNA binding protein
 protein: SON

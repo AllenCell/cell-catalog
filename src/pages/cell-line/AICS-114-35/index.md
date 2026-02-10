@@ -6,7 +6,7 @@ date: 2025-05-06T22:28:41.417Z
 clone_number: 35
 parental_line: 0
 genetic_modifications:
-  - gene: CDH1
+  - gene: cdh1
     tag_location: C-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

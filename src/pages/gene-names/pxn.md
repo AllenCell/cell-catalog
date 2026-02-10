@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "pxn"
 symbol: PXN
 name: paxillin
 protein: paxillin

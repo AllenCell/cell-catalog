@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "fbl"
 symbol: FBL
 name: fibrillarin
 protein: fibrillarin

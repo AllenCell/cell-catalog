@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "tfam"
 symbol: TFAM
 name: transcription factor A, mitochondrial
 protein: mitochondrial transcription factor A (TFAM)

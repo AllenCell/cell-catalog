@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "myl2"
 symbol: MYL2
 name: myosin light chain 2
 protein: MLC-2v

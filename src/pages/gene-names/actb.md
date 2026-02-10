@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "actb"
 symbol: ACTB
 name: actin beta
 protein: beta-actin

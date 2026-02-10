@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "ezh2"
 symbol: EZH2
 name: enhancer of zeste 2 polycomb repressive complex 2 subunit
 protein: EZH2
