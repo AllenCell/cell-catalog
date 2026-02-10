@@ -28,5 +28,10 @@
 @media screen and (max-width: 744px) {
     .container :global(.ant-table-thead .ant-table-cell) {
         font-size: 12px;
+        padding: 8px;
+    }
+
+    .container .row :global(.ant-table-cell) {
+        padding: 5px 12px;
     }
 }

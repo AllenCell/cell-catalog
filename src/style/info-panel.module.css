@@ -47,6 +47,8 @@
 @media screen and (max-width: 744px) {
     .container :global(.ant-descriptions-item-label) {
         font-size: 12px;
+        width: 88px;
+        text-wrap: wrap;
     }
     .container :global(.ant-descriptions-item-content) {
         font-size: 14px;
