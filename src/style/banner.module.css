@@ -42,6 +42,7 @@
     .container {
         height: auto;
         padding: 0;
+        background-attachment: scroll;
     }
     .banner-container {
         padding: 100px 25px 50px;

@@ -5,8 +5,7 @@ import CategorySections from "../components/CategorySections";
 import CellLineTable from "../components/CellLineTable";
 import { getNormalTableMobileConfig } from "../components/CellLineTable/MobileView";
 import { getNormalTableColumns } from "../components/CellLineTable/NormalTableColumns";
-import { PHONE_BREAKPOINT } from "../constants";
-import useWindowWidth from "../hooks/useWindowWidth";
+import { useMobileBreakpoint } from "../hooks/useWidthBreakpoint";
 import SearchAndFilter from "./SearchAndFilter";
 import { convertFrontmatterToNormalCellLines } from "./convert-data";
 import { CategoryLabel, CellLineStatus, NormalCellLineNode } from "./types";
@@ -91,8 +90,8 @@ export default function NormalCellLines() {
         convertFrontmatterToNormalCellLines(cellLine),
     );
 
-    const width = useWindowWidth();
-    const isPhone = width < PHONE_BREAKPOINT;
+    const isPhone = useMobileBreakpoint();
+
     const [filteredCellLines, setFilteredCellLines] =
         React.useState(allCellLines);
     const [selectedCategories, setSelectedCategories] = React.useState<

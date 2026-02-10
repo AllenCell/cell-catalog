@@ -4,7 +4,7 @@ import React from "react";
 
 import { NormalCellLineFrontmatter } from "../component-queries/types";
 import { NormalCellLineInfoCard } from "../components/CellLineInfoCard/NormalCellLineInfoCard";
-import ImagesAndVideos from "../components/ImagesAndVideos";
+import ImagesAndVideos from "../components/ImagesAndVideo/ImagesAndVideos";
 import Layout from "../components/Layout";
 import SubpageTabs from "../components/SubPage/SubpageTabs";
 import { unpackNormalFrontmatterForSubpage } from "../components/SubPage/convert-data";
