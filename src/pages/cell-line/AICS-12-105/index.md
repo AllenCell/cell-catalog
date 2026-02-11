@@ -5,7 +5,7 @@ status: data complete
 clone_number: 105
 parental_line: 0
 genetic_modifications:
-  - gene: TUBA1B
+  - gene: tuba1b
     tag_location: N-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

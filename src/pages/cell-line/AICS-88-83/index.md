@@ -6,7 +6,7 @@ date: 2025-05-06T22:17:55.522Z
 clone_number: 83
 parental_line: 0
 genetic_modifications:
-  - gene: PCNA
+  - gene: pcna
     tag_location: N-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

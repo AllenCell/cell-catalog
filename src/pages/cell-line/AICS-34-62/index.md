@@ -5,7 +5,7 @@ status: data complete
 clone_number: 62
 parental_line: 0
 genetic_modifications:
-  - gene: LMNB1
+  - gene: lmnb1
     tag_location: N-terminus
     fluorescent_tag: mTagRFP-T
     allele_count: mono

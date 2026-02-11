@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "ubtf"
 symbol: UBTF
 name: upstream binding transcription factor
 protein: nucleolar transcription factor UBF

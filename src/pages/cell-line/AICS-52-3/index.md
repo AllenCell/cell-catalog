@@ -5,7 +5,7 @@ status: data complete
 clone_number: 3
 parental_line: 0
 genetic_modifications:
-  - gene: MYL7
+  - gene: myl7
     tag_location: C-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

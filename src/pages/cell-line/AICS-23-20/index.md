@@ -5,7 +5,7 @@ status: data complete
 clone_number: 20
 parental_line: 0
 genetic_modifications:
-  - gene: TJP1
+  - gene: tjp1
     tag_location: N-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

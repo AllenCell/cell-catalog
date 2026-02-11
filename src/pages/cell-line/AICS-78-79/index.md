@@ -6,11 +6,11 @@ date: 2025-05-06T22:19:51.710Z
 clone_number: 79
 parental_line: 0
 genetic_modifications:
-  - gene: TOMM20
+  - gene: tomm20
     tag_location: C-terminus
     fluorescent_tag: mEGFP
     allele_count: mono
-  - gene: TUBA1B
+  - gene: tuba1b
     tag_location: N-terminus
     fluorescent_tag: mTagRFP-T
     allele_count: mono

@@ -6,7 +6,7 @@ date: 2025-05-06T22:09:02.776Z
 clone_number: 25
 parental_line: 0
 genetic_modifications:
-  - gene: TERF2
+  - gene: terf2
     tag_location: N-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

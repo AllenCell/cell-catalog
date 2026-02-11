@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "pcna"
 symbol: PCNA
 name: proliferating cell nuclear antigen
 protein: proliferating cell nuclear antigen (PCNA)

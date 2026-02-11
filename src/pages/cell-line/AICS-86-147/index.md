@@ -5,15 +5,15 @@ status: data complete
 clone_number: 147
 parental_line: 0
 genetic_modifications:
-  - gene: FBL
+  - gene: fbl
     tag_location: C-terminus
     fluorescent_tag: mEGFP
     allele_count: mono
-  - gene: NPM1
+  - gene: npm1
     tag_location: C-terminus
     fluorescent_tag: mTagRFP-T
     allele_count: mono
-  - gene: UBTF
+  - gene: ubtf
     tag_location: N-terminus
     fluorescent_tag: HaloTag
     allele_count: mono

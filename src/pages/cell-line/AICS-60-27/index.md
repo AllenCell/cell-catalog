@@ -5,7 +5,7 @@ status: data complete
 clone_number: 27
 parental_line: 0
 genetic_modifications:
-  - gene: MYL2
+  - gene: myl2
     tag_location: C-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

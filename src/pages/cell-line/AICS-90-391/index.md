@@ -6,7 +6,7 @@ date: 2025-05-06T20:24:44.576Z
 clone_number: 391
 parental_line: 0
 genetic_modifications:
-  - gene: CLYBL safe harbor
+  - gene: clybl-safe-harbor
     tag_location: NA
     fluorescent_tag: TagBFP
     allele_count: mono

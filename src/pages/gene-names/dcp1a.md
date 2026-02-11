@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "dcp1a"
 symbol: DCP1A
 name: decapping mRNA 1A
 protein: mRNA-decapping enzyme 1A (DCP1A)

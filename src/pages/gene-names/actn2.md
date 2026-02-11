@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "actn2"
 symbol: ACTN2
 name: actinin alpha 2
 protein: alpha-actinin-2 

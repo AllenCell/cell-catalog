@@ -5,7 +5,7 @@ status: data complete
 clone_number: 80
 parental_line: 0
 genetic_modifications:
-  - gene: MYH10
+  - gene: myh10
     tag_location: N-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

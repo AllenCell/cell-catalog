@@ -5,7 +5,7 @@ status: data complete
 clone_number: 115
 parental_line: 0
 genetic_modifications:
-  - gene: SLC25A17
+  - gene: slc25a17
     tag_location: C-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

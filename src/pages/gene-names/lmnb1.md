@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "lmnb1"
 symbol: LMNB1
 name: lamin B1
 protein: lamin B1

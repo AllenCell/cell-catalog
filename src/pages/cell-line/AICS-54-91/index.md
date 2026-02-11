@@ -5,7 +5,7 @@ status: data complete
 clone_number: 91
 parental_line: 0
 genetic_modifications:
-  - gene: AAVS1
+  - gene: aavs1-caax
     tag_location: NA
     fluorescent_tag: mTagRFP-T
     allele_count: mono

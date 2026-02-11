@@ -5,7 +5,7 @@ status: data complete
 clone_number: 124
 parental_line: 0
 genetic_modifications:
-  - gene: DCP1A
+  - gene: dcp1a
     tag_location: N-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

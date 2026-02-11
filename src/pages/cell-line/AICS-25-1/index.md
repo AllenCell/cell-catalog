@@ -5,7 +5,7 @@ status: data complete
 clone_number: 1
 parental_line: 0
 genetic_modifications:
-  - gene: ST6GAL1
+  - gene: st6gal1
     tag_location: C-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

@@ -5,7 +5,7 @@ status: data complete
 clone_number: 85
 parental_line: 0
 genetic_modifications:
-  - gene: ACTN2
+  - gene: actn2
     tag_location: C-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

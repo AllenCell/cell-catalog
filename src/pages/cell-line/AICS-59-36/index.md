@@ -5,11 +5,11 @@ status: data complete
 clone_number: 36
 parental_line: 0
 genetic_modifications:
-  - gene: SEC61B
+  - gene: sec61b
     tag_location: N-terminus
     fluorescent_tag: mEGFP
     allele_count: mono
-  - gene: LMNB1
+  - gene: lmnb1
     tag_location: N-terminus
     fluorescent_tag: mTagRFP-T
     allele_count: mono

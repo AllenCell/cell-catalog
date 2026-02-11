@@ -6,7 +6,7 @@ date: 2025-05-06T20:47:49.612Z
 clone_number: 96
 parental_line: 0
 genetic_modifications:
-  - gene: DMD
+  - gene: dmd
     tag_location: C-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

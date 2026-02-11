@@ -6,7 +6,7 @@ date: 2025-05-06T20:50:42.082Z
 clone_number: 18
 parental_line: 0
 genetic_modifications:
-  - gene: EZH2
+  - gene: ezh2
     tag_location: N-terminus
     fluorescent_tag: mEGFP
     allele_count: mono

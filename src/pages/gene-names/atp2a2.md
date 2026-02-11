@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "atp2a2"
 symbol: ATP2A2
 name: ATPase sarcoplasmic/endoplasmic reticulum Ca2+ transporting 2
 protein: SERCA2

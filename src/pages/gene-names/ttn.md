@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "ttn"
 symbol: TTN
 name: titin
 protein: titin

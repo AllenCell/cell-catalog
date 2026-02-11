@@ -100,6 +100,10 @@ export const aboutPageQuery = graphql`
     query NormalCatalog($id: String!) {
         markdownRemark(id: { eq: $id }) {
             html
+            id
+            fields {
+                slug
+            }
             frontmatter {
                 title
                 header {
