@@ -63,9 +63,7 @@ const CategorySections: React.FC<CategorySectionsProps> = ({
         const nonEmpty = selectedCategories.filter(
             (cat) => buckets[cat]?.length,
         );
-        const empty = selectedCategories.filter(
-            (cat) => !buckets[cat]?.length,
-        );
+        const empty = selectedCategories.filter((cat) => !buckets[cat]?.length);
         return [...nonEmpty, ...empty];
     }, [selectedCategories, buckets]);
 
