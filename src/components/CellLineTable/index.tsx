@@ -4,10 +4,7 @@ import React, { useState } from "react";
 
 import { CellLineStatus } from "../../component-queries/types";
 import useEnv from "../../hooks/useEnv";
-import {
-    useMobileBreakpoint,
-    useTabletBreakpoint,
-} from "../../hooks/useWidthBreakpoint";
+import { useMobileBreakpoint, useTabletBreakpoint } from "../../hooks/useWidthBreakpoint";
 import { CellLineColumns, TableStatus, UnpackedCellLine } from "./types";
 
 const {
@@ -15,7 +12,9 @@ const {
     comingSoon,
     container,
     dataComplete,
+    emptyMessage,
     hoveredRow,
+    link,
     tableTitle,
     titleContainer,
 } = require("../../style/table.module.css");
@@ -118,6 +117,36 @@ const CellLineTable = ({
         };
     });
 
+    const noDataMessage = (
+        <div className={emptyMessage}>
+            <h2>We can't seem to find what you're looking for...</h2>
+            <p>
+                But don't cell yourself short! Try adjusting your search
+                parameters or reach out to our{" "}
+                <a
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href="https://forum.allencell.org/"
+                    className={link}
+                >
+                    forum
+                </a>{" "}
+                to ask about availability.
+            </p>
+            <p>
+                Looking for a cell line with a disease mutation?{" "}
+                <a
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href="https://cell-catalog.allencell.org/disease-catalog/"
+                    className={link}
+                >
+                    Check out our Disease Cell Catalog.
+                </a>
+            </p>
+        </div>
+    );
+
     return (
         <>
             <Table
@@ -148,6 +177,8 @@ const CellLineTable = ({
                 dataSource={cellLines}
                 showSorterTooltip={false}
                 sortDirections={["ascend", "descend", "ascend"]}
+                showHeader={cellLines.length > 0}
+                locale={{ emptyText: noDataMessage }}
             />
         </>
     );

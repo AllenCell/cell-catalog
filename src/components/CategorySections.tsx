@@ -62,7 +62,6 @@ const CategorySections: React.FC<CategorySectionsProps> = ({
         <>
             {selectedCategories.map((cat) => {
                 const data = buckets[cat] || [];
-                if (!data.length) return null;
                 return (
                     <CellLineTable
                         key={cat}
