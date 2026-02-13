@@ -370,6 +370,7 @@
     }
 
     .container .empty-message {
+        padding: 30px 0;
         margin: 0px 14%;
     }
 
@@ -409,6 +410,7 @@
     }
 
     .container .empty-message {
+        padding: 0px;
         margin: 0px 6%;
     }
 
