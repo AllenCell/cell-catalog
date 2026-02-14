@@ -57,7 +57,7 @@
     "lint": "eslint \"src/**/*{.tsx, .ts}\" --quiet --fix",
     "test": "vitest run",
     "dev": "npx concurrently \"npx netlify-cms-proxy-server\" \"npm start -- --progress\"",
-    "typeCheck": "npx tsc -noEmit",
+    "typeCheck": "tsc --noEmit",
     "prepare": "lefthook install"
   },
   "devDependencies": {
