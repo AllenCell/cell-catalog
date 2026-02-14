@@ -1,22 +1,21 @@
 output:
     - summary
     - failure
-    - execution_info
 pre-commit:
     parallel: true
     jobs:
         - name: format
           glob: "**/*.{ts,tsx}"
-          run: yarn format {staged_files}
+          run: yarn --silent format {staged_files}
           stage_fixed: true
 
         - name: lint
           glob: "**/*.{ts,tsx}"
-          run: yarn lint {staged_files}
+          run: yarn --silent lint {staged_files}
           stage_fixed: true
 
         - name: typecheck
-          run: yarn typeCheck --noEmit
+          run: yarn --silent typeCheck --pretty false
 
         - name: test
-          run: yarn test
+          run: yarn --silent test
