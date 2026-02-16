@@ -52,11 +52,16 @@ const CellLineInfoCardBase = ({
 }: CellLineInfoCardBaseProps) => {
     const [showToolTip, setShowToolTip] = useState(false);
 
-    const getDefaultButton = (label: string, href: string) => (
-        <DefaultButton key={href} href={href} target="_blank" rel="noreferrer">
-            {label}
-        </DefaultButton>
-    );
+    const getDefaultButton = (label: string, href: string) => {
+        if (!href) {
+            return null;
+        }
+        return (
+            <DefaultButton key={href} href={href} target="_blank" rel="noreferrer">
+                {label}
+            </DefaultButton>
+        );
+    }
 
     const getOrderButton = (
         { disabledLabel, href, icon, label, subtitle }: OrderButtonProps,
