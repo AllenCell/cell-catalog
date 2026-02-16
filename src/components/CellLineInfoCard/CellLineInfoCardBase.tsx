@@ -57,11 +57,16 @@ const CellLineInfoCardBase = ({
             return null;
         }
         return (
-            <DefaultButton key={href} href={href} target="_blank" rel="noreferrer">
+            <DefaultButton
+                key={href}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+            >
                 {label}
             </DefaultButton>
         );
-    }
+    };
 
     const getOrderButton = (
         { disabledLabel, href, icon, label, subtitle }: OrderButtonProps,
