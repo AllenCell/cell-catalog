@@ -13,7 +13,7 @@ genetic_modifications:
 order_link: 
 certificate_of_analysis: 
 donor_plasmid: 
-eu_hpsc_reg: 
+hpscreg_certificate_link: 
 images_and_videos:
   videos:
 editing_design:

@@ -43,5 +43,5 @@ editing_design:
     - title: mEGFP insert
       images:
         - image: eomes_cofa_editingfigure.png
-eu_hpsc_reg: null
+hpscreg_certificate_link: null
 ---
