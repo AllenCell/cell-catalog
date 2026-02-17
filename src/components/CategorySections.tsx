@@ -1,12 +1,15 @@
 import React from "react";
 
-import {
-    CategoryLabel,
-    UnpackedNormalCellLine,
-} from "../component-queries/types";
+
+
+import { CategoryLabel, UnpackedNormalCellLine } from "../component-queries/types";
 import CellLineTable from "./CellLineTable";
 import { getNormalTableMobileConfig } from "./CellLineTable/MobileView";
 import { getNormalTableColumns } from "./CellLineTable/NormalTableColumns";
+
+
+
+
 
 interface CategorySectionsProps {
     selectedCategories: CategoryLabel[];
@@ -60,10 +63,11 @@ const CategorySections: React.FC<CategorySectionsProps> = ({
 
     // Sort categories: non-empty first, empty last (preserves relative order)
     const sortedCategories = React.useMemo(() => {
-        const nonEmpty = selectedCategories.filter(
-            (cat) => buckets[cat]?.length,
-        );
-        const empty = selectedCategories.filter((cat) => !buckets[cat]?.length);
+        const nonEmpty: CategoryLabel[] = [];
+        const empty: CategoryLabel[] = [];
+        for (const cat of selectedCategories) {
+            (buckets[cat]?.length ? nonEmpty : empty).push(cat);
+        }
         return [...nonEmpty, ...empty];
     }, [selectedCategories, buckets]);
 
