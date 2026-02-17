@@ -111,10 +111,12 @@
 
 .thumbnail-container {
     flex: 0 0 auto;
+    overflow-x: hidden;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 4px;
+    max-height: 420px;
 }
 
 .thumbnail-container::-webkit-scrollbar-thumb {

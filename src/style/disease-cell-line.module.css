@@ -12,7 +12,7 @@
     width: 460px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 16px;
 }
 
