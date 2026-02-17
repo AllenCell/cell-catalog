@@ -325,6 +325,10 @@
     background-color: var(--WHITE);
 }
 
+.container :global(.ant-table-content):has(.empty-message) {
+    overflow: hidden !important;
+}
+
 .container .empty-message {
     padding: 40px 0;
     color: var(--BLACK);
