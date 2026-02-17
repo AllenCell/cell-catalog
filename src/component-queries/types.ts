@@ -134,7 +134,7 @@ export interface NormalCellLineFrontmatter {
         };
     };
     certificate_of_analysis: string;
-    eu_hpsc_reg: string;
+    hpscreg_certificate_link: string;
     editing_design: {
         ncbi_isoforms: string;
         cr_rna: string;
@@ -217,7 +217,7 @@ export interface DiseaseCellLineFrontmatter {
     certificate_of_analysis: string;
     order_link: string;
     status: CellLineStatus;
-    hPSCreg_certificate_link: string;
+    hpscreg_certificate_link: string;
     images_and_videos?: MediaFrontmatter;
     editing_design?: {
         cr_rna_target_site: string;
