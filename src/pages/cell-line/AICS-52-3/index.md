@@ -12,7 +12,7 @@ genetic_modifications:
 order_link: https://www.coriell.org/0/Sections/Search/Sample_Detail.aspx?Ref=AICS-0052-003&PgId=166
 certificate_of_analysis: https://www.coriell.org/0/PDF/Allen/ipsc/AICS-0052-003_CofA.pdf
 donor_plasmid: https://www.addgene.org/114413/
-eu_hpsc_reg: https://hpscreg.eu/cell-line/UCSFi001-A-29
+hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-29
 images_and_videos:
   images:
     - image: single_plane_image_cl3.jpg

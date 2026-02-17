@@ -238,7 +238,7 @@ collections:
             }
           - {
                 label: "hPSCreg Certificate",
-                name: "hPSCreg_certificate_link",
+                name: "hpscreg_certificate_link",
                 widget: "file",
                 required: false,
             }
@@ -764,7 +764,7 @@ collections:
             }
           - {
                 label: "hPSCreg Certificate",
-                name: "hPSCreg_certificate_link",
+                name: "hpscreg_certificate_link",
                 widget: "file",
                 required: false,
             }

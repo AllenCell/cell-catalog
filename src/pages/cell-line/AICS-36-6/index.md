@@ -127,5 +127,5 @@ stem_cell_characteristics:
     Biosciences) and gating was based on an isotype control. Ranges observed
     across multiple experiments are shown for Troponin T and Day of beating
     initiation; number of experiments is shown in ().
-eu_hpsc_reg: https://hpscreg.eu/cell-line/UCSFi001-A-12
+hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-12
 ---
