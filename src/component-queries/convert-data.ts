@@ -65,7 +65,7 @@ export const convertFrontmatterToDiseaseCellLine = (
     return {
         cellLineId: cellLineNode.frontmatter.cell_line_id,
         certificateOfAnalysis: cellLineNode.frontmatter.certificate_of_analysis,
-        healthCertificate: cellLineNode.frontmatter.hPSCreg_certificate_link,
+        healthCertificate: cellLineNode.frontmatter.hpscreg_certificate_link,
         snp: cellLineNode.frontmatter.snp,
         status: cellLineNode.frontmatter.status,
         clones: cellLineNode.frontmatter.clones,
@@ -121,7 +121,7 @@ export const convertFrontmatterToNormalCellLines = ({
         structures: structures,
         status: cellLineNode.frontmatter.status,
         certificateOfAnalysis: cellLineNode.frontmatter.certificate_of_analysis,
-        healthCertificate: cellLineNode.frontmatter.eu_hpsc_reg,
+        healthCertificate: cellLineNode.frontmatter.hpscreg_certificate_link,
         orderLink: cellLineNode.frontmatter.order_link,
         orderPlasmid: cellLineNode.frontmatter.donor_plasmid,
         thumbnailImage: getThumbnail(

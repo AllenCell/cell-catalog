@@ -333,7 +333,7 @@ export const unpackNormalFrontmatterForSubpage = (
         structures: structures,
         status: cellLineNode.frontmatter.status,
         certificateOfAnalysis: cellLineNode.frontmatter.certificate_of_analysis,
-        healthCertificate: cellLineNode.frontmatter.eu_hpsc_reg,
+        healthCertificate: cellLineNode.frontmatter.hpscreg_certificate_link,
         orderLink: cellLineNode.frontmatter.order_link,
         orderPlasmid: cellLineNode.frontmatter.donor_plasmid,
         thumbnailImage: getThumbnail(
@@ -371,7 +371,7 @@ export const unpackDiseaseFrontmatterForSubpage = (
         cellLineId: cellLineNode.frontmatter.cell_line_id,
         status: cellLineNode.frontmatter.status,
         certificateOfAnalysis: cellLineNode.frontmatter.certificate_of_analysis,
-        healthCertificate: cellLineNode.frontmatter.hPSCreg_certificate_link,
+        healthCertificate: cellLineNode.frontmatter.hpscreg_certificate_link,
         orderLink: cellLineNode.frontmatter.order_link,
         geneName: geneName,
         geneSymbol: geneSymbol,

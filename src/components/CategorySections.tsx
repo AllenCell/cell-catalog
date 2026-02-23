@@ -58,11 +58,20 @@ const CategorySections: React.FC<CategorySectionsProps> = ({
         [filteredList, selectedCategories],
     );
 
+    // Sort categories: non-empty first, empty last (preserves relative order)
+    const sortedCategories = React.useMemo(() => {
+        const nonEmpty: CategoryLabel[] = [];
+        const empty: CategoryLabel[] = [];
+        for (const cat of selectedCategories) {
+            (buckets[cat]?.length ? nonEmpty : empty).push(cat);
+        }
+        return [...nonEmpty, ...empty];
+    }, [selectedCategories, buckets]);
+
     return (
         <>
-            {selectedCategories.map((cat) => {
+            {sortedCategories.map((cat) => {
                 const data = buckets[cat] || [];
-                if (!data.length) return null;
                 return (
                     <CellLineTable
                         key={cat}
