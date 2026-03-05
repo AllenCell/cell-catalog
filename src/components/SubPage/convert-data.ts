@@ -259,19 +259,19 @@ export const unpackNormalStemCellCharacteristics = (
         caption: scc.cardiomyocyte_differentiation_caption,
         data: scc.cardiomyocyte_differentiation
             ? [
-                {
-                    troponinPercentPositive:
-                        scc.cardiomyocyte_differentiation
-                            .troponin_percent_positive,
-                    dayOfBeatingPercent:
-                        scc.cardiomyocyte_differentiation
-                            .day_of_beating_percent,
-                    dayOfBeatingRange:
-                        scc.cardiomyocyte_differentiation
-                            .day_of_beating_range,
-                    key: "0",
-                },
-            ]
+                  {
+                      troponinPercentPositive:
+                          scc.cardiomyocyte_differentiation
+                              .troponin_percent_positive,
+                      dayOfBeatingPercent:
+                          scc.cardiomyocyte_differentiation
+                              .day_of_beating_percent,
+                      dayOfBeatingRange:
+                          scc.cardiomyocyte_differentiation
+                              .day_of_beating_range,
+                      key: "0",
+                  },
+              ]
             : [],
     };
 

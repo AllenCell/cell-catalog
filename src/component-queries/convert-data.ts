@@ -1,20 +1,20 @@
+import { formatCellLineId } from "../utils";
+import { getThumbnail } from "../utils/mediaUtils";
 import {
     DiseaseCellLineNode,
+    GeneFrontmatter,
+    GeneticModification,
+    LookupGroup,
     NormalCellLineNode,
+    SearchAndFilterGroup,
+    SearchLookup,
     UnpackedDiseaseCellLine,
     UnpackedGene,
     UnpackedNormalCellLine,
-    GeneticModification,
-    SearchLookup,
-    SearchAndFilterGroup,
-    GeneFrontmatter,
-    LookupGroup,
 } from "./types";
-import { getThumbnail } from "../utils/mediaUtils";
-import { formatCellLineId } from "../utils";
 
 export const extractGeneticModifications = (
-    modifications?: GeneticModification[]
+    modifications?: GeneticModification[],
 ): {
     taggedGenes: UnpackedGene[];
     alleleCounts: string[];
@@ -45,7 +45,7 @@ export const extractGeneticModifications = (
 };
 
 export const convertFrontmatterToDiseaseCellLine = (
-    cellLineNode: DiseaseCellLineNode
+    cellLineNode: DiseaseCellLineNode,
 ): UnpackedDiseaseCellLine => {
     const diseaseData = cellLineNode.frontmatter.disease.frontmatter;
     const mutatedGenes = diseaseData.gene
@@ -59,7 +59,7 @@ export const convertFrontmatterToDiseaseCellLine = (
     const { alleleCounts, fluorescentTags, taggedGenes, tagLocations } =
         extractGeneticModifications(
             cellLineNode.frontmatter.parental_line.frontmatter
-                .genetic_modifications
+                .genetic_modifications,
         );
 
     return {
@@ -75,7 +75,8 @@ export const convertFrontmatterToDiseaseCellLine = (
         path: cellLineNode.fields.slug,
         parentalLine: {
             thumbnailImage: getThumbnail(
-                cellLineNode.frontmatter.parental_line.frontmatter.images_and_videos
+                cellLineNode.frontmatter.parental_line.frontmatter
+                    .images_and_videos,
             ),
             cellLineId:
                 cellLineNode.frontmatter.parental_line.frontmatter.cell_line_id,
@@ -97,7 +98,7 @@ export const convertFrontmatterToNormalCellLines = ({
 }): UnpackedNormalCellLine => {
     const { alleleCounts, fluorescentTags, taggedGenes, tagLocations } =
         extractGeneticModifications(
-            cellLineNode.frontmatter.genetic_modifications
+            cellLineNode.frontmatter.genetic_modifications,
         );
     const proteins = taggedGenes
         .map((gene) => gene.protein)
@@ -125,21 +126,21 @@ export const convertFrontmatterToNormalCellLines = ({
         orderLink: cellLineNode.frontmatter.order_link,
         orderPlasmid: cellLineNode.frontmatter.donor_plasmid,
         thumbnailImage: getThumbnail(
-            cellLineNode.frontmatter.images_and_videos
+            cellLineNode.frontmatter.images_and_videos,
         ),
         imagesAndVideos: cellLineNode.frontmatter.images_and_videos,
-        categoryLabels: cellLineNode.frontmatter.category_labels
+        categoryLabels: cellLineNode.frontmatter.category_labels,
     };
 };
 
 export const createLookupMappings = (
-    data: SearchAndFilterGroup[]
+    data: SearchAndFilterGroup[],
 ): SearchLookup => {
     const geneSymToCellIds = new Map();
     const structureAndNameToGene = new Map();
     const categoryToIds = new Map();
     const allSearchableTerms: Set<string> = new Set();
-    data.forEach((group:SearchAndFilterGroup) => {
+    data.forEach((group: SearchAndFilterGroup) => {
         const symbol = group.fieldValue;
         allSearchableTerms.add(symbol);
         const cellLines: number[] = [];
@@ -161,7 +162,7 @@ export const createLookupMappings = (
                 });
             }
             const genes = edge.node.frontmatter.genetic_modifications || [];
-            genes.forEach((obj: {gene: {frontmatter: GeneFrontmatter}}) => {
+            genes.forEach((obj: { gene: { frontmatter: GeneFrontmatter } }) => {
                 const gene = obj.gene;
                 const geneSymbol = gene.frontmatter.symbol;
                 const geneName = gene.frontmatter.name;
@@ -187,7 +188,6 @@ export const createLookupMappings = (
         geneSymToCellIds,
         structureAndNameToGene,
         allSearchableTerms,
-        categoryToIds
+        categoryToIds,
     };
 };
-         
