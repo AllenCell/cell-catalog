@@ -177,9 +177,15 @@ collections:
                             widget: "relation",
                             collection: "gene-name",
                             search_fields:
-                                ["symbol", "name", "protein", "structure"],
-                            value_field: "symbol",
-                            display_fields: ["symbol"],
+                                [
+                                    "geneId",
+                                    "symbol",
+                                    "name",
+                                    "protein",
+                                    "structure",
+                                ],
+                            value_field: "geneId",
+                            display_fields: ["symbol", "protein"],
                             required: false,
                         },
                         {
@@ -232,7 +238,7 @@ collections:
             }
           - {
                 label: "hPSCreg Certificate",
-                name: "hPSCreg_certificate_link",
+                name: "hpscreg_certificate_link",
                 widget: "file",
                 required: false,
             }
@@ -758,7 +764,7 @@ collections:
             }
           - {
                 label: "hPSCreg Certificate",
-                name: "hPSCreg_certificate_link",
+                name: "hpscreg_certificate_link",
                 widget: "file",
                 required: false,
             }
@@ -889,7 +895,8 @@ collections:
     - name: "gene-name"
       label: "Gene and structures names"
       folder: "src/pages/gene-names"
-      slug: "{{symbol}}"
+      slug: "{{geneId}}"
+      summary: "{{symbol}} - {{name}} - {{protein}}"
       create: true # Allow users to create new documents in this collection
       fields: # The fields each document in this collection have
           - {
@@ -897,6 +904,14 @@ collections:
                 name: "templateKey",
                 widget: "hidden",
                 default: "gene-name",
+            }
+          - {
+                label: "Gene ID",
+                name: "geneId",
+                widget: "string",
+                required: true,
+                hint: "Unique identifier for this gene entry. If the gene symbol is unique, you can use that as the gene ID. Otherwise, you can create a unique ID (lowercase no spaces) using a combination of the gene symbol and other relevant information (e.g., species, isoform).",
+                pattern: ["^[a-z0-9-]+$", "Must be lowercase, using only letters, numbers, and hyphens (no spaces)."]
             }
           - {
                 label: "Gene Symbol",
@@ -949,7 +964,7 @@ collections:
                 collection: "gene-name",
                 search_fields: ["symbol", "name", "protein", "structure"],
                 value_field: "symbol",
-                display_fields: ["symbol", "protein", "structure"],
+                display_fields: ["symbol", "protein"],
             }
           - {
                 label: "Status",

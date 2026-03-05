@@ -5,14 +5,14 @@ status: data complete
 clone_number: 67
 parental_line: 0
 genetic_modifications:
-  - gene: CTNNB1
+  - gene: ctnnb1
     tag_location: N-terminus
     fluorescent_tag: mEGFP
     allele_count: mono
 order_link: https://www.coriell.org/0/Sections/Search/Sample_Detail.aspx?Ref=AICS-0058-067&PgId=166
 certificate_of_analysis: https://www.coriell.org/0/PDF/Allen/ipsc/AICS-0058-067_CofA.pdf
 donor_plasmid: https://www.addgene.org/109119/
-eu_hpsc_reg: https://hpscreg.eu/cell-line/UCSFi001-A-25
+hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-25
 images_and_videos:
   images:
     - image: single_plane_image_cl67.jpg

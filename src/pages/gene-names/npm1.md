@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "npm1"
 symbol: NPM1
 name: nucleophosmin 1
 protein: nucleophosmin

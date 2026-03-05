@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "dsp"
 symbol: DSP
 name: desmoplakin
 protein: desmoplakin

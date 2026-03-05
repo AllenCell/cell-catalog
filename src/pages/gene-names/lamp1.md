@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "lamp1"
 symbol: LAMP1
 name: lysosomal associated membrane protein 1
 protein: LAMP-1

@@ -8,7 +8,7 @@ date: 2025-05-06T22:23:18.691Z
 clone_number: 1
 parental_line: 0
 genetic_modifications:
-  - gene: G3BP1
+  - gene: g3bp1
     tag_location: N-terminus
     fluorescent_tag: mEGFP
     allele_count: mono
@@ -141,5 +141,5 @@ genomic_characterization:
     heterozygous clone, values = 1 +/- 0.1 indicate homozygous clone. Plasmid:
     KAN/RPP30 ratio from ddPCR assay; values <0.1 indicate clone with no
     detectable plasmid integration. RPP30 is known 2n reference gene."
-eu_hpsc_reg: https://hpscreg.eu/cell-line/UCSFi001-A-63
+hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-63
 ---

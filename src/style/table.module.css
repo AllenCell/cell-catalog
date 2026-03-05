@@ -325,6 +325,44 @@
     background-color: var(--WHITE);
 }
 
+.container :global(.ant-table-content):has(.empty-message) {
+    overflow: hidden !important;
+}
+
+.container .empty-message {
+    padding: 40px 0;
+    color: var(--BLACK);
+    text-align: center;
+    margin: 0px 29%;
+}
+
+.container .empty-message h2 {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.container .empty-message p {
+    font-size: 24px;
+}
+
+.link {
+    color: var(--link-color);
+}
+
+@media screen and (max-width: 1720px) {
+    .container .empty-message {
+        margin: 0px 18%;
+    }
+
+    .container .empty-message h2 {
+        font-size: 22px;
+    }
+
+    .container .empty-message p {
+        font-size: 18px;
+    }
+}
+
 @media screen and (max-width: 744px) {
     .container h4 {
         font-size: 20px;
@@ -333,6 +371,19 @@
     .container :global(.ant-table-thead .ant-table-cell).cell-line-id,
     .container :global(.ant-table-cell).cell-line-id {
         padding: 8px 4px 8px 14px;
+    }
+
+    .container .empty-message {
+        padding: 30px 0;
+        margin: 0px 14%;
+    }
+
+    .container .empty-message h2 {
+        font-size: 20px;
+    }
+
+    .container .empty-message p {
+        font-size: 16px;
     }
 }
 
@@ -360,5 +411,18 @@
             .ant-table-cell.ant-table-row-expand-icon-cell.ant-table-cell-fix-left
         ) {
         width: initial;
+    }
+
+    .container .empty-message {
+        padding: 0px;
+        margin: 0px 6%;
+    }
+
+    .container .empty-message h2 {
+        font-size: 20px;
+    }
+
+    .container .empty-message p {
+        font-size: 16px;
     }
 }

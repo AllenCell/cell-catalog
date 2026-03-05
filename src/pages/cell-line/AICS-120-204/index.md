@@ -7,17 +7,17 @@ date: 2025-02-05T18:14:13.824Z
 clone_number: 204
 parental_line: 0
 genetic_modifications:
-  - gene: TOMM20
+  - gene: tomm20
     tag_location: C-terminus
     fluorescent_tag: mEGFP
     allele_count: mono
-  - gene: AAVS1
+  - gene: aavs1-mitochondrial
     tag_location: NA
     fluorescent_tag: mTagRFP-T
     allele_count: mono
 order_link: https://www.coriell.org/0/Sections/Search/Sample_Detail.aspx?Ref=AICS-0120-204&Product=iPSC&PgId=166
 certificate_of_analysis: https://www.coriell.org/0/PDF/Allen/ipsc/AICS-0120-204_CofA.pdf
-hPSCreg_certificate_link: ""
+hpscreg_certificate_link: ""
 images_and_videos:
   images:
     - caption: hiPS cells expressing mEGFP-tagged outer mitochondrial membrane

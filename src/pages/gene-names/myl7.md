@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "myl7"
 symbol: MYL7
 name: myosin light chain 7
 protein: MLC-2a

@@ -6,7 +6,7 @@ date: 2025-05-06T22:28:41.417Z
 clone_number: 35
 parental_line: 0
 genetic_modifications:
-  - gene: CDH1
+  - gene: cdh1
     tag_location: C-terminus
     fluorescent_tag: mEGFP
     allele_count: mono
@@ -141,5 +141,5 @@ stem_cell_characteristics:
     Biosciences) and gating was based on an isotype control. Ranges observed
     across multiple experiments are shown for Troponin T and Day of beating
     initiation; number of experiments is shown in (). "
-eu_hpsc_reg: https://hpscreg.eu/cell-line/UCSFi001-A-67
+hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-67
 ---

@@ -259,19 +259,19 @@ export const unpackNormalStemCellCharacteristics = (
         caption: scc.cardiomyocyte_differentiation_caption,
         data: scc.cardiomyocyte_differentiation
             ? [
-                {
-                    troponinPercentPositive:
-                        scc.cardiomyocyte_differentiation
-                            .troponin_percent_positive,
-                    dayOfBeatingPercent:
-                        scc.cardiomyocyte_differentiation
-                            .day_of_beating_percent,
-                    dayOfBeatingRange:
-                        scc.cardiomyocyte_differentiation
-                            .day_of_beating_range,
-                    key: "0",
-                },
-            ]
+                  {
+                      troponinPercentPositive:
+                          scc.cardiomyocyte_differentiation
+                              .troponin_percent_positive,
+                      dayOfBeatingPercent:
+                          scc.cardiomyocyte_differentiation
+                              .day_of_beating_percent,
+                      dayOfBeatingRange:
+                          scc.cardiomyocyte_differentiation
+                              .day_of_beating_range,
+                      key: "0",
+                  },
+              ]
             : [],
     };
 
@@ -333,7 +333,7 @@ export const unpackNormalFrontmatterForSubpage = (
         structures: structures,
         status: cellLineNode.frontmatter.status,
         certificateOfAnalysis: cellLineNode.frontmatter.certificate_of_analysis,
-        healthCertificate: cellLineNode.frontmatter.eu_hpsc_reg,
+        healthCertificate: cellLineNode.frontmatter.hpscreg_certificate_link,
         orderLink: cellLineNode.frontmatter.order_link,
         orderPlasmid: cellLineNode.frontmatter.donor_plasmid,
         thumbnailImage: getThumbnail(
@@ -371,7 +371,7 @@ export const unpackDiseaseFrontmatterForSubpage = (
         cellLineId: cellLineNode.frontmatter.cell_line_id,
         status: cellLineNode.frontmatter.status,
         certificateOfAnalysis: cellLineNode.frontmatter.certificate_of_analysis,
-        healthCertificate: cellLineNode.frontmatter.hPSCreg_certificate_link,
+        healthCertificate: cellLineNode.frontmatter.hpscreg_certificate_link,
         orderLink: cellLineNode.frontmatter.order_link,
         geneName: geneName,
         geneSymbol: geneSymbol,

@@ -109,14 +109,14 @@ export interface GenomicCharacterizationFrontmatter {
         clone: number;
         fp_ratio: number;
         plasmid: number;
-    }[]
+    }[];
     ddpcr_caption: string;
     cr_rna_off_targets: {
         clones_analyzed: number;
         off_targets_sequenced_per_clone: number;
         total_sites_sequenced: number;
         mutations_identified: number;
-    }[]
+    }[];
     off_targets_caption: string;
 }
 
@@ -134,7 +134,7 @@ export interface NormalCellLineFrontmatter {
         };
     };
     certificate_of_analysis: string;
-    eu_hpsc_reg: string;
+    hpscreg_certificate_link: string;
     editing_design: {
         ncbi_isoforms: string;
         cr_rna: string;
@@ -146,7 +146,7 @@ export interface NormalCellLineFrontmatter {
     stem_cell_characteristics: StemCellCharacteristicsFrontmatter;
     images_and_videos?: MediaFrontmatter;
     category_labels: CategoryLabel[];
-};
+}
 
 export interface NormalCellLineNode {
     id: string;
@@ -217,7 +217,7 @@ export interface DiseaseCellLineFrontmatter {
     certificate_of_analysis: string;
     order_link: string;
     status: CellLineStatus;
-    hPSCreg_certificate_link: string;
+    hpscreg_certificate_link: string;
     images_and_videos?: MediaFrontmatter;
     editing_design?: {
         cr_rna_target_site: string;
@@ -290,16 +290,17 @@ export interface UnpackedNormalCellLine extends UnpackedCellLineMainInfo {
     categoryLabels: CategoryLabel[];
 }
 
-export type ParentLine = Pick<UnpackedNormalCellLine,
-    "thumbnailImage" |
-    "cellLineId" |
-    "cloneNumber" |
-    "taggedGenes" |
-    "alleleCounts" |
-    "tagLocations" |
-    "fluorescentTags" |
-    "geneticModifications"
->
+export type ParentLine = Pick<
+    UnpackedNormalCellLine,
+    | "thumbnailImage"
+    | "cellLineId"
+    | "cloneNumber"
+    | "taggedGenes"
+    | "alleleCounts"
+    | "tagLocations"
+    | "fluorescentTags"
+    | "geneticModifications"
+>;
 
 export interface UnpackedDiseaseCellLine extends UnpackedCellLineMainInfo {
     diseaseStatus: string;
@@ -339,7 +340,7 @@ export interface SearchLookup {
     // (so many words map to the same gene symbol)
     // used for getting a unique identifier for the geneSymToCellIds map
     structureAndNameToGene: Map<string, string>;
-    categoryToIds: Map<string, number[]>
+    categoryToIds: Map<string, number[]>;
     allSearchableTerms: Set<string>;
 }
 
@@ -355,7 +356,7 @@ export enum CategoryLabel {
 export enum NavBarAnchorType {
     Internal = "internal",
     Download = "download",
-    External = "external"
+    External = "external",
 }
 
 export interface NavBarDropdownItem {

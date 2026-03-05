@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "myh10"
 symbol: MYH10
 name: myosin heavy chain 10
 protein: non-muscle myosin heavy chain IIB

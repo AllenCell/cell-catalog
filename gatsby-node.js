@@ -50,7 +50,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
 
             `,
         `type GeneticModification {
-                gene: MarkdownRemark @link(by: "frontmatter.symbol", from: "gene")
+                gene: MarkdownRemark @link(by: "frontmatter.geneId", from: "gene")
                 allele_count: String
                 tag_location: String
                 fluorescent_tag: String
@@ -139,7 +139,7 @@ exports.createPages = ({ actions, graphql }) => {
             const templateKey = edge.node.frontmatter.templateKey;
 
             // Skip creating pages for data-only markdown files
-            if (templateKey === 'nav-bar') {
+            if (templateKey === "nav-bar") {
                 return;
             }
 
@@ -147,8 +147,8 @@ exports.createPages = ({ actions, graphql }) => {
                 path: edge.node.fields.slug,
                 component: path.resolve(
                     `src/templates/${String(
-                        edge.node.frontmatter.templateKey
-                    )}.tsx`
+                        edge.node.frontmatter.templateKey,
+                    )}.tsx`,
                 ),
                 // additional data can be passed via context
                 context: {

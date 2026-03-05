@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "gja1"
 symbol: GJA1
 name: gap junction protein alpha 1
 protein: connexin-43

@@ -6,14 +6,14 @@ date: 2025-05-27T20:36:14.626Z
 clone_number: 
 parental_line: 0
 genetic_modifications:
-  - gene: CBX1
+  - gene: cbx1
     tag_location: N-terminus
     fluorescent_tag: mEGFP
     allele_count: 
 order_link: 
 certificate_of_analysis: 
 donor_plasmid: 
-eu_hpsc_reg: 
+hpscreg_certificate_link: 
 images_and_videos:
   videos:
 editing_design:

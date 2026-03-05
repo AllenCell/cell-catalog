@@ -5,14 +5,14 @@ status: data complete
 clone_number: 39
 parental_line: 0
 genetic_modifications:
-  - gene: TTN
+  - gene: ttn
     tag_location: C-terminus
     fluorescent_tag: mEGFP
     allele_count: mono
 order_link: https://www.coriell.org/0/Sections/Search/Sample_Detail.aspx?Ref=AICS-0048-039&PgId=166
 certificate_of_analysis: https://www.coriell.org/0/PDF/Allen/ipsc/AICS-0048-039_CofA.pdf
 donor_plasmid: https://www.addgene.org/114412/
-eu_hpsc_reg: https://hpscreg.eu/cell-line/UCSFi001-A-27
+hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-27
 images_and_videos:
   images:
     - image: single_plane_image_cl39.jpg

@@ -6,14 +6,14 @@ date: 2025-05-06T22:17:55.522Z
 clone_number: 83
 parental_line: 0
 genetic_modifications:
-  - gene: PCNA
+  - gene: pcna
     tag_location: N-terminus
     fluorescent_tag: mEGFP
     allele_count: mono
 order_link: https://www.coriell.org/0/Sections/Search/Sample_Detail.aspx?Ref=AICS-0088-083&PgId=166
 certificate_of_analysis: https://www.coriell.org/0/PDF/Allen/ipsc/AICS-0088-083_CofA.pdf
 donor_plasmid: https://www.addgene.org/170818/
-eu_hpsc_reg: https://hpscreg.eu/cell-line/UCSFi001-A-56
+hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-56
 images_and_videos:
   images:
     - image: single_plane_image_cl83.jpg

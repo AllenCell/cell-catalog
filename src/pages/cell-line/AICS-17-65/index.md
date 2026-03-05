@@ -5,14 +5,14 @@ status: data complete
 clone_number: 65
 parental_line: 0
 genetic_modifications:
-  - gene: DSP
+  - gene: dsp
     tag_location: C-terminus
     fluorescent_tag: mEGFP
     allele_count: mono
 order_link: https://catalog.coriell.org/0/Sections/Search/Sample_Detail.aspx?Ref=AICS-0017&Product=iPSC
 certificate_of_analysis: https://catalog.coriell.org/0/PDF/Allen/ipsc/AICS-0017_CofA.pdf
 donor_plasmid: https://www.addgene.org/87424/
-eu_hpsc_reg: https://hpscreg.eu/cell-line/UCSFi001-A-7
+hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-7
 images_and_videos:
   images:
     - image: single_plane_image_cl65.jpg

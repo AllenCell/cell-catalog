@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "cdh5"
 symbol: CDH5
 name: cadherin 5
 protein: Vascular endothelial (VE)-cadherin

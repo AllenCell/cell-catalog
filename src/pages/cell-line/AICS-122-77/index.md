@@ -6,7 +6,7 @@ date: 2025-08-20T23:10:45.716Z
 clone_number: 77
 parental_line: 0
 genetic_modifications:
-  - gene: EOMES
+  - gene: eomes
     tag_location: C-terminus
     fluorescent_tag: mEGFP
     allele_count: mono
@@ -43,5 +43,5 @@ editing_design:
     - title: mEGFP insert
       images:
         - image: eomes_cofa_editingfigure.png
-eu_hpsc_reg: null
+hpscreg_certificate_link: null
 ---

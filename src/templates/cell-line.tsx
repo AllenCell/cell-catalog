@@ -145,7 +145,7 @@ export const pageQuery = graphql`
             frontmatter {
                 cell_line_id
                 certificate_of_analysis
-                eu_hpsc_reg
+                hpscreg_certificate_link
                 order_link
                 donor_plasmid
                 parental_line {

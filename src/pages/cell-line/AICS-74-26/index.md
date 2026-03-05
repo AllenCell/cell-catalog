@@ -5,14 +5,14 @@ status: data complete
 clone_number: 26
 parental_line: 0
 genetic_modifications:
-  - gene: SOX2
+  - gene: sox2
     tag_location: C-terminus
     fluorescent_tag: mEGFP
     allele_count: mono
 order_link: https://www.coriell.org/0/Sections/Search/Sample_Detail.aspx?Ref=AICS-0074-026&PgId=166
 certificate_of_analysis: https://www.coriell.org/0/PDF/Allen/ipsc/AICS-0074-026_CofA.pdf
 donor_plasmid: https://www.addgene.org/124606/
-eu_hpsc_reg: https://hpscreg.eu/cell-line/UCSFi001-A-37
+hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-37
 images_and_videos:
   images:
     - image: single_plane_image_cl26.jpg

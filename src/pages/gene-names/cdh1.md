@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "cdh1"
 symbol: CDH1
 name: cadherin 1
 protein: E-cadherin

@@ -1,5 +1,6 @@
 ---
 templateKey: gene-name
+geneId: "sox2"
 symbol: SOX2
 name: SRY-box transcription factor 2
 protein: transcription factor SOX-2
