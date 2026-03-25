@@ -1,5 +1,8 @@
 import { IGatsbyImageData } from "gatsby-plugin-image";
 
+// Image can be either GatsbyImage(local) or a url string(cloud)
+export type ImageSource = IGatsbyImageData | string;
+
 // this is the image that comes from the CMS
 // without any data processing
 // it's just the user entered data
@@ -25,12 +28,13 @@ export interface RawImageData {
         childImageSharp: {
             gatsbyImageData: IGatsbyImageData;
         };
-    };
+    } | null;
+    image_url?: string | null;
     caption: string;
 }
 
 export interface UnpackedImageData {
-    image: IGatsbyImageData;
+    image: ImageSource;
     caption: string;
 }
 
@@ -266,7 +270,7 @@ export interface UnpackedCellLineMainInfo {
     certificateOfAnalysis: string;
     healthCertificate: string;
     orderLink: string;
-    thumbnailImage?: IGatsbyImageData | null;
+    thumbnailImage?: ImageSource | null;
     imagesAndVideos?: MediaFrontmatter;
 }
 
