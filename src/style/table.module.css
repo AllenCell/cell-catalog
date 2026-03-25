@@ -146,6 +146,11 @@
     fill: var(--WHITE);
 }
 
+.cert-icon path,
+.cert-icon line {
+    fill: none;
+}
+
 .action-button.disabled :global(.tube-icon) line,
 .action-button.disabled :global(.tube-icon) path,
 .action-button.disabled .cert-icon path,
