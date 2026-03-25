@@ -3,7 +3,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 
 import { ImageOrVideo } from "../../component-queries/types";
-import { isImage } from "../../utils/mediaUtils";
+import { isCloudinaryUrl, isImage } from "../../utils/mediaUtils";
 
 const {
     caption,
@@ -35,6 +35,21 @@ const renderMediaContent = (
     const isImageItem = isImage(item);
 
     if (isImageItem) {
+        if (isCloudinaryUrl(item.image)) {
+            return (
+                <img
+                    className={className}
+                    src={item.image}
+                    alt="Cell line media"
+                    style={{
+                        objectFit: "contain",
+                        cursor: onClickHandler ? "pointer" : undefined,
+                        maxWidth: "100%",
+                    }}
+                    onClick={onClickHandler}
+                />
+            );
+        }
         return (
             <GatsbyImage
                 className={className}

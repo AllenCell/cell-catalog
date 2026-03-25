@@ -3,9 +3,10 @@ import { Descriptions, Divider, Flex, Modal } from "antd";
 import { GatsbyImage, IGatsbyImageData, getImage } from "gatsby-plugin-image";
 import React, { useState } from "react";
 
-import { UnpackedGene } from "../component-queries/types";
+import { ImageSource, UnpackedGene } from "../component-queries/types";
 import LinkOutIcon from "../img/external-link.svg";
 import { formatCellLineSlug } from "../utils";
+import { isCloudinaryUrl } from "../utils/mediaUtils";
 import { DarkBlueHoverButton } from "./shared/Buttons";
 
 const {
@@ -20,7 +21,7 @@ const {
 } = require("../style/modal.module.css");
 
 interface ParentalLineModalProps {
-    image?: IGatsbyImageData | null;
+    image?: ImageSource | null;
     formattedId: string;
     cellLineId: number;
     cloneNumber: number;
@@ -43,7 +44,10 @@ const ParentalLineModal = (props: ParentalLineModalProps) => {
         props.suppressRowClickRef.current = false;
         setIsModalOpen(false);
     };
-    const image = getImage(props.image ?? null);
+    const rawImage = props.image;
+    const isUrl = rawImage ? isCloudinaryUrl(rawImage) : false;
+    const image =
+        !isUrl && rawImage ? getImage(rawImage as IGatsbyImageData) : null;
     const headerElement = (
         <div className={header}>
             <div className={title}>Parental Line </div>
@@ -120,12 +124,22 @@ const ParentalLineModal = (props: ParentalLineModalProps) => {
             >
                 <Flex justify="space-between" gap={16}>
                     <div style={{ width: "192px", display: "block" }}>
-                        {image && (
+                        {isUrl && rawImage ? (
+                            <img
+                                alt={`${props.formattedId} thumbnail image`}
+                                src={rawImage as string}
+                                style={{
+                                    width: 192,
+                                    height: 192,
+                                    objectFit: "cover",
+                                }}
+                            />
+                        ) : image ? (
                             <GatsbyImage
                                 alt={`${props.formattedId} thumbnail image`}
                                 image={image}
                             />
-                        )}
+                        ) : null}
                     </div>
                     <Descriptions
                         column={1}
