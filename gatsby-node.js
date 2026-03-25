@@ -108,6 +108,30 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
     createTypes(typeDefs);
 };
 
+// Expose the raw image string as `image_url` for Cloudinary URL support.
+// The existing `image: File @fileByRelativePath` returns null for URLs,
+// so we need this field to pass through Cloudinary URLs to the frontend.
+exports.createResolvers = ({ createResolvers }) => {
+    const imageUrlResolver = {
+        image_url: {
+            type: "String",
+            resolve: (source) => {
+                const img = source.image;
+                if (typeof img === "string") return img;
+                return null;
+            },
+        },
+    };
+    createResolvers({
+        ImgWithCaption: imageUrlResolver,
+        RnaSeqRow: imageUrlResolver,
+        // Gatsby-inferred types for image lists not covered by ImgWithCaption
+        MarkdownRemarkFrontmatterImages_and_videosImages: imageUrlResolver,
+        MarkdownRemarkFrontmatterEditing_designDiagramsImages: imageUrlResolver,
+        Diagram: imageUrlResolver,
+    });
+};
+
 exports.createPages = ({ actions, graphql }) => {
     const { createPage } = actions;
 
