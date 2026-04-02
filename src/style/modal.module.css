@@ -70,7 +70,12 @@
     line-height: 33px;
 }
 
+.button-icon path {
+    fill: none;
+}
+
 .action-button:hover path {
+    fill: none;
     stroke: var(--WHITE);
 }
 
