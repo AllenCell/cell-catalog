@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect, useRef } from "react";
 
-// Cloudinary configuration(temp)
-const CLOUD_NAME = "dkg6lnogl";
-const UPLOAD_PRESET = "allen-cell";
-const API_KEY = "989839737788897";
+import {
+    CLOUDINARY_API_KEY,
+    CLOUDINARY_CLOUD_NAME,
+    CLOUDINARY_UPLOAD_PRESET,
+} from "../cloudinaryConfig";
 
 // Decap CMS passes Immutable.js Maps — type the minimal surface we use
 interface ImmutableMap {
@@ -120,9 +121,9 @@ const CloudinaryImageWidget: React.FC<CloudinaryWidgetProps> = ({
 
         widgetRef.current = cloudinary.createUploadWidget(
             {
-                cloudName: CLOUD_NAME,
-                uploadPreset: UPLOAD_PRESET,
-                apiKey: API_KEY,
+                cloudName: CLOUDINARY_CLOUD_NAME,
+                uploadPreset: CLOUDINARY_UPLOAD_PRESET,
+                apiKey: CLOUDINARY_API_KEY,
                 folder: folder,
                 sources: ["local", "url", "camera"],
                 multiple: false,
