@@ -59,6 +59,9 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
             image: File @fileByRelativePath
             caption: String
             }
+            type ImagesAndVideos {
+            images: [ImgWithCaption]
+            }
             type Diagram {
             title: String
             images: [ImgWithCaption]
@@ -97,6 +100,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
                 parental_line: MarkdownRemark @link(by: "frontmatter.cell_line_id")
                 funding_text:  String @md
                 footer_text: String @md
+                images_and_videos: ImagesAndVideos
                 genomic_characterization: MarkdownRemarkFrontmatterGenomic_characterization
                 stem_cell_characteristics: StemCellCharacteristics
                 catalogs: [NavBarDropdownItem]
@@ -125,8 +129,6 @@ exports.createResolvers = ({ createResolvers }) => {
     createResolvers({
         ImgWithCaption: imageUrlResolver,
         RnaSeqRow: imageUrlResolver,
-        // Gatsby-inferred types for image lists not covered by ImgWithCaption
-        MarkdownRemarkFrontmatterImages_and_videosImages: imageUrlResolver,
         MarkdownRemarkFrontmatterEditing_designDiagramsImages: imageUrlResolver,
         Diagram: imageUrlResolver,
     });
