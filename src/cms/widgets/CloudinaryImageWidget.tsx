@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import {
     CLOUDINARY_API_KEY,
@@ -11,10 +11,16 @@ interface ImmutableMap {
     get: (key: string) => unknown;
 }
 
+interface AssetProxy {
+    toString: () => string;
+}
+
 interface CloudinaryWidgetProps {
     value?: string;
     onChange: (value: string) => void;
     entry: ImmutableMap;
+    field: ImmutableMap;
+    getAsset: (path: string, field: ImmutableMap) => AssetProxy;
 }
 
 type CloudinaryWidgetInstance = {
@@ -98,6 +104,8 @@ function getFolderFromEntry(entry: ImmutableMap): string {
 // Cast needed at registration site (cms.tsx) for the same reason.
 const CloudinaryImageWidget: React.FC<CloudinaryWidgetProps> = ({
     entry,
+    field,
+    getAsset,
     onChange,
     value,
 }) => {
@@ -182,6 +190,32 @@ const CloudinaryImageWidget: React.FC<CloudinaryWidgetProps> = ({
 
     const folder = getFolderFromEntry(entry);
     const hasImage = value && value.length > 0;
+    const isUrl = hasImage && value.startsWith("http");
+
+    const [localSrc, setLocalSrc] = useState<string | null>(null);
+    useEffect(() => {
+        if (!hasImage || isUrl) {
+            setLocalSrc(null);
+            return;
+        }
+        // getAsset returns an AssetProxy; its path may resolve async
+        const asset = getAsset(value, field);
+        const src = asset.toString();
+        if (src && !src.endsWith("undefined")) {
+            setLocalSrc(src);
+        }
+        // Poll briefly for the blob to be populated by the CMS proxy
+        const interval = setInterval(() => {
+            const resolved = getAsset(value, field).toString();
+            if (resolved && resolved !== src) {
+                setLocalSrc(resolved);
+                clearInterval(interval);
+            }
+        }, 500);
+        return () => clearInterval(interval);
+    }, [value, field, getAsset, hasImage, isUrl]);
+
+    const previewSrc = isUrl ? value : localSrc;
 
     return (
         <div
@@ -191,10 +225,10 @@ const CloudinaryImageWidget: React.FC<CloudinaryWidgetProps> = ({
                 padding: "12px",
             }}
         >
-            {hasImage && (
+            {hasImage && previewSrc && (
                 <div style={{ marginBottom: "8px" }}>
                     <img
-                        src={value}
+                        src={previewSrc}
                         alt="Uploaded"
                         style={{
                             maxWidth: "100%",
