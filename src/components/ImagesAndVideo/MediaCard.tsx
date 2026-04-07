@@ -40,7 +40,8 @@ const renderMediaContent = (
                 image={item.image}
                 alt="Cell line media"
                 className={className}
-                style={{ objectFit: "contain", maxWidth: "100%" }}
+                style={{ maxWidth: "100%" }}
+                imgStyle={{ objectFit: "contain" }}
                 onClick={onClickHandler}
             />
         );

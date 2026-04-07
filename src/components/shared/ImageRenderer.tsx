@@ -1,4 +1,4 @@
-import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
+import { GatsbyImage, IGatsbyImageData, getImage } from "gatsby-plugin-image";
 import React from "react";
 
 import { ImageSource } from "../../component-queries/types";
@@ -9,6 +9,7 @@ interface ImageRendererProps {
     alt: string;
     className?: string;
     style?: React.CSSProperties;
+    imgStyle?: React.CSSProperties;
     onClick?: () => void;
 }
 
@@ -17,6 +18,7 @@ const ImageRenderer: React.FC<ImageRendererProps> = ({
     alt,
     className,
     image,
+    imgStyle,
     onClick,
     style,
 }) => {
@@ -26,17 +28,20 @@ const ImageRenderer: React.FC<ImageRendererProps> = ({
                 src={image}
                 alt={alt}
                 className={className}
-                style={style}
+                style={{ ...style, ...imgStyle }}
                 onClick={onClick}
             />
         );
     }
+    const resolved = getImage(image as IGatsbyImageData);
+    if (!resolved) return null;
     return (
         <GatsbyImage
-            image={image as IGatsbyImageData}
+            image={resolved}
             alt={alt}
             className={className}
             style={onClick ? { cursor: "pointer", ...style } : style}
+            imgStyle={imgStyle}
             onClick={onClick}
         />
     );
