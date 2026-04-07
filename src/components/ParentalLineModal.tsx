@@ -1,13 +1,12 @@
 import Icon, { InfoCircleOutlined } from "@ant-design/icons";
 import { Descriptions, Divider, Flex, Modal } from "antd";
-import { GatsbyImage, IGatsbyImageData, getImage } from "gatsby-plugin-image";
 import React, { useState } from "react";
 
 import { ImageSource, UnpackedGene } from "../component-queries/types";
 import LinkOutIcon from "../img/external-link.svg";
 import { formatCellLineSlug } from "../utils";
-import { isExternalUrl } from "../utils/mediaUtils";
 import { DarkBlueHoverButton } from "./shared/Buttons";
+import ImageRenderer from "./shared/ImageRenderer";
 
 const {
     actionButton,
@@ -45,9 +44,6 @@ const ParentalLineModal = (props: ParentalLineModalProps) => {
         setIsModalOpen(false);
     };
     const rawImage = props.image;
-    const isUrl = rawImage ? isExternalUrl(rawImage) : false;
-    const image =
-        !isUrl && rawImage ? getImage(rawImage as IGatsbyImageData) : null;
     const headerElement = (
         <div className={header}>
             <div className={title}>Parental Line </div>
@@ -124,22 +120,17 @@ const ParentalLineModal = (props: ParentalLineModalProps) => {
             >
                 <Flex justify="space-between" gap={16}>
                     <div style={{ width: "192px", display: "block" }}>
-                        {isUrl && rawImage ? (
-                            <img
+                        {rawImage && (
+                            <ImageRenderer
+                                image={rawImage}
                                 alt={`${props.formattedId} thumbnail image`}
-                                src={rawImage as string}
                                 style={{
                                     width: 192,
                                     height: 192,
                                     objectFit: "cover",
                                 }}
                             />
-                        ) : image ? (
-                            <GatsbyImage
-                                alt={`${props.formattedId} thumbnail image`}
-                                image={image}
-                            />
-                        ) : null}
+                        )}
                     </div>
                     <Descriptions
                         column={1}

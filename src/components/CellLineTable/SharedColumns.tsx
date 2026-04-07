@@ -2,14 +2,16 @@ import Icon from "@ant-design/icons";
 import { Flex, Tooltip } from "antd";
 import classNames from "classnames";
 import { Link } from "gatsby";
-import { GatsbyImage, IGatsbyImageData, getImage } from "gatsby-plugin-image";
+import { getImage } from "gatsby-plugin-image";
 import React from "react";
 
 import { CellLineStatus } from "../../component-queries/types";
 import CertificateIcon from "../../img/cert-icon.svg";
 import { WHITE } from "../../style/theme";
 import { formatCellLineId, openLinkInNewTab } from "../../utils";
+import { isExternalUrl } from "../../utils/mediaUtils";
 import TubeIcon from "../Icons/TubeIcon";
+import ImageRenderer from "../shared/ImageRenderer";
 import { UnpackedCellLine, mdBreakpoint } from "./types";
 
 const {
@@ -35,35 +37,28 @@ export const cellLineIdColumn = {
             <h4 key={cellLineId}>{formatCellLineId(cellLineId)}</h4>
         );
         const thumbnailSrc = record.thumbnailImage;
-        const isUrl = typeof thumbnailSrc === "string";
-        const gatsbyImage = !isUrl ? getImage(thumbnailSrc || null) : null;
+        const hasImage =
+            thumbnailSrc &&
+            (isExternalUrl(thumbnailSrc) || getImage(thumbnailSrc));
 
-        const content =
-            isUrl || gatsbyImage ? (
-                <>
-                    <div className={idHeader}>{cellLine}</div>
-                    <div className={thumbnailContainer}>
-                        {isUrl ? (
-                            <img
-                                src={thumbnailSrc}
-                                alt={`${cellLine} thumbnail`}
-                                style={{
-                                    width: "100%",
-                                    height: "100%",
-                                    objectFit: "cover",
-                                }}
-                            />
-                        ) : (
-                            <GatsbyImage
-                                image={gatsbyImage as IGatsbyImageData}
-                                alt={`${cellLine} thumbnail`}
-                            />
-                        )}
-                    </div>
-                </>
-            ) : (
-                <div className={idTitle}>{cellLine}</div>
-            );
+        const content = hasImage ? (
+            <>
+                <div className={idHeader}>{cellLine}</div>
+                <div className={thumbnailContainer}>
+                    <ImageRenderer
+                        image={thumbnailSrc!}
+                        alt={`${formatCellLineId(cellLineId)} thumbnail`}
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                        }}
+                    />
+                </div>
+            </>
+        ) : (
+            <div className={idTitle}>{cellLine}</div>
+        );
 
         return record.status === CellLineStatus.DataComplete ? (
             <Link to={record.path}>{content}</Link>

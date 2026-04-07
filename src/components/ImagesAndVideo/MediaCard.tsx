@@ -1,9 +1,9 @@
 import { Card, Flex } from "antd";
-import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 
 import { ImageOrVideo } from "../../component-queries/types";
-import { isExternalUrl, isImage } from "../../utils/mediaUtils";
+import { isImage } from "../../utils/mediaUtils";
+import ImageRenderer from "../shared/ImageRenderer";
 
 const {
     caption,
@@ -35,28 +35,12 @@ const renderMediaContent = (
     const isImageItem = isImage(item);
 
     if (isImageItem) {
-        if (isExternalUrl(item.image)) {
-            return (
-                <img
-                    className={className}
-                    src={item.image}
-                    alt="Cell line media"
-                    style={{
-                        objectFit: "contain",
-                        cursor: onClickHandler ? "pointer" : undefined,
-                        maxWidth: "100%",
-                    }}
-                    onClick={onClickHandler}
-                />
-            );
-        }
         return (
-            <GatsbyImage
-                className={className}
+            <ImageRenderer
                 image={item.image}
                 alt="Cell line media"
-                imgStyle={{ objectFit: "contain" }}
-                style={onClickHandler ? { cursor: "pointer" } : undefined}
+                className={className}
+                style={{ objectFit: "contain", maxWidth: "100%" }}
                 onClick={onClickHandler}
             />
         );

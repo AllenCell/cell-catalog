@@ -1,10 +1,9 @@
 import { CardProps } from "antd";
 import classNames from "classnames";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
 
 import { ImageSource } from "../../component-queries/types";
-import { isExternalUrl } from "../../utils/mediaUtils";
+import ImageRenderer from "./ImageRenderer";
 import SubpageContentCard from "./SubpageContentCard";
 
 const { container } = require("../../style/diagram-card.module.css");
@@ -29,8 +28,6 @@ const DiagramCard: React.FC<DiagramCardProps> = ({
     }
 
     const cardTitle = headerLeadText ? `${headerLeadText}: ${title}` : title;
-    const isUrl = isExternalUrl(image);
-    const imageData = !isUrl ? getImage(image) : null;
 
     return (
         <SubpageContentCard
@@ -39,19 +36,11 @@ const DiagramCard: React.FC<DiagramCardProps> = ({
             caption={caption}
             className={classNames(container, className)}
         >
-            {isUrl ? (
-                <img
-                    style={{ marginBottom: 16, maxWidth: "100%" }}
-                    src={image}
-                    alt={cardTitle || "diagram"}
-                />
-            ) : imageData ? (
-                <GatsbyImage
-                    style={{ marginBottom: 16 }}
-                    image={imageData}
-                    alt={cardTitle || "diagram"}
-                />
-            ) : null}
+            <ImageRenderer
+                image={image}
+                alt={cardTitle || "diagram"}
+                style={{ marginBottom: 16, maxWidth: "100%" }}
+            />
         </SubpageContentCard>
     );
 };
