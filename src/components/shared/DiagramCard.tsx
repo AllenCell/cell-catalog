@@ -4,7 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
 
 import { ImageSource } from "../../component-queries/types";
-import { isCloudinaryUrl } from "../../utils/mediaUtils";
+import { isExternalUrl } from "../../utils/mediaUtils";
 import SubpageContentCard from "./SubpageContentCard";
 
 const { container } = require("../../style/diagram-card.module.css");
@@ -29,7 +29,7 @@ const DiagramCard: React.FC<DiagramCardProps> = ({
     }
 
     const cardTitle = headerLeadText ? `${headerLeadText}: ${title}` : title;
-    const isUrl = isCloudinaryUrl(image);
+    const isUrl = isExternalUrl(image);
     const imageData = !isUrl ? getImage(image) : null;
 
     return (

@@ -3,7 +3,7 @@ import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import React from "react";
 
 import { ImageSource } from "../component-queries/types";
-import { isCloudinaryUrl } from "../utils/mediaUtils";
+import { isExternalUrl } from "../utils/mediaUtils";
 
 const {
     selectedThumbnail,
@@ -33,7 +33,7 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
 }) => {
     const renderImage = () => {
         if (!image) return null;
-        if (isCloudinaryUrl(image)) {
+        if (isExternalUrl(image)) {
             return (
                 <img
                     src={image}

@@ -4,7 +4,7 @@ import { getSrc } from "gatsby-plugin-image";
 import React from "react";
 
 import { ImageOrVideo, UnpackedImageData } from "../../component-queries/types";
-import { isCloudinaryUrl } from "../../utils/mediaUtils";
+import { isExternalUrl } from "../../utils/mediaUtils";
 
 interface ImagePreviewGroupProps {
     mediaItems: ImageOrVideo[];
@@ -31,9 +31,7 @@ export const PreviewGroup = ({
     setSelectedMedia,
 }: ImagePreviewGroupProps) => {
     const allPreviewImages = imageItems.map((item, i) => {
-        const src = isCloudinaryUrl(item.image)
-            ? item.image
-            : getSrc(item.image);
+        const src = isExternalUrl(item.image) ? item.image : getSrc(item.image);
         return (
             <Image
                 key={`preview-${i}`}

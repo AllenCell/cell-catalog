@@ -10,7 +10,7 @@ import {
     UnpackedImageData,
 } from "../component-queries/types";
 
-export function isCloudinaryUrl(image: ImageSource): image is string {
+export function isExternalUrl(image: ImageSource): image is string {
     return typeof image === "string";
 }
 
@@ -60,6 +60,6 @@ export const getThumbnail = (
 ): ImageSource | null => {
     const firstImage = getImages(imagesAndVideos)[0];
     if (!firstImage) return null;
-    if (isCloudinaryUrl(firstImage.image)) return firstImage.image;
+    if (isExternalUrl(firstImage.image)) return firstImage.image;
     return getImage(firstImage.image) ?? null;
 };

@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import { ImageSource, UnpackedGene } from "../component-queries/types";
 import LinkOutIcon from "../img/external-link.svg";
 import { formatCellLineSlug } from "../utils";
-import { isCloudinaryUrl } from "../utils/mediaUtils";
+import { isExternalUrl } from "../utils/mediaUtils";
 import { DarkBlueHoverButton } from "./shared/Buttons";
 
 const {
@@ -45,7 +45,7 @@ const ParentalLineModal = (props: ParentalLineModalProps) => {
         setIsModalOpen(false);
     };
     const rawImage = props.image;
-    const isUrl = rawImage ? isCloudinaryUrl(rawImage) : false;
+    const isUrl = rawImage ? isExternalUrl(rawImage) : false;
     const image =
         !isUrl && rawImage ? getImage(rawImage as IGatsbyImageData) : null;
     const headerElement = (

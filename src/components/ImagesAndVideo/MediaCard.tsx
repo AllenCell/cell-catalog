@@ -3,7 +3,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 
 import { ImageOrVideo } from "../../component-queries/types";
-import { isCloudinaryUrl, isImage } from "../../utils/mediaUtils";
+import { isExternalUrl, isImage } from "../../utils/mediaUtils";
 
 const {
     caption,
@@ -35,7 +35,7 @@ const renderMediaContent = (
     const isImageItem = isImage(item);
 
     if (isImageItem) {
-        if (isCloudinaryUrl(item.image)) {
+        if (isExternalUrl(item.image)) {
             return (
                 <img
                     className={className}
