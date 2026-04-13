@@ -89,7 +89,7 @@ export interface StemCellCharacteristicsFrontmatter {
         day_of_beating_range: string;
     };
     cardiomyocyte_differentiation_caption: string;
-    rnaseq_analysis: UnpackedImageData[];
+    rnaseq_analysis: RawImageData[];
 }
 
 export interface ParentalLineFrontmatter {
@@ -200,12 +200,12 @@ export interface Sequence {
     type: string;
 }
 
-export interface SingleImageDiagram extends UnpackedImageData {
+export interface SingleImageDiagram extends RawImageData {
     title: string;
 }
 
 export interface DiagramList {
-    images: UnpackedImageData[];
+    images: RawImageData[];
     title: string;
 }
 
