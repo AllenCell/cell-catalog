@@ -204,11 +204,18 @@ const CloudinaryImageWidget: React.FC<CloudinaryWidgetProps> = ({
         if (src && !src.endsWith("undefined")) {
             setLocalSrc(src);
         }
-        // Poll briefly for the blob to be populated by the CMS proxy
+        // Poll briefly for the blob to be populated by the CMS proxy.
+        // Cap attempts so the interval doesn't leak if the value never
+        // changes (e.g., src was already resolved or stays unresolved).
+        let attempts = 0;
+        const MAX_POLL_ATTEMPTS = 20;
         const interval = setInterval(() => {
+            attempts++;
             const resolved = getAsset(value, field).toString();
             if (resolved && resolved !== src) {
                 setLocalSrc(resolved);
+                clearInterval(interval);
+            } else if (attempts >= MAX_POLL_ATTEMPTS) {
                 clearInterval(interval);
             }
         }, 500);

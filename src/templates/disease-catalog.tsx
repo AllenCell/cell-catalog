@@ -112,7 +112,9 @@ interface QueryResult {
 const DiseaseCatalog = ({ data }: QueryResult) => {
     const { markdownRemark: post } = data;
     const imageFile = post.frontmatter.header?.background;
-    const backgroundImageUrl = getImageSrcFromFileNode(imageFile!);
+    const backgroundImageUrl = imageFile
+        ? getImageSrcFromFileNode(imageFile)
+        : undefined;
     return (
         <Layout
             header={
