@@ -48,6 +48,12 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
             options: [NavBarDropdownItem]
             }
 
+            type MarkdownRemarkFrontmatterHeader {
+            title: String
+            subtitle: String
+            background: File @fileByRelativePath
+            }
+
             `,
         `type GeneticModification {
                 gene: MarkdownRemark @link(by: "frontmatter.geneId", from: "gene")
@@ -131,6 +137,16 @@ exports.createResolvers = ({ createResolvers }) => {
         RnaSeqRow: imageUrlResolver,
         MarkdownRemarkFrontmatterEditing_designDiagramsImages: imageUrlResolver,
         Diagram: imageUrlResolver,
+        MarkdownRemarkFrontmatterHeader: {
+            background_url: {
+                type: "String",
+                resolve: (source) => {
+                    const bg = source.background;
+                    if (typeof bg === "string") return bg;
+                    return null;
+                },
+            },
+        },
     });
 };
 
