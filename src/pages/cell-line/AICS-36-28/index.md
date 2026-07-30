@@ -27,7 +27,7 @@ images_and_videos:
       caption: Viability and colony formation photographed 3 days post-thaw at 4X
         magnification. Cells were treated with ROCK inhibitor for 24 hrs
         post-thaw.
-    - image: Western blot documentation AAVS1 final clone only_final.jpg
+    - image: Western blot documentation AAVS1 backup clone only_final.jpg
   videos: null
 editing_design:
   ncbi_isoforms:
