@@ -27,6 +27,8 @@ images_and_videos:
         cells/10cm dish for four days. Morphological abnormalities can be seen
         in 1-5% of colonies in three and four days of growth. Colony morphology
         will resolve with continued passage. Scale bars are as shown."
+    - image: AICS-114_cl35_CDH1_Western.jpg
+    - image: AICS-114_cl35_CDH1_antibody_staining.jpg
   videos:
     - caption: Time-lapse movie of a live hiPS cell colony expressing mEGFP-tagged
         E-cadherin. A single plane near the top of the cells was imaged every 3
@@ -97,6 +99,7 @@ genomic_characterization:
     known 2n reference gene.
 category_labels:
   - Key Structure and Organelle
+hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-67
 stem_cell_characteristics:
   pluripotency_analysis:
     - marker: NANOG
@@ -141,5 +144,4 @@ stem_cell_characteristics:
     Biosciences) and gating was based on an isotype control. Ranges observed
     across multiple experiments are shown for Troponin T and Day of beating
     initiation; number of experiments is shown in (). "
-hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-67
 ---
