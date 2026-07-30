@@ -1,6 +1,4 @@
 ---
-category_labels:
-  - Stress
 templateKey: cell-line
 cell_line_id: 82
 status: data complete
@@ -27,6 +25,7 @@ images_and_videos:
     - image: Main_cell_line_morphology.jpg
       caption: Viability and colony formation one day and three days post-thaw. Cells
         were treated with ROCK inhibitor for 24 hrs post-thaw.
+    - image: ReleaseWestern_AICS-0082_G2BP1-mEGFP.jpg
   videos:
     - caption: Time-lapse movie of a live hiPS cell colony expressing mEGFP-tagged Ras
         GTPase-activating protein-binding protein 1 (G3BP-1) under oxidative
@@ -65,6 +64,44 @@ editing_design:
         - image: EditingDesign_gene_figure.png
           caption: "Top: G3BP1 locus showing 2 G3BP1 isoforms; Bottom: Zoom in on mEGFP
             insertion site at G3BP1 N-terminal exon."
+genomic_characterization:
+  diagrams:
+    - title: Schematic of Junctions
+      images:
+        - image: /img/shared/GenomicCharacterization_junction_schematic_mEGFP.png
+  amplified_junctions:
+    - edited_gene: G3BP1-mEGFP
+      junction: 5'
+      expected_size: ""
+      confirmed_sequence: Yes
+    - edited_gene: G3BP1-mEGFP
+      junction: 3'
+      expected_size: ""
+      confirmed_sequence: Yes
+    - edited_gene: G3BP1-mEGFP
+      junction: WT
+      expected_size: "1408"
+      confirmed_sequence: Yes
+    - edited_gene: G3BP1-mEGFP
+      junction: Full junctional allele
+      expected_size: "Tagged: bp; Untagged: bp"
+      confirmed_sequence: Yes
+  junction_table_caption: PCR amplified 5', 3', WT, and full allele junctions. 5',
+    3', and WT junctions were Sanger sequenced to check for precise mEGFP
+    insertion. Primers were designed to exclude amplification from the donor
+    plasmid.
+  ddpcr:
+    - tag: G3BP1-mEGFP
+      clone: 1
+      fp_ratio: 0.54
+      plasmid: 0
+  ddpcr_caption: "FP:RPP30 ratio from ddPCR assay; values = 0.5 +/- 0.1 indicate
+    heterozygous clone, values = 1 +/- 0.1 indicate homozygous clone. Plasmid:
+    KAN/RPP30 ratio from ddPCR assay; values <0.1 indicate clone with no
+    detectable plasmid integration. RPP30 is known 2n reference gene."
+category_labels:
+  - Stress
+hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-63
 stem_cell_characteristics:
   pluripotency_analysis:
     - marker: NANOG
@@ -106,40 +143,4 @@ stem_cell_characteristics:
     Biosciences) and gating was based on an isotype control. Ranges observed
     across multiple experiments are shown for Troponin T and Day of beating
     initiation; number of experiments is shown in (). "
-genomic_characterization:
-  diagrams:
-    - title: Schematic of Junctions
-      images:
-        - image: /img/shared/GenomicCharacterization_junction_schematic_mEGFP.png
-  amplified_junctions:
-    - edited_gene: G3BP1-mEGFP
-      junction: 5'
-      expected_size: ""
-      confirmed_sequence: Yes
-    - edited_gene: G3BP1-mEGFP
-      junction: 3'
-      expected_size: ""
-      confirmed_sequence: Yes
-    - edited_gene: G3BP1-mEGFP
-      junction: WT
-      expected_size: "1408"
-      confirmed_sequence: Yes
-    - edited_gene: G3BP1-mEGFP
-      junction: Full junctional allele
-      expected_size: "Tagged: bp; Untagged: bp"
-      confirmed_sequence: Yes
-  junction_table_caption: PCR amplified 5', 3', WT, and full allele junctions. 5',
-    3', and WT junctions were Sanger sequenced to check for precise mEGFP
-    insertion. Primers were designed to exclude amplification from the donor
-    plasmid.
-  ddpcr:
-    - tag: G3BP1-mEGFP
-      clone: 1
-      fp_ratio: 0.54
-      plasmid: 0
-  ddpcr_caption: "FP:RPP30 ratio from ddPCR assay; values = 0.5 +/- 0.1 indicate
-    heterozygous clone, values = 1 +/- 0.1 indicate homozygous clone. Plasmid:
-    KAN/RPP30 ratio from ddPCR assay; values <0.1 indicate clone with no
-    detectable plasmid integration. RPP30 is known 2n reference gene."
-hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-63
 ---
