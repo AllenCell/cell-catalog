@@ -27,6 +27,7 @@ images_and_videos:
       caption: Viability and colony formation photographed 3 days post-thaw at 4X
         magnification. Cells were treated with ROCK inhibitor for 24 hrs
         post-thaw.
+    - image: Western blot documentation AAVS1 final clone only_final.jpg
   videos: null
 editing_design:
   ncbi_isoforms:
@@ -83,6 +84,7 @@ genomic_characterization:
     no detectable plasmid integration. RPP30 is known 2n reference gene."
 category_labels:
   - Key Structure and Organelle
+hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-12
 stem_cell_characteristics:
   pluripotency_analysis:
     - marker: NANOG
@@ -127,5 +129,4 @@ stem_cell_characteristics:
     Biosciences) and gating was based on an isotype control. Ranges observed
     across multiple experiments are shown for Troponin T and Day of beating
     initiation; number of experiments is shown in ().
-hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-12
 ---
