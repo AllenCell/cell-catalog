@@ -25,7 +25,7 @@ images_and_videos:
     - image: Main_cell_line_morphology.jpg
       caption: Viability and colony formation one day and three days post-thaw. Cells
         were treated with ROCK inhibitor for 24 hrs post-thaw.
-    - image: ReleaseWestern_AICS-0082_G2BP1-mEGFP.jpg
+    - image: aics_82_g3bp1_cl1-western-11112021-final.png
   videos:
     - caption: Time-lapse movie of a live hiPS cell colony expressing mEGFP-tagged Ras
         GTPase-activating protein-binding protein 1 (G3BP-1) under oxidative
