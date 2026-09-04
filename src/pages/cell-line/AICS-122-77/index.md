@@ -13,6 +13,7 @@ genetic_modifications:
 order_link: https://www.coriell.org/0/Sections/Search/Sample_Detail.aspx?Ref=AICS-0122-077&Product=iPSC&PgId=166
 certificate_of_analysis: chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.coriell.org/0/PDF/Allen/ipsc/AICS-0122-077_CofA.pdf
 donor_plasmid: null
+hpscreg_certificate_link: null
 images_and_videos:
   videos: null
   images:
@@ -33,6 +34,7 @@ images_and_videos:
         bright-field single, mid-level plane for each time point. Cells were
         imaged live in 3D on a spinning-disk confocal microscope every 30
         minutes for 48 hours (six hour increments shown). Scale bar, 50 µm.
+    - image: releaseimmuno_aics122_cl77_final.jpg
 editing_design:
   ncbi_isoforms:
     - N
@@ -43,5 +45,4 @@ editing_design:
     - title: mEGFP insert
       images:
         - image: eomes_cofa_editingfigure.png
-hpscreg_certificate_link: null
 ---
