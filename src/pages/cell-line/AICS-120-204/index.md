@@ -32,6 +32,7 @@ images_and_videos:
         inhibitor for 24hrs post-thaw). Cultures were observed daily. Colonies
         were imaged one and three days post-thaw using a Leica microscope at 4x
         and 10x magnification.
+    - image: releasewestern_aics0120_cl204_v3.jpg
   videos:
     - video: https://player.vimeo.com/video/1082633752
       caption: "Z-stack of a live hiPS cell colony expressing expressing mEGFP-tagged
