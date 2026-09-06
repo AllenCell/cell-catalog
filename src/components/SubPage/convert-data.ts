@@ -14,7 +14,7 @@ import {
     StemCellCharacteristicsFrontmatter,
 } from "../../component-queries/types";
 import { hasTableData, nonEmptyArray } from "../../utils";
-import { getThumbnail } from "../../utils/mediaUtils";
+import { getThumbnail, unpackImageData } from "../../utils/mediaUtils";
 import { DiagramCardProps } from "../shared/DiagramCard";
 import { PERCENT_POS_CAPTION } from "./stem-cell-table-constants";
 import {
@@ -35,13 +35,17 @@ export const unpackDiagrams = (
     if (!diagrams || diagrams.length === 0) {
         return [];
     }
-    return diagrams.map((diagram) => {
-        return {
+    const result: DiagramCardProps[] = [];
+    diagrams.forEach((diagram) => {
+        const unpacked = unpackImageData(diagram);
+        if (!unpacked) return;
+        result.push({
             title: diagram.title,
-            caption: diagram.caption,
-            image: diagram.image,
-        };
+            caption: unpacked.caption,
+            image: unpacked.image,
+        });
     });
+    return result;
 };
 
 export const unpackMultiImageDiagrams = (
@@ -59,10 +63,12 @@ export const unpackMultiImageDiagrams = (
         }
 
         diagram.images.forEach((imageObj, index) => {
+            const unpacked = unpackImageData(imageObj);
+            if (!unpacked) return;
             result.push({
                 title: index === 0 ? diagram.title : "",
-                caption: imageObj.caption,
-                image: imageObj.image,
+                caption: unpacked.caption,
+                image: unpacked.image,
             });
         });
     });
@@ -275,13 +281,16 @@ export const unpackNormalStemCellCharacteristics = (
             : [],
     };
 
-    const rnaSeqAnalysis: DiagramCardProps[] = (scc.rnaseq_analysis ?? []).map(
-        (item) => ({
+    const rnaSeqAnalysis: DiagramCardProps[] = [];
+    (scc.rnaseq_analysis ?? []).forEach((item) => {
+        const unpacked = unpackImageData(item);
+        if (!unpacked) return;
+        rnaSeqAnalysis.push({
             title: "RNASEQ", // TODO get appropriate title for this card
-            image: item.image,
-            caption: item.caption,
-        }),
-    );
+            image: unpacked.image,
+            caption: unpacked.caption,
+        });
+    });
 
     return {
         pluripotencyAnalysis,

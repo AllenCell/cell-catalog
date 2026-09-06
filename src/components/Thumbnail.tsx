@@ -1,6 +1,8 @@
 import classNames from "classnames";
-import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import React from "react";
+
+import { ImageSource } from "../component-queries/types";
+import ImageRenderer from "./shared/ImageRenderer";
 
 const {
     selectedThumbnail,
@@ -10,7 +12,7 @@ const {
 } = require("../style/thumbnail.module.css");
 
 interface ThumbnailProps {
-    image?: IGatsbyImageData;
+    image?: ImageSource;
     videoId?: string;
     isSelected: boolean;
     onClick: () => void;
@@ -38,7 +40,15 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
             role="button"
         >
             {type === "image" && image ? (
-                <GatsbyImage image={image} alt="thumbnail image" />
+                <ImageRenderer
+                    image={image}
+                    alt="thumbnail image"
+                    style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                    }}
+                />
             ) : (
                 <img
                     src={getVimeoThumbnail(videoId || "") ?? ""}

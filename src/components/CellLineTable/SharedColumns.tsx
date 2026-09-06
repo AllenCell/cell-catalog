@@ -2,14 +2,16 @@ import Icon from "@ant-design/icons";
 import { Flex, Tooltip } from "antd";
 import classNames from "classnames";
 import { Link } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { getImage } from "gatsby-plugin-image";
 import React from "react";
 
 import { CellLineStatus } from "../../component-queries/types";
 import CertificateIcon from "../../img/cert-icon.svg";
 import { WHITE } from "../../style/theme";
 import { formatCellLineId, openLinkInNewTab } from "../../utils";
+import { isExternalUrl } from "../../utils/mediaUtils";
 import TubeIcon from "../Icons/TubeIcon";
+import ImageRenderer from "../shared/ImageRenderer";
 import { UnpackedCellLine, mdBreakpoint } from "./types";
 
 const {
@@ -34,15 +36,23 @@ export const cellLineIdColumn = {
         const cellLine = (
             <h4 key={cellLineId}>{formatCellLineId(cellLineId)}</h4>
         );
-        const thumbnailImage = getImage(record.thumbnailImage || null);
+        const thumbnailSrc = record.thumbnailImage;
+        const hasImage =
+            thumbnailSrc &&
+            (isExternalUrl(thumbnailSrc) || getImage(thumbnailSrc));
 
-        const content = thumbnailImage ? (
+        const content = hasImage ? (
             <>
                 <div className={idHeader}>{cellLine}</div>
                 <div className={thumbnailContainer}>
-                    <GatsbyImage
-                        image={thumbnailImage}
-                        alt={`${cellLine} thumbnail`}
+                    <ImageRenderer
+                        image={thumbnailSrc!}
+                        alt={`${formatCellLineId(cellLineId)} thumbnail`}
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                        }}
                     />
                 </div>
             </>

@@ -55,6 +55,7 @@ export default function NormalCellLines() {
                                             )
                                         }
                                     }
+                                    image_url
                                     caption
                                 }
                             }

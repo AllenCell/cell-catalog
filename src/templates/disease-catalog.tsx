@@ -86,6 +86,7 @@ interface QueryResult {
                     title?: string;
                     subtitle?: string;
                     background?: FileNode;
+                    background_url?: string | null;
                 };
                 footer_text: {
                     html: string;
@@ -112,7 +113,10 @@ interface QueryResult {
 const DiseaseCatalog = ({ data }: QueryResult) => {
     const { markdownRemark: post } = data;
     const imageFile = post.frontmatter.header?.background;
-    const backgroundImageUrl = getImageSrcFromFileNode(imageFile!);
+    const backgroundImageUrl =
+        (imageFile ? getImageSrcFromFileNode(imageFile) : undefined) ??
+        post.frontmatter.header?.background_url ??
+        undefined;
     return (
         <Layout
             header={
@@ -155,6 +159,7 @@ export const aboutPageQuery = graphql`
                             )
                         }
                     }
+                    background_url
                 }
                 footer_text {
                     html

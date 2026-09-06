@@ -1,15 +1,16 @@
 import { CardProps } from "antd";
 import classNames from "classnames";
-import { GatsbyImage, IGatsbyImageData, getImage } from "gatsby-plugin-image";
 import React from "react";
 
+import { ImageSource } from "../../component-queries/types";
+import ImageRenderer from "./ImageRenderer";
 import SubpageContentCard from "./SubpageContentCard";
 
 const { container } = require("../../style/diagram-card.module.css");
 
 export interface DiagramCardProps extends CardProps {
     title?: string;
-    image?: IGatsbyImageData;
+    image?: ImageSource;
     caption?: string;
     headerLeadText?: string;
 }
@@ -25,7 +26,6 @@ const DiagramCard: React.FC<DiagramCardProps> = ({
     if (!image) {
         return null;
     }
-    const imageData = getImage(image);
 
     const cardTitle = headerLeadText ? `${headerLeadText}: ${title}` : title;
 
@@ -36,13 +36,11 @@ const DiagramCard: React.FC<DiagramCardProps> = ({
             caption={caption}
             className={classNames(container, className)}
         >
-            {imageData && (
-                <GatsbyImage
-                    style={{ marginBottom: 16 }}
-                    image={imageData}
-                    alt={cardTitle || "diagram"}
-                />
-            )}
+            <ImageRenderer
+                image={image}
+                alt={cardTitle || "diagram"}
+                style={{ marginBottom: 16, maxWidth: "100%" }}
+            />
         </SubpageContentCard>
     );
 };

@@ -48,6 +48,12 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
             options: [NavBarDropdownItem]
             }
 
+            type MarkdownRemarkFrontmatterHeader {
+            title: String
+            subtitle: String
+            background: File @fileByRelativePath
+            }
+
             `,
         `type GeneticModification {
                 gene: MarkdownRemark @link(by: "frontmatter.geneId", from: "gene")
@@ -58,6 +64,9 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         ` type ImgWithCaption {
             image: File @fileByRelativePath
             caption: String
+            }
+            type ImagesAndVideos {
+            images: [ImgWithCaption]
             }
             type Diagram {
             title: String
@@ -97,6 +106,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
                 parental_line: MarkdownRemark @link(by: "frontmatter.cell_line_id")
                 funding_text:  String @md
                 footer_text: String @md
+                images_and_videos: ImagesAndVideos
                 genomic_characterization: MarkdownRemarkFrontmatterGenomic_characterization
                 stem_cell_characteristics: StemCellCharacteristics
                 catalogs: [NavBarDropdownItem]
@@ -106,6 +116,38 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
             }`,
     ];
     createTypes(typeDefs);
+};
+
+// Expose the raw image string as `image_url` for Cloudinary URL support.
+// The existing `image: File @fileByRelativePath` returns null for URLs,
+// so we need this field to pass through Cloudinary URLs to the frontend.
+exports.createResolvers = ({ createResolvers }) => {
+    const imageUrlResolver = {
+        image_url: {
+            type: "String",
+            resolve: (source) => {
+                const img = source.image;
+                if (typeof img === "string") return img;
+                return null;
+            },
+        },
+    };
+    createResolvers({
+        ImgWithCaption: imageUrlResolver,
+        RnaSeqRow: imageUrlResolver,
+        MarkdownRemarkFrontmatterEditing_designDiagramsImages: imageUrlResolver,
+        Diagram: imageUrlResolver,
+        MarkdownRemarkFrontmatterHeader: {
+            background_url: {
+                type: "String",
+                resolve: (source) => {
+                    const bg = source.background;
+                    if (typeof bg === "string") return bg;
+                    return null;
+                },
+            },
+        },
+    });
 };
 
 exports.createPages = ({ actions, graphql }) => {

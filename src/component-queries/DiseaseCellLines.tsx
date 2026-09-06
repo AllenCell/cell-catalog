@@ -78,6 +78,7 @@ export default function DiseaseCellLineQuery(props: {
                                                     )
                                                 }
                                             }
+                                            image_url
                                             caption
                                         }
                                     }
