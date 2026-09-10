@@ -31,7 +31,30 @@ images_and_videos:
       caption: Viability and colony formation one day and three days post-thaw. Scale
         bars are as shown
     - image: releasewestern_aics083_dcp1a_cl124_mono_v2.jpg
-  videos: null
+  videos:
+    - video: https://vimeo.com/1224969231?share=copy&fl=sv&fe=ci
+      caption: Z-stack of hiPS cells expressing mEGFP-tagged mRNA-decapping enzyme 1A
+        (DCP1A) control cells (left panel) and cells in the presence of 62.5 µM
+        sodium arsenite for 60 minutes (right panel). Images show the change in
+        distribution of puncta at the cellular level with oxidative stress. The
+        movie starts at the bottom of the cells and ends at the top (scale bar,
+        5 µm). Cells were imaged live in 3D on a spinning-disk confocal
+        microscope.
+    - video: https://vimeo.com/1225718725?share=copy&fl=sv&fe=ci
+      caption: Time-lapse movie of a live hiPS cell colony expressing mEGFP-tagged
+        mRNA-decapping enzyme 1A (DCP1A) under oxidative stress. Cells were
+        imaged every 1 minute on a spinning disk confocal microscope immediately
+        after the introduction of 62.5 µM sodium arsenite. Inset images are 2x
+        enlargement of boxed areas to show changes in structural detail of
+        puncta in center cells (blue) and edge cells (yellow). Images are
+        maximum intensity projections spanning the whole cell volume. Movie
+        plays at 590x real time. Scalebar, 20 µM.
+    - video: https://vimeo.com/1225742845?share=copy&fl=sv&fe=ci
+      caption: Time-lapse movie of a live hiPS cell colony expressing mEGFP-tagged
+        mRNA-decapping enzyme 1A (DCP1A). Movie is a maximum intensity
+        projection spanning 2 µm around the middle z-section of the cells on a
+        spinning-disk confocal microscope. Movie plays at 1800x real time.
+        Scalebar, 20 µM.
 editing_design:
   ncbi_isoforms:
     - null
