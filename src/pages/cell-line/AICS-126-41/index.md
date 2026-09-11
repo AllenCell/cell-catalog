@@ -13,6 +13,7 @@ genetic_modifications:
 order_link: https://www.coriell.org/0/Sections/Search/Sample_Detail.aspx?Ref=AICS-0126-041&Product=iPSC&PgId=166
 certificate_of_analysis: https://www.coriell.org/0/PDF/Allen/ipsc/AICS-0126-041_CofA.pdf
 donor_plasmid: null
+hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-66
 images_and_videos:
   images:
     - image: single_plane_image_cl41.png
@@ -31,7 +32,16 @@ images_and_videos:
         a Leica microscope at 4x and 10x magnification.
     - image: ReleaseWestern_AICS0126_CDH5_cl41_bi_V3.jpg
     - image: IF_cdh5_clone41_andAICS0000.jpg
-  videos: null
+  videos:
+    - video: https://vimeo.com/1225988075?share=copy&fl=sv&fe=ci
+      caption: Z-stack of hiPSC-derived endothelial cells expressing mEGFP-tagged
+        VE-cadherin (scalebar, 20 µm). Five days after the onset of
+        differentiation, cells were magnetically sorted using CD144 antibodies
+        and subsequently cryopreserved. Upon thawing, the cells were grown on
+        fibronectin-coated tissue culture plates until they reached confluence.
+        They were then re-plated onto fibronectin-coated glass plates and imaged
+        four days later. Cells were imaged live in 3D on a spinning-disk
+        confocal microscope.
 editing_design:
   ncbi_isoforms:
     - null
@@ -92,7 +102,6 @@ genomic_characterization:
     known 2n reference gene.
 category_labels:
   - Endothelial
-hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-66
 stem_cell_characteristics:
   pluripotency_analysis:
     - marker: NANOG
