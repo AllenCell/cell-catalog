@@ -13,6 +13,7 @@ genetic_modifications:
 order_link: https://www.coriell.org/0/Sections/Search/Sample_Detail.aspx?Ref=AICS-0069-088&PgId=166
 certificate_of_analysis: https://www.coriell.org/0/PDF/Allen/ipsc/AICS-0069-088_CofA.pdf
 donor_plasmid: https://www.addgene.org/114407/
+hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-31
 images_and_videos:
   images:
     - image: single_plane_image_cl88.jpg
@@ -45,6 +46,12 @@ images_and_videos:
         ~1.5 µm through the middle of the cells on a spinning-disk confocal
         microscope every 3 min. Image is a maximum intensity projection through
         the imaged volume. Movie plays at 1800x real time. Scale bar, 20 µm.
+    - video: https://vimeo.com/reviews/38a4dad2-91a5-4a04-af1b-148bf492feb0/videos/320070676
+      caption: Z-stack of live hiPS cells expressing mEGFP-tagged nucleoporin Nup153,
+        counterstained with Hoechst 33342 (cyan; nuclei) and CellMask Deep Red
+        (magenta; cell membranes). Images were acquired on a spinning-disk
+        confocal microscope. Image starts at the bottom of the cells and ends at
+        the top.
 editing_design:
   ncbi_isoforms:
     - n
@@ -110,7 +117,6 @@ genomic_characterization:
     no detectable plasmid integration. RPP30 is known 2n reference gene."
 category_labels:
   - Nuclear Structure
-hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-31
 stem_cell_characteristics:
   pluripotency_analysis:
     - marker: NANOG
