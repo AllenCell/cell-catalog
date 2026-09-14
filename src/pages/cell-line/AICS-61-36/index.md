@@ -46,10 +46,9 @@ images_and_videos:
         Movie plays at 1800x real time. Scale bar, 20 µm."
     - video: https://vimeo.com/reviews/38a4dad2-91a5-4a04-af1b-148bf492feb0/videos/320070141
       caption: Z-stack of live hiPS cells expressing mEGFP-tagged histone H2B type
-        1-J, counterstained with Hoechst 33342 (cyan; nuclei) and CellMask Deep
-        Red (magenta; cell membranes). Images were acquired on a spinning-disk
-        confocal microscope. Image starts at the bottom of the cells and ends at
-        the top.
+        1-J, counterstained with CellMask Deep Red (magenta; cell membranes).
+        Images were acquired on a spinning-disk confocal microscope. Image
+        starts at the bottom of the cells and ends at the top.
 editing_design:
   ncbi_isoforms:
     - n
