@@ -13,6 +13,7 @@ genetic_modifications:
 order_link: https://catalog.coriell.org/0/Sections/Search/Sample_Detail.aspx?Ref=AICS-0031-035&Product=iPSC
 certificate_of_analysis: https://catalog.coriell.org/0/PDF/Allen/ipsc/AICS-0031-035_CofA.pdf
 donor_plasmid: https://www.addgene.org/101785/
+hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-16
 images_and_videos:
   images:
     - image: single_plane_image_cl35.jpg
@@ -36,6 +37,12 @@ images_and_videos:
         spinning-disk confocal microscope. Images are maximum intensity
         projections with the ‘despeckle’ ImageJ filter applied. Movie sped up
         3000x over real time.
+    - video: https://vimeo.com/reviews/38a4dad2-91a5-4a04-af1b-148bf492feb0/videos/320070302
+      caption: Z-stack of live hiPS cells expressing mTagRFP-T-tagged alpha-tubulin,
+        counterstained with Hoechst 33342 (cyan; nuclei) and CellMask Deep Red
+        (magenta; cell membranes). Images were acquired on a spinning-disk
+        confocal microscope. Image starts at the bottom of the cells and ends at
+        the top.
 editing_design:
   ncbi_isoforms:
     - NM_006082
@@ -91,7 +98,6 @@ genomic_characterization:
     gene."
 category_labels:
   - Key Structure and Organelle
-hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-16
 stem_cell_characteristics:
   pluripotency_analysis:
     - marker: NANOG
