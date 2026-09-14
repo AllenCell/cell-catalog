@@ -13,6 +13,7 @@ genetic_modifications:
 order_link: https://catalog.coriell.org/0/Sections/Search/Sample_Detail.aspx?Ref=AICS-0013&Product=iPSC
 certificate_of_analysis: https://catalog.coriell.org/0/PDF/Allen/ipsc/AICS-0013_CofA.pdf
 donor_plasmid: https://www.addgene.org/87422/
+hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-6
 images_and_videos:
   images:
     - image: single_plane_image_cl210.jpg
@@ -39,6 +40,12 @@ images_and_videos:
         taken in 3D every 3 minutes for 12 hours on a spinning-disk confocal
         microscope. Image is a maximum intensity projection. Movie sped up 1800x
         over real time.
+    - video: https://vimeo.com/reviews/38a4dad2-91a5-4a04-af1b-148bf492feb0/videos/320070604
+      caption: Z-stack of live hiPS cells expressing mEGFP-tagged lamin B1,
+        counterstained with Hoechst 33342 (cyan; nuclei) and CellMask Deep Red
+        (magenta; cell membranes). Images were acquired on a spinning-disk
+        confocal microscope. Image starts at the bottom of the cells and ends at
+        the top.
 editing_design:
   ncbi_isoforms:
     - NM_005573
@@ -113,7 +120,6 @@ genomic_characterization:
 category_labels:
   - Key Structure and Organelle
   - Nuclear Structure
-hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-6
 stem_cell_characteristics:
   pluripotency_analysis:
     - marker: NANOG
