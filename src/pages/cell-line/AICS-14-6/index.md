@@ -13,6 +13,7 @@ genetic_modifications:
 order_link: https://catalog.coriell.org/0/Sections/Search/Sample_Detail.aspx?Ref=AICS-0014&Product=iPSC
 certificate_of_analysis: https://catalog.coriell.org/0/PDF/Allen/ipsc/AICS-0014_CofA.pdf
 donor_plasmid: https://www.addgene.org/87427/
+hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-9
 images_and_videos:
   images:
     - image: single_plane_image_cl6.jpg
@@ -40,6 +41,12 @@ images_and_videos:
         fibrillarin. Images taken in 3D every 3 minutes for 10 hours on a
         spinning-disk confocal microscope. Image is a maximum intensity
         projection. Movie sped up 1800x over real time.
+    - video: https://vimeo.com/reviews/38a4dad2-91a5-4a04-af1b-148bf492feb0/videos/320070470
+      caption: Z-stack of live hiPS cells expressing mEGFP-tagged fibrillarin,
+        counterstained with Hoechst 33342 (cyan; nuclei) and CellMask Deep Red
+        (magenta; cell membranes). Images were acquired on a spinning-disk
+        confocal microscope. Image starts at the bottom of the cells and ends at
+        the top.
 editing_design:
   ncbi_isoforms:
     - NM_001436
@@ -115,7 +122,6 @@ genomic_characterization:
 category_labels:
   - Key Structure and Organelle
   - Nuclear Structure
-hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-9
 stem_cell_characteristics:
   pluripotency_analysis:
     - marker: NANOG
