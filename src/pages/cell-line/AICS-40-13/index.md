@@ -13,6 +13,7 @@ genetic_modifications:
 order_link: https://www.coriell.org/0/Sections/Search/Sample_Detail.aspx?Ref=AICS-0040-013&PgId=166
 certificate_of_analysis: https://www.coriell.org/0/PDF/Allen/ipsc/AICS-0040-013_CofA.pdf
 donor_plasmid: https://www.addgene.org/107579/
+hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-20
 images_and_videos:
   images:
     - image: single_plane_image_cl13.jpg
@@ -38,6 +39,12 @@ images_and_videos:
         z-section was acquired every second. A zoom-in of the area boxed in the
         left panel is shown on the right. Movie sped up 10x real time. Scale
         bar, 5 µm.
+    - video: https://vimeo.com/reviews/38a4dad2-91a5-4a04-af1b-148bf492feb0/videos/320069437
+      caption: Z-stack of live hiPS cells expressing mEGFP-tagged Ras-related protein
+        Rab-5A, counterstained with Hoechst 33342 (cyan; nuclei) and CellMask
+        Deep Red (magenta; cell membranes). Images were acquired on a
+        spinning-disk confocal microscope. Image starts at the bottom of the
+        cells and ends at the top.
 editing_design:
   ncbi_isoforms:
     - N
@@ -100,7 +107,6 @@ genomic_characterization:
     no detectable plasmid integration. RPP30 is known 2n reference gene."
 category_labels:
   - Key Structure and Organelle
-hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-20
 stem_cell_characteristics:
   pluripotency_analysis:
     - marker: NANOG
