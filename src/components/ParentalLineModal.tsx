@@ -1,12 +1,12 @@
 import Icon, { InfoCircleOutlined } from "@ant-design/icons";
 import { Descriptions, Divider, Flex, Modal } from "antd";
-import { GatsbyImage, IGatsbyImageData, getImage } from "gatsby-plugin-image";
 import React, { useState } from "react";
 
-import { UnpackedGene } from "../component-queries/types";
+import { ImageSource, UnpackedGene } from "../component-queries/types";
 import LinkOutIcon from "../img/external-link.svg";
 import { formatCellLineSlug } from "../utils";
 import { DarkBlueHoverButton } from "./shared/Buttons";
+import ImageRenderer from "./shared/ImageRenderer";
 
 const {
     actionButton,
@@ -20,7 +20,7 @@ const {
 } = require("../style/modal.module.css");
 
 interface ParentalLineModalProps {
-    image?: IGatsbyImageData | null;
+    image?: ImageSource | null;
     formattedId: string;
     cellLineId: number;
     cloneNumber: number;
@@ -43,7 +43,7 @@ const ParentalLineModal = (props: ParentalLineModalProps) => {
         props.suppressRowClickRef.current = false;
         setIsModalOpen(false);
     };
-    const image = getImage(props.image ?? null);
+    const rawImage = props.image;
     const headerElement = (
         <div className={header}>
             <div className={title}>Parental Line </div>
@@ -120,10 +120,15 @@ const ParentalLineModal = (props: ParentalLineModalProps) => {
             >
                 <Flex justify="space-between" gap={16}>
                     <div style={{ width: "192px", display: "block" }}>
-                        {image && (
-                            <GatsbyImage
+                        {rawImage && (
+                            <ImageRenderer
+                                image={rawImage}
                                 alt={`${props.formattedId} thumbnail image`}
-                                image={image}
+                                style={{
+                                    width: 192,
+                                    height: 192,
+                                    objectFit: "cover",
+                                }}
                             />
                         )}
                     </div>

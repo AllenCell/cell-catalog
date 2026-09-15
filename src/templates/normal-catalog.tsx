@@ -52,6 +52,7 @@ interface QueryResult {
                     title?: string;
                     subtitle?: string;
                     background?: FileNode;
+                    background_url?: string | null;
                 };
                 funding_text: {
                     html: string;
@@ -70,9 +71,10 @@ interface QueryResult {
 const NormalCatalog = ({ data }: QueryResult) => {
     const { markdownRemark: post } = data;
     const imageFile = post.frontmatter.header?.background;
-    const backgroundImageUrl = imageFile
-        ? getImageSrcFromFileNode(imageFile)
-        : undefined;
+    const backgroundImageUrl =
+        (imageFile ? getImageSrcFromFileNode(imageFile) : undefined) ??
+        post.frontmatter.header?.background_url ??
+        undefined;
     return (
         <Layout
             header={
@@ -118,6 +120,7 @@ export const aboutPageQuery = graphql`
                             )
                         }
                     }
+                    background_url
                 }
                 funding_text {
                     html

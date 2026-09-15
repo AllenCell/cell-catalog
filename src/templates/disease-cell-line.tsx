@@ -194,6 +194,7 @@ export const pageQuery = graphql`
                                 )
                             }
                         }
+                        image_url
                         caption
                     }
                 }
@@ -217,6 +218,7 @@ export const pageQuery = graphql`
                                     )
                                 }
                             }
+                            image_url
                             caption
                         }
                     }
@@ -232,6 +234,7 @@ export const pageQuery = graphql`
                                 )
                             }
                         }
+                        image_url
                         caption
                     }
                 }
