@@ -13,6 +13,7 @@ genetic_modifications:
 order_link: https://www.coriell.org/0/Sections/Search/Sample_Detail.aspx?Ref=AICS-0048-039&PgId=166
 certificate_of_analysis: https://www.coriell.org/0/PDF/Allen/ipsc/AICS-0048-039_CofA.pdf
 donor_plasmid: https://www.addgene.org/114412/
+hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-27
 images_and_videos:
   images:
     - image: single_plane_image_cl39.jpg
@@ -44,6 +45,12 @@ images_and_videos:
         total after the onset of differentiation). A single plane of cells was
         imaged continuously with a 100 ms exposure time. Inset shows detail of
         titan in myofibrils. Scale bars, 10 µm. Movie plays in real time."
+    - video: https://vimeo.com/reviews/38a4dad2-91a5-4a04-af1b-148bf492feb0/videos/320070701
+      caption: Z-stack of live hiPS cells expressing mEGFP-tagged titin,
+        counterstained with Nuc Violet (cyan; nuclei) and Wheat Germ
+        Agglutinin-633 (magenta; cell membranes). Images were acquired on a
+        spinning-disk confocal microscope. Image starts at the bottom of the
+        cells and ends at the top.
 editing_design:
   ncbi_isoforms:
     - n
@@ -102,7 +109,6 @@ genomic_characterization:
     no detectable plasmid integration. RPP30 is known 2n reference gene."
 category_labels:
   - Cardiac Structure
-hpscreg_certificate_link: https://hpscreg.eu/cell-line/UCSFi001-A-27
 stem_cell_characteristics:
   pluripotency_analysis:
     - marker: NANOG
